@@ -6,10 +6,22 @@ import java.time.LocalTime;
 public class Sale {
   // Variables
   private LocalTime time;
+  private Receipt receipt;
 
-  // Constructor
+  /* 
+   * Constructor
+   */
   public Sale() {
+    this.receipt = new Receipt();
+  }
 
+  /*
+   * A function to get the current recipt of a sale
+   * 
+   * @return the reciept for the current sale
+   */
+  public Receipt getReceipt() {
+    return receipt;
   }
 
   /*
@@ -35,7 +47,7 @@ public class Sale {
    * @params All information that should be on the receipt
    */
   public void printReceipt(Receipt receipt) {
-    // insert code here
+
   }
 
   /*
@@ -43,5 +55,16 @@ public class Sale {
    */
   public void makePayment() {
 
+  }
+
+  /*
+   * Loop that allows the cashier to insert items
+   * 
+   * @params Reciept that will contain all items
+   */
+  private void insertItems(Receipt receipt) {
+    while (true) {
+      break;
+    }
   }
 }

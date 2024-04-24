@@ -1,17 +1,24 @@
 package controller;
 
 import integration.Printer;
+import model.Receipt;
+import model.Sale;
 
 public class Controller {
+  // Variables
+  private Sale sale;
+  private Payment payment;
+
   // Constructor
   public Controller(Printer printer) {
-    
+
   }
 
   /*
-   *  A function that sets the program in a state ready to start a sale
+   * Resets variables to be ready to handle a new sale
    */
   public void startSale() {
-    // insert code here
+    this.sale = new Sale();
+    this.payment = new Payment();
   }
 }
