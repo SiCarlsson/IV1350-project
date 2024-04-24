@@ -1,4 +1,4 @@
-package model;
+package se.epelsc.iv1350.model;
 
 // Importing LocalDateTime class from java.time package 
 import java.time.LocalTime;
@@ -21,7 +21,7 @@ public class Sale {
    * @return the reciept for the current sale
    */
   public Receipt getReceipt() {
-    return receipt;
+    return this.receipt;
   }
 
   /*
@@ -47,24 +47,13 @@ public class Sale {
    * @params All information that should be on the receipt
    */
   public void printReceipt(Receipt receipt) {
-
+    // insert code here
   }
 
   /*
    * Prepares to make a payment, no further inserts of products
    */
   public void makePayment() {
-
-  }
-
-  /*
-   * Loop that allows the cashier to insert items
-   * 
-   * @params Reciept that will contain all items
-   */
-  private void insertItems(Receipt receipt) {
-    while (true) {
-      break;
-    }
+    // insert code here
   }
 }

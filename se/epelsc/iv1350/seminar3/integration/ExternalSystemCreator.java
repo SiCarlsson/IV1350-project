@@ -1,4 +1,4 @@
-package integration;
+package se.epelsc.iv1350.seminar3.integration;
 
 public class ExternalSystemCreator {
   // Constructor

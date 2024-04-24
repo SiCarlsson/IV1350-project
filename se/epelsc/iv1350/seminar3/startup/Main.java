@@ -1,6 +1,7 @@
-package startup;
+package se.epelsc.iv1350.seminar3.startup;
 
-import controller.Controller;
+import se.epelsc.iv1350.seminar3.integration.Printer;
+import se.epelsc.iv1350.seminar3.controller.Controller;
 
 public class Main {
   // Main function, will run on initialization

@@ -1,4 +1,4 @@
-package model;
+package se.epelsc.iv1350.model;
 
 public class Register {
   // Constructor
