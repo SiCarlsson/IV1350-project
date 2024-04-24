@@ -1,10 +1,9 @@
-package se.epelsc.iv1350.seminar3.controller;
+package se.epelsc.iv1350.seminar3.source.controller;
 
-import se.epelsc.iv1350.seminar3.integration.ItemDTO;
-import se.epelsc.iv1350.seminar3.integration.Printer;
-import se.epelsc.iv1350.seminar3.model.Item;
-//import se.epelsc.iv1350.seminar3.model.Payment;
-import se.epelsc.iv1350.seminar3.model.Sale;
+import se.epelsc.iv1350.seminar3.source.integration.ItemDTO;
+import se.epelsc.iv1350.seminar3.source.integration.Printer;
+import se.epelsc.iv1350.seminar3.source.model.Item;
+import se.epelsc.iv1350.seminar3.source.model.Sale;
 
 public class Controller {
   // Variables
@@ -41,12 +40,12 @@ public class Controller {
   }
 
   /*
-   * 
+   * Function collect ItemDTO from database here (not applicable during seminar3)
+   * Here it only returns expected return values
    * 
    * @params
    */
   private ItemDTO getItem(int identifier) {
-    // Collect ItemDTO from database here (not applicable during seminar3)
     return new ItemDTO(identifier, 0, 0, null, null);
   }
 }

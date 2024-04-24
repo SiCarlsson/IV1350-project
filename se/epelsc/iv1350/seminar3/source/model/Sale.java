@@ -1,4 +1,4 @@
-package se.epelsc.iv1350.seminar3.model;
+package se.epelsc.iv1350.seminar3.source.model;
 
 // Importing LocalDateTime class from java.time package 
 import java.time.LocalTime;
@@ -7,7 +7,7 @@ public class Sale {
   // Variables
   private LocalTime time;
   private Receipt receipt;
-  private Item[] items = new Item[1];
+  private Item[] items = new Item[0];
 
   /*
    * Constructor
@@ -92,5 +92,16 @@ public class Sale {
   private void insertItem(Item item) {
     int lastIndexPositionOfArray = this.items.length - 1;
     this.items[lastIndexPositionOfArray] = item;
+  }
+
+  /*
+   * 
+   */
+  public int getTotalProducts() {
+    int counter = 0;
+    for (int i = 0; i < this.items.length; i++) {
+      counter++;
+    }
+    return counter;
   }
 }

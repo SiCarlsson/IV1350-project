@@ -1,21 +1,36 @@
-package se.epelsc.iv1350.seminar3.model;
+package se.epelsc.iv1350.seminar3.source.integration;
 
-import se.epelsc.iv1350.seminar3.integration.ItemDTO;
-
-public class Item {
+public class ItemDTO {
   // Variables
   private int identifier;
   private double price;
   private double VAT;
   private String name;
   private String description;
+  private int amount;
 
-  public Item(ItemDTO itemDTO) {
-    this.identifier = itemDTO.getItentifier();
-    this.price = itemDTO.getPrice();
-    this.VAT = itemDTO.getVAT();
-    this.name = itemDTO.getName();
-    this.description = itemDTO.getDescription();
+  /*
+   * Constructor function
+   * 
+   * @param identifier The item ID retrieved from the database
+   * 
+   * @param price The item price
+   * 
+   * @param VAT The VAT in percentage for an item
+   * 
+   * @param name The name of an item
+   * 
+   * @param description A short clarification of each item
+   */
+  public ItemDTO(int identifier, double price, double VAT, String name, String description) {
+    this.identifier = identifier;
+    this.price = price;
+    this.VAT = VAT;
+    this.name = name;
+    this.description = description;
+
+    int numberOfProcuctsInTheBeginning = 1;
+    this.amount = numberOfProcuctsInTheBeginning;
   }
 
   /*
@@ -61,5 +76,14 @@ public class Item {
    */
   public String getDescription() {
     return this.description;
+  }
+
+  /*
+   * Getter function to retrieve ItemDTO amount
+   * 
+   * @return The item amount
+   */
+  public double getAmount() {
+    return this.amount;
   }
 }
