@@ -1,4 +1,4 @@
-package se.epelsc.iv1350.model;
+package se.epelsc.iv1350.seminar3.model;
 
 // Importing LocalDateTime class from java.time package 
 import java.time.LocalTime;
