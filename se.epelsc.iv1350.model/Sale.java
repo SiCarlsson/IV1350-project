@@ -37,4 +37,11 @@ public class Sale {
   public void printReceipt(Receipt receipt) {
     // insert code here
   }
+
+  /*
+   * Prepares to make a payment, no further inserts of products
+   */
+  public void makePayment() {
+
+  }
 }
