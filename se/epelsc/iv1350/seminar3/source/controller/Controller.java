@@ -24,6 +24,13 @@ public class Controller {
   }
 
   /*
+   * Function to get the current sale
+   */
+  public Sale getSale() {
+    return this.sale;
+  }
+
+  /*
    * Function to handle all loop logic to enter new items to sale
    */
   // private void saleLoop() {
