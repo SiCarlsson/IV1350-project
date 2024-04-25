@@ -36,7 +36,7 @@ public class SaleTest {
     int expectedOutput = 4;
 
     for (int i = 0; i < expectedOutput; i++) {
-      this.instanceToTest.addItem(null);
+      this.instanceToTest.addItem(new Item(new ItemDTO(i, 0, 0, null, null)));
     }
 
     int givenOutput = this.instanceToTest.getTotalItems();
@@ -45,7 +45,49 @@ public class SaleTest {
   }
 
   /*
+   * Tests the functionality of finding an already existing item in the sale
+   * 
+   * Skipped parameter (it is inside of function)
+   */
+  @Test
+  public void testCheckItemExists() {
+    Item decoyItem = new Item(new ItemDTO(12345, 0, 0, null, null));
+
+    int expectedOutput = 1;
+
+    this.instanceToTest.addItem(decoyItem);
+    this.instanceToTest.addItem(decoyItem);
+
+    int givenOutput = this.instanceToTest.getTotalItems();
+
+    assertEquals(expectedOutput, givenOutput, "checkItemExists works as expected");
+  }
+
+  /*
+   * Tests the functionality of incrementing the amount of an existing product
+   * 
+   * Skipped parameter (it is inside of function)
+   */
+  @Test
+  public void testIncrementItemAmount() {
+    int itemIdentifier = 12345;
+    Item decoyItem = new Item(new ItemDTO(itemIdentifier, 0, 0, null, null));
+
+    int expectedOutput = 3;
+
+    for (int i = 0; i < expectedOutput; i++) {
+      this.instanceToTest.addItem(decoyItem);
+    }
+
+    int givenOutput = this.instanceToTest.getItem(0).getAmount();
+
+    assertEquals(expectedOutput, givenOutput, "checkItemExists works as expected");
+  }
+
+  /*
    * Tests the basic functionality of getItem
+   * 
+   * Skipped parameter (it is inside of function)
    */
   @Test
   public void testGetItem() {

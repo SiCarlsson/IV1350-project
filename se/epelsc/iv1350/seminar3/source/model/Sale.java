@@ -60,13 +60,18 @@ public class Sale {
   }
 
   /*
-   * Adds an item to a current sale
+   * Adds an item to a current sale, also handles if item already exists
    * 
    * @param item An instance of item containing the item that should be addded
    */
   public void addItem(Item item) {
-    this.items = expandArray();
-    insertItem(item);
+    if (checkItemExists(item)) {
+      addToExistingItem(item.getItentifier());
+    }
+    else {
+      this.items = expandArray();
+      insertItem(item);
+    }
   }
 
   /*
@@ -92,6 +97,29 @@ public class Sale {
   private void insertItem(Item item) {
     int lastIndexPositionOfArray = this.items.length - 1;
     this.items[lastIndexPositionOfArray] = item;
+  }
+
+  /*
+   * Function to see if an item already exists in the sale
+   */
+  private boolean checkItemExists(Item item) {
+    int itemIdentifier = item.getItentifier();
+
+    for (int i = 0; i < this.items.length; i++) {
+      if (itemIdentifier == this.items[i].getItentifier()) {
+        return true;
+      }
+    }
+
+    return false;
+  }
+
+  private void addToExistingItem(int itemIdentifier) {
+    for (int i = 0; i < this.items.length; i++) {
+      if (itemIdentifier == this.items[i].getItentifier()) {
+        this.items[i].incrementAmount();
+      }
+    }
   }
 
   /*

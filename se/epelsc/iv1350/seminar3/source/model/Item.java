@@ -17,6 +17,7 @@ public class Item {
     this.VAT = itemDTO.getVAT();
     this.name = itemDTO.getName();
     this.description = itemDTO.getDescription();
+    this.amount = 1;
   }
 
   /*
@@ -71,5 +72,12 @@ public class Item {
    */
   public int getAmount() {
     return this.amount;
+  }
+
+  /*
+   * Function to increment the amount of an item by 1
+   */
+  public void incrementAmount() {
+    this.amount++;
   }
 }
