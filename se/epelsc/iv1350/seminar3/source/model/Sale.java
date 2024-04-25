@@ -95,13 +95,29 @@ public class Sale {
   }
 
   /*
-   * 
+   * Function gets the total amount of products in a sale
    */
-  public int getTotalProducts() {
+  public int getTotalItems() {
     int counter = 0;
     for (int i = 0; i < this.items.length; i++) {
       counter++;
     }
     return counter;
+  }
+
+  /*
+   * Function gets the inted of a given item
+   * 
+   * @param indexPosition The index position of a product
+   * 
+   * @return The specified item in the sale
+   */
+  public Item getItem(int indexPosition) throws IndexOutOfBoundsException {
+    int totalNumberOfProducts = this.items.length - 1;
+
+    if (indexPosition < 0 || indexPosition > totalNumberOfProducts)
+      throw new IndexOutOfBoundsException("Index specified does not exist!");
+
+    return items[indexPosition];
   }
 }
