@@ -1,9 +1,15 @@
 package se.epelsc.iv1350.seminar3.source.integration;
 
 public class ExternalSystemCreator {
+  private ExternalAccountingSystem externalAccountingSystem;
+  private ExternalDiscountDatabase externalDiscountDatabase;
+  private ExternalInventorySystem externalInventorySystem;
+
   // Constructor
   public ExternalSystemCreator() {
-    // insert code here
+    externalAccountingSystem = new ExternalAccountingSystem();
+    externalDiscountDatabase = new ExternalDiscountDatabase();
+    externalInventorySystem = new ExternalInventorySystem();
   }
 
   /*
@@ -12,7 +18,7 @@ public class ExternalSystemCreator {
    * @return An instance of the class ExternalAccountingSystem
    */
   public ExternalAccountingSystem getAccountingSystem() {
-    return new ExternalAccountingSystem();
+    return externalAccountingSystem;
   }
 
   /*
@@ -21,7 +27,7 @@ public class ExternalSystemCreator {
    * @return An instance of the class ExternalAccountingSystem
    */
   public ExternalDiscountDatabase getDiscountDatabase() {
-    return new ExternalDiscountDatabase();
+    return externalDiscountDatabase;
   }
 
   /*
@@ -30,6 +36,6 @@ public class ExternalSystemCreator {
    * @return An instance of the class ExternalInventorySystem
    */
   public ExternalInventorySystem getInventorySystem() {
-    return new ExternalInventorySystem();
+    return externalInventorySystem;
   }
 }

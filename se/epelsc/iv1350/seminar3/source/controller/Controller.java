@@ -1,5 +1,9 @@
 package se.epelsc.iv1350.seminar3.source.controller;
 
+import se.epelsc.iv1350.seminar3.source.integration.ExternalAccountingSystem;
+import se.epelsc.iv1350.seminar3.source.integration.ExternalDiscountDatabase;
+import se.epelsc.iv1350.seminar3.source.integration.ExternalInventorySystem;
+import se.epelsc.iv1350.seminar3.source.integration.ExternalSystemCreator;
 import se.epelsc.iv1350.seminar3.source.integration.ItemDTO;
 import se.epelsc.iv1350.seminar3.source.integration.Printer;
 import se.epelsc.iv1350.seminar3.source.model.Item;
@@ -8,11 +12,17 @@ import se.epelsc.iv1350.seminar3.source.model.Sale;
 public class Controller {
   // Variables
   private Sale sale;
-  // private Payment payment;
+  private ExternalSystemCreator exSysCreator;
+  private ExternalAccountingSystem exAccountingSys;
+  private ExternalDiscountDatabase exDiscountDb;
+  private ExternalInventorySystem exInventorySys;
 
   // Constructor
   public Controller(Printer printer) {
-
+    exSysCreator = new ExternalSystemCreator();
+    this.exAccountingSys = exSysCreator.getAccountingSystem();
+    this.exDiscountDb = exSysCreator.getDiscountDatabase();
+    this.exInventorySys = exSysCreator.getInventorySystem();
   }
 
   /*
@@ -36,16 +46,6 @@ public class Controller {
    * @params itemIdentifier An integer containing the item identifier that should be added to the sale
    */
   public void addItemToSale(int itemIdentifier) {
-    sale.addItem(new Item(getItemDTOFromDatabase(itemIdentifier)));
-  }
-
-  /*
-   * Function collect ItemDTO from database here (not applicable during seminar3)
-   * Here it only returns expected return values
-   * 
-   * @params itemIdentifier The identifier of the product that should be fetched from the database
-   */
-  private ItemDTO getItemDTOFromDatabase(int itemIdentifier) {
-    return new ItemDTO(itemIdentifier, 0, 0, null, null);
+    sale.addItem(new Item(this.exInventorySys.getItemDTOFromDatabase(itemIdentifier)));
   }
 }
