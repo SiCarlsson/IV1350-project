@@ -5,6 +5,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import se.epelsc.iv1350.seminar3.source.controller.Controller;
+import se.epelsc.iv1350.seminar3.source.integration.ExternalSystemCreator;
 import se.epelsc.iv1350.seminar3.source.integration.Printer;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -14,7 +15,7 @@ public class ControllerTest {
 
   @BeforeEach
   public void setUp() {
-    this.instanceToTest = new Controller(new Printer());
+    this.instanceToTest = new Controller(new Printer(), new ExternalSystemCreator());
   }
 
   @AfterEach

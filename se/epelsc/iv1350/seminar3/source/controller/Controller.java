@@ -18,8 +18,8 @@ public class Controller {
   private ExternalInventorySystem exInventorySys;
 
   // Constructor
-  public Controller(Printer printer) {
-    exSysCreator = new ExternalSystemCreator();
+  public Controller(Printer printer, ExternalSystemCreator exSysCreator) {
+    this.exSysCreator = exSysCreator;
     this.exAccountingSys = exSysCreator.getAccountingSystem();
     this.exDiscountDb = exSysCreator.getDiscountDatabase();
     this.exInventorySys = exSysCreator.getInventorySystem();
