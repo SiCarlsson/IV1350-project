@@ -24,6 +24,7 @@ public class SaleTest {
   @AfterEach
   public void tearDown() {
     this.instanceToTest = null;
+    this.decoyItem = null;
   }
 
   @Test
@@ -41,7 +42,7 @@ public class SaleTest {
 
   //Skipped parameter (it is inside of function)
   @Test
-  public void testNotCreatingDuplicatesWhenAddingSameItems() {
+  public void testAddItemNotCreatingDuplicatesInSaleItems() {
     int expectedOutput = 1;
 
     this.instanceToTest.addItem(this.decoyItem);
