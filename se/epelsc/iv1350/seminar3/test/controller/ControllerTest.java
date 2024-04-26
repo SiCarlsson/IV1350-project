@@ -5,26 +5,21 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import se.epelsc.iv1350.seminar3.source.controller.Controller;
-import se.epelsc.iv1350.seminar3.source.integration.ItemDTO;
 import se.epelsc.iv1350.seminar3.source.integration.Printer;
-import se.epelsc.iv1350.seminar3.source.model.Item;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ControllerTest {
   private Controller instanceToTest;
-  private Item decoyItem;
 
   @BeforeEach
   public void setUp() {
     this.instanceToTest = new Controller(new Printer());
-    this.decoyItem = new Item(new ItemDTO(12345, 0, 0, null, null));
   }
 
   @AfterEach
   public void tearDown() {
     this.instanceToTest = null;
-    this.decoyItem = null;
   }
 
   @Test

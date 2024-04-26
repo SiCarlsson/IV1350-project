@@ -2,10 +2,11 @@ package se.epelsc.iv1350.seminar3.source.model;
 
 // Importing LocalDateTime class from java.time package 
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 
 public class Sale {
   // Variables
-  private LocalTime time;
+  private String currentTime;
   private Receipt receipt;
   private Item[] items = new Item[0];
 
@@ -31,16 +32,24 @@ public class Sale {
    * 
    * @return the current time in java.time.LocalTime format
    */
-  public LocalTime getTimeOfSale() {
-    setTime();
-    return time;
+  public String getTimeOfSale() {
+    currentTimeFormatter(setTime());
+    return this.currentTime;
   }
 
   /*
    * A function to set the current time
    */
-  private void setTime() {
-    this.time = LocalTime.now();
+  private LocalTime setTime() {
+    return LocalTime.now();
+  }
+
+  /*
+   * Format the current time and store it in currentTime
+   */
+  private void currentTimeFormatter(LocalTime unformattedTime) {
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+    this.currentTime = unformattedTime.format(formatter);
   }
 
   /*

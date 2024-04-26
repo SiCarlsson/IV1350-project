@@ -2,7 +2,6 @@ package se.epelsc.iv1350.seminar3.test.model;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import se.epelsc.iv1350.seminar3.source.integration.ItemDTO;
