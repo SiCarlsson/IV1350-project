@@ -124,6 +124,8 @@ public class Sale {
 
   /*
    * Function gets the total amount of products in a sale
+   * 
+   * @return The amount of items in the current sale
    */
   public int getTotalItems() {
     int counter = 0;

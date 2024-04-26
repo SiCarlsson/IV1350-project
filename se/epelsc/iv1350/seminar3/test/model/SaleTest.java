@@ -26,13 +26,8 @@ public class SaleTest {
     this.instanceToTest = null;
   }
 
-  /*
-   * Tests the functionallity of adding items to the current sale
-   * 
-   * @return
-   */
   @Test
-  public void testAddItem() {
+  public void testAddItemToSale() {
     int expectedOutput = 4;
 
     for (int i = 0; i < expectedOutput; i++) {
@@ -44,17 +39,14 @@ public class SaleTest {
     assertEquals(expectedOutput, givenOutput, "addItem works as expected!");
   }
 
-  /*
-   * Tests the functionality of finding an already existing item in the sale
-   * 
-   * Skipped parameter (it is inside of function)
-   */
+  //Skipped parameter (it is inside of function)
   @Test
-  public void testCheckItemExists() {
+  public void testNotCreatingDuplicatesWhenAddingSameItems() {
     Item decoyItem = new Item(new ItemDTO(12345, 0, 0, null, null));
 
     int expectedOutput = 1;
 
+    this.instanceToTest.addItem(decoyItem);
     this.instanceToTest.addItem(decoyItem);
     this.instanceToTest.addItem(decoyItem);
 
@@ -63,11 +55,6 @@ public class SaleTest {
     assertEquals(expectedOutput, givenOutput, "checkItemExists works as expected");
   }
 
-  /*
-   * Tests the functionality of incrementing the amount of an existing product
-   * 
-   * Skipped parameter (it is inside of function)
-   */
   @Test
   public void testIncrementItemAmount() {
     int itemIdentifier = 12345;
@@ -84,11 +71,7 @@ public class SaleTest {
     assertEquals(expectedOutput, givenOutput, "checkItemExists works as expected");
   }
 
-  /*
-   * Tests the basic functionality of getItem
-   * 
-   * Skipped parameter (it is inside of function)
-   */
+  //Skipped parameter (it is inside of function)
   @Test
   public void testGetItem() {
     Item expectedOutput = new Item(new ItemDTO(12345, 0, 0, null, null));
@@ -102,9 +85,6 @@ public class SaleTest {
     assertEquals(expectedOutput, givenOutput, "getItem basic functionallity works as expected!");
   }
 
-  /*
-   * Testing if getItem can handle an index value larger than allowed
-   */
   @Test
   public void testGetItemIndexOutOfBoundsUpper() {
     Item decoyItem = new Item(new ItemDTO(12345, 0, 0, null, null));
@@ -115,9 +95,6 @@ public class SaleTest {
     assertThrows(IndexOutOfBoundsException.class, () -> this.instanceToTest.getItem(indexPosition));
   }
 
-  /*
-   * Testing if getItem can handle an index value smaller than allowed
-   */
   @Test
   public void testGetItemIndexOutOfBoundsLower() {
     Item decoyItem = new Item(new ItemDTO(12345, 0, 0, null, null));

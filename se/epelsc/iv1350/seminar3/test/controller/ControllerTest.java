@@ -25,9 +25,6 @@ public class ControllerTest {
     this.instanceToTest = null;
   }
 
-  /*
-   * Testing the basic functionallity of starting a sale (creating an instance of sale in controller)
-   */
   @Test
   public void testStartSale() {
     this.instanceToTest.startSale();
