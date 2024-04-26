@@ -4,7 +4,6 @@ import se.epelsc.iv1350.seminar3.source.integration.ExternalAccountingSystem;
 import se.epelsc.iv1350.seminar3.source.integration.ExternalDiscountDatabase;
 import se.epelsc.iv1350.seminar3.source.integration.ExternalInventorySystem;
 import se.epelsc.iv1350.seminar3.source.integration.ExternalSystemCreator;
-import se.epelsc.iv1350.seminar3.source.integration.ItemDTO;
 import se.epelsc.iv1350.seminar3.source.integration.Printer;
 import se.epelsc.iv1350.seminar3.source.model.Item;
 import se.epelsc.iv1350.seminar3.source.model.Sale;
@@ -43,9 +42,31 @@ public class Controller {
   /*
    * Function that adds an item specified by the cashier to the current sale
    * 
-   * @params itemIdentifier An integer containing the item identifier that should be added to the sale
+   * @params itemIdentifier An integer containing the item identifier that should
+   * be added to the sale
    */
   public void addItemToSale(int itemIdentifier) {
     sale.addItem(new Item(this.exInventorySys.getItemDTOFromDatabase(itemIdentifier)));
+  }
+
+  /*
+   * Function returns the instance of external accounting system
+   */
+  public ExternalAccountingSystem getExternalAccountingSytem() {
+    return this.exAccountingSys;
+  }
+
+  /*
+   * Function returns the instance of external accounting system
+   */
+  public ExternalDiscountDatabase getExternalDiscountDatabase() {
+    return this.exDiscountDb;
+  }
+
+  /*
+   * Function returns the instance of external accounting system
+   */
+  public ExternalInventorySystem getExternalInventorySystem() {
+    return this.exInventorySys;
   }
 }

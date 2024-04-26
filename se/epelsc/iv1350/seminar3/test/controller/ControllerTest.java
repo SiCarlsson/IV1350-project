@@ -59,4 +59,11 @@ public class ControllerTest {
     assertEquals(expectedOutputFirstProduct, givenOutputFirstProduct, "");
     assertEquals(expectedOutputSecondProduct, givenOutputSecondProduct, "Controller can add multiple items to the current sale!");
   }
+
+  @Test
+  public void testCreatingInstancesOfExternalSystemsAndDbInConstructor() {
+    assertNotEquals(null, this.instanceToTest.getExternalAccountingSytem());
+    assertNotEquals(null, this.instanceToTest.getExternalDiscountDatabase());
+    assertNotEquals(null, this.instanceToTest.getExternalInventorySystem());
+  }
 }

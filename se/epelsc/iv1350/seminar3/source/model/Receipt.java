@@ -14,7 +14,10 @@ public class Receipt {
    * Function that builds the receipt
    */
   public void createReceipt(Item[] items) {
+    System.err.println(this.starterString);
 
+
+
+    System.err.println(this.endString);
   }
-
 }

@@ -58,7 +58,7 @@ public class Sale {
    * @params All information that should be on the receipt
    */
   public void printReceipt(Receipt receipt) {
-    // insert code here
+    
   }
 
   /*
@@ -101,7 +101,7 @@ public class Sale {
   /*
    * Function handles logic to add an item to a current sale
    * 
-   * @ param item The item that should be added to a sale
+   * @param item The item that should be added to a sale
    */
   private void insertItem(Item item) {
     int lastIndexPositionOfArray = this.items.length - 1;
