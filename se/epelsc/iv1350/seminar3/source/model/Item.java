@@ -17,7 +17,7 @@ public class Item {
     this.VAT = itemDTO.getVAT();
     this.name = itemDTO.getName();
     this.description = itemDTO.getDescription();
-    this.amount = 1;
+    this.amount = itemDTO.getAmount();
   }
 
   /*

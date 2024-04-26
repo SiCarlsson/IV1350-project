@@ -83,7 +83,7 @@ public class ItemDTO {
    * 
    * @return The item amount
    */
-  public double getAmount() {
+  public int getAmount() {
     return this.amount;
   }
 }

@@ -65,7 +65,7 @@ public class Sale {
    * @param item An instance of item containing the item that should be addded
    */
   public void addItem(Item item) {
-    if (checkItemExists(item)) {
+    if (checkItemAlreadyExists(item)) {
       addToExistingItem(item.getItentifier());
     }
     else {
@@ -102,7 +102,7 @@ public class Sale {
   /*
    * Function to see if an item already exists in the sale
    */
-  private boolean checkItemExists(Item item) {
+  private boolean checkItemAlreadyExists(Item item) {
     int itemIdentifier = item.getItentifier();
 
     for (int i = 0; i < this.items.length; i++) {
@@ -110,7 +110,7 @@ public class Sale {
         return true;
       }
     }
-
+    
     return false;
   }
 

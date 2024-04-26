@@ -31,28 +31,21 @@ public class Controller {
   }
 
   /*
-   * Function to handle all loop logic to enter new items to sale
-   */
-  // private void saleLoop() {
-  //
-  // }
-
-  /*
    * Function that adds an item specified by the cashier to the current sale
    * 
-   * @params identifier An integer containing the item identifier
+   * @params itemIdentifier An integer containing the item identifier that should be added to the sale
    */
-  public void addItemToSale(int identifier) {
-    sale.addItem(new Item(getItem(identifier)));
+  public void addItemToSale(int itemIdentifier) {
+    sale.addItem(new Item(getItemDTOFromDatabase(itemIdentifier)));
   }
 
   /*
    * Function collect ItemDTO from database here (not applicable during seminar3)
    * Here it only returns expected return values
    * 
-   * @params
+   * @params itemIdentifier The identifier of the product that should be fetched from the database
    */
-  private ItemDTO getItem(int identifier) {
-    return new ItemDTO(identifier, 0, 0, null, null);
+  private ItemDTO getItemDTOFromDatabase(int itemIdentifier) {
+    return new ItemDTO(itemIdentifier, 0, 0, null, null);
   }
 }
