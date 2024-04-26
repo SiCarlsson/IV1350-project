@@ -2,6 +2,7 @@ package se.epelsc.iv1350.seminar3.test.model;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import se.epelsc.iv1350.seminar3.source.integration.ItemDTO;
@@ -11,14 +12,13 @@ import se.epelsc.iv1350.seminar3.source.model.Sale;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class SaleTest {
-  /*
-   * Variables
-   */
   private Sale instanceToTest;
+  private Item decoyItem;
 
   @BeforeEach
   public void setUp() {
     this.instanceToTest = new Sale();
+    this.decoyItem = new Item(new ItemDTO(12345, 0, 0, null, null));
   }
 
   @AfterEach
@@ -42,13 +42,11 @@ public class SaleTest {
   //Skipped parameter (it is inside of function)
   @Test
   public void testNotCreatingDuplicatesWhenAddingSameItems() {
-    Item decoyItem = new Item(new ItemDTO(12345, 0, 0, null, null));
-
     int expectedOutput = 1;
 
-    this.instanceToTest.addItem(decoyItem);
-    this.instanceToTest.addItem(decoyItem);
-    this.instanceToTest.addItem(decoyItem);
+    this.instanceToTest.addItem(this.decoyItem);
+    this.instanceToTest.addItem(this.decoyItem);
+    this.instanceToTest.addItem(this.decoyItem);
 
     int givenOutput = this.instanceToTest.getTotalItems();
 
@@ -57,13 +55,10 @@ public class SaleTest {
 
   @Test
   public void testIncrementItemAmount() {
-    int itemIdentifier = 12345;
-    Item decoyItem = new Item(new ItemDTO(itemIdentifier, 0, 0, null, null));
-
     int expectedOutput = 3;
 
     for (int i = 0; i < expectedOutput; i++) {
-      this.instanceToTest.addItem(decoyItem);
+      this.instanceToTest.addItem(this.decoyItem);
     }
 
     int givenOutput = this.instanceToTest.getItem(0).getAmount();
@@ -74,7 +69,7 @@ public class SaleTest {
   //Skipped parameter (it is inside of function)
   @Test
   public void testGetItem() {
-    Item expectedOutput = new Item(new ItemDTO(12345, 0, 0, null, null));
+    Item expectedOutput = this.decoyItem;
 
     int indexPosition = 0;
 
@@ -87,8 +82,7 @@ public class SaleTest {
 
   @Test
   public void testGetItemIndexOutOfBoundsUpper() {
-    Item decoyItem = new Item(new ItemDTO(12345, 0, 0, null, null));
-    this.instanceToTest.addItem(decoyItem);
+    this.instanceToTest.addItem(this.decoyItem);
 
     int indexPosition = 4;
 
@@ -97,8 +91,7 @@ public class SaleTest {
 
   @Test
   public void testGetItemIndexOutOfBoundsLower() {
-    Item decoyItem = new Item(new ItemDTO(12345, 0, 0, null, null));
-    this.instanceToTest.addItem(decoyItem);
+    this.instanceToTest.addItem(this.decoyItem);
 
     int indexPosition = -2;
 

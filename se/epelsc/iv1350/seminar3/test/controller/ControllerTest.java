@@ -10,9 +10,6 @@ import se.epelsc.iv1350.seminar3.source.integration.Printer;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ControllerTest {
-  /*
-   * Variables
-   */
   private Controller instanceToTest;
 
   @BeforeEach
