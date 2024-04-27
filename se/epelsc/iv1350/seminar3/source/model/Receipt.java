@@ -10,7 +10,7 @@ public class Receipt {
   public Receipt(Sale sale) {
     this.starterString = "------------------ BEGIN RECEIPT ------------------";
     this.endString = "------------------ END RECEIPT ------------------";
-    this.receiptRows = new String[sale.getTotalItems()][4];
+    this.receiptRows = new String[sale.getTotalItems()][5];
     this.sale = sale;
   }
 
@@ -31,6 +31,7 @@ public class Receipt {
       receiptRows[i][1] = Integer.toString(this.sale.getItem(i).getAmount());
       receiptRows[i][2] = String.valueOf(this.sale.getItem(i).getPrice());
       receiptRows[i][3] = String.valueOf(this.sale.getItem(i).getTotalItemPrice());
+      receiptRows[i][4] = String.valueOf(this.sale.getItem(i).getVAT());
     }
   }
 
@@ -52,7 +53,17 @@ public class Receipt {
       }
     }
 
+    System.out.println("Total: " + outputTotalCostOfSale());
+    System.out.println("VAT: " + outputTotalVatOfSale());
+
+    System.out.println();
+
+    //TODO: ADD PAYMENT INFO HERE
+
     System.out.println(this.endString);
+    System.out.println();
+    //TODO: INSERT CHANGE AMOUNT HERE AS WELL
+    System.out.println("Change to give the customer: ");
   }
 
   /*
@@ -60,8 +71,38 @@ public class Receipt {
    * 
    * @return The current time as a String
    */
-  public String outputCurrentTime() {
+  private String outputCurrentTime() {
     return this.sale.getTimeOfSale();
+  }
+
+  /*
+   * Function calculates the total cost of a sale and returns the value
+   * 
+   * @return The total cost of a sale as a String
+   */
+  private String outputTotalCostOfSale() {
+    double totalCost = 0;
+
+    for (int i = 0; i < receiptRows.length; i++) {
+      totalCost += Double.parseDouble(receiptRows[i][3]);
+    }
+
+    return String.valueOf(totalCost);
+  }
+
+  private String outputTotalVatOfSale() {
+    double totalVAT = 0;
+    double totalCostOfProduct;
+    double VAT;
+
+    for (int i = 0; i < receiptRows.length; i++) {
+      totalCostOfProduct = Double.parseDouble(this.receiptRows[i][3]);
+      VAT = Double.parseDouble(this.receiptRows[i][4]);
+
+      totalVAT +=  totalCostOfProduct * VAT;
+    }
+
+    return String.valueOf(totalVAT);
   }
 
   /*

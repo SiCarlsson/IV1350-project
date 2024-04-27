@@ -39,9 +39,10 @@ public class RecieptTest {
     String expectedName = "Apple";
     int amount = 2;
     double price = 12.50;
+    double VAT = 0.25;
     double totalPrice = amount * price;
 
-    this.decoyItem = new Item(new ItemDTO(12345, price, 0, expectedName, null));
+    this.decoyItem = new Item(new ItemDTO(12345, price, VAT, expectedName, null));
 
     this.sale.addItem(decoyItem);
     this.sale.addItem(decoyItem);
@@ -51,11 +52,13 @@ public class RecieptTest {
 
     String expectedAmount = Integer.toString(amount);
     String expectedPrice = String.valueOf(price);
+    String expectedVAT = String.valueOf(VAT);
     String expectedTotalPrice = String.valueOf(totalPrice);
 
     assertEquals(expectedName, this.instanceToTest.getReceiptRows()[0][0]);
     assertEquals(expectedAmount, this.instanceToTest.getReceiptRows()[0][1]);
     assertEquals(expectedPrice, this.instanceToTest.getReceiptRows()[0][2]);
     assertEquals(expectedTotalPrice, this.instanceToTest.getReceiptRows()[0][3]);
+    assertEquals(expectedVAT, this.instanceToTest.getReceiptRows()[0][4]);
   }
 }

@@ -34,7 +34,6 @@ public class Sale {
    * 
    * @return the current time in java.time.LocalTime format
    */
-  // TODO: ADD TESTS
   public String getTimeOfSale() {
     LocalDateTime currentTime = LocalDateTime.now();
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
