@@ -53,9 +53,9 @@ public class RecieptTest {
     String expectedPrice = String.valueOf(price);
     String expectedTotalPrice = String.valueOf(totalPrice);
 
-    assertEquals(expectedName, this.instanceToTest.getRecieptRows()[0][0]);
-    assertEquals(expectedAmount, this.instanceToTest.getRecieptRows()[0][1]);
-    assertEquals(expectedPrice, this.instanceToTest.getRecieptRows()[0][2]);
-    assertEquals(expectedTotalPrice, this.instanceToTest.getRecieptRows()[0][3]);
+    assertEquals(expectedName, this.instanceToTest.getReceiptRows()[0][0]);
+    assertEquals(expectedAmount, this.instanceToTest.getReceiptRows()[0][1]);
+    assertEquals(expectedPrice, this.instanceToTest.getReceiptRows()[0][2]);
+    assertEquals(expectedTotalPrice, this.instanceToTest.getReceiptRows()[0][3]);
   }
 }

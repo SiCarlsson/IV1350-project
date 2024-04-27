@@ -1,5 +1,6 @@
 package se.epelsc.iv1350.seminar3.source.model;
 
+import java.time.LocalDateTime;
 // Importing LocalDateTime class from java.time package 
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -15,6 +16,7 @@ public class Sale {
    */
   public Sale() {
     this.items = new Item[0];
+    this.currentTime = getTimeOfSale();
   }
 
   /*
@@ -32,25 +34,11 @@ public class Sale {
    * 
    * @return the current time in java.time.LocalTime format
    */
-  //TODO: ADD TESTS
+  // TODO: ADD TESTS
   public String getTimeOfSale() {
-    currentTimeFormatter(setTime());
-    return this.currentTime;
-  }
-
-  /*
-   * A function to set the current time
-   */
-  private LocalTime setTime() {
-    return LocalTime.now();
-  }
-
-  /*
-   * Format the current time and store it in currentTime
-   */
-  private void currentTimeFormatter(LocalTime unformattedTime) {
+    LocalDateTime currentTime = LocalDateTime.now();
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
-    this.currentTime = unformattedTime.format(formatter);
+    return currentTime.format(formatter);
   }
 
   /*
@@ -59,7 +47,7 @@ public class Sale {
    * @params All information that should be on the receipt
    */
   public void printReceipt(Receipt receipt) {
-    
+
   }
 
   /*
@@ -77,8 +65,7 @@ public class Sale {
   public void addItem(Item item) {
     if (checkItemAlreadyExists(item)) {
       addToExistingItem(item.getItentifier());
-    }
-    else {
+    } else {
       this.items = expandArray();
       insertItem(item);
     }
@@ -120,7 +107,7 @@ public class Sale {
         return true;
       }
     }
-    
+
     return false;
   }
 

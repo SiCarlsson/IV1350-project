@@ -40,7 +40,28 @@ public class Receipt {
   private void sendReceiptToOutput() {
     System.out.println(this.starterString);
 
+    System.out.println("Time of Sale: " + outputCurrentTime());
+
+    System.out.println();
+    System.out.println();
+
+    for (int i = 0; i < receiptRows.length; i++) {
+      String[] row = receiptRows[i];
+      if (row[0] != null) {
+        System.out.printf("%-12s %-10s %-8s %-10s%n", row[0], row[1], row[2], row[3]);
+      }
+    }
+
     System.out.println(this.endString);
+  }
+
+  /*
+   * Function returns the current time
+   * 
+   * @return The current time as a String
+   */
+  public String outputCurrentTime() {
+    return this.sale.getTimeOfSale();
   }
 
   /*
@@ -51,9 +72,9 @@ public class Receipt {
   }
 
   /*
-   * function returns the reciept rows
+   * function returns the receipt rows
    */
-  public String[][] getRecieptRows() {
+  public String[][] getReceiptRows() {
     return this.receiptRows;
   }
 }

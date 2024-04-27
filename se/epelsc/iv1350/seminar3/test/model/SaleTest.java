@@ -19,7 +19,7 @@ public class SaleTest {
     this.instanceToTest = new Sale();
     this.decoyItem = new Item(new ItemDTO(12345, 0, 0, null, null));
   }
-  
+
   @AfterEach
   public void tearDown() {
     this.instanceToTest = null;
@@ -39,7 +39,7 @@ public class SaleTest {
     assertEquals(expectedOutput, givenOutput, "addItem works as expected!");
   }
 
-  //Skipped parameter (it is inside of function)
+  // Skipped parameter (it is inside of function)
   @Test
   public void testAddItemNotCreatingDuplicatesInSaleItems() {
     int expectedOutput = 1;
@@ -66,7 +66,7 @@ public class SaleTest {
     assertEquals(expectedOutput, givenOutput, "checkItemExists works as expected");
   }
 
-  //Skipped parameter (it is inside of function)
+  // Skipped parameter (it is inside of function)
   @Test
   public void testGetItem() {
     Item expectedOutput = this.decoyItem;
@@ -96,5 +96,18 @@ public class SaleTest {
     int indexPosition = -2;
 
     assertThrows(IndexOutOfBoundsException.class, () -> this.instanceToTest.getItem(indexPosition));
+  }
+
+  @Test
+  public void testCurrentTimeFormat() {
+    String expectedFormat = "\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}";
+    String currentTime = instanceToTest.getTimeOfSale();
+    assertEquals(true, currentTime.matches(expectedFormat));
+  }
+
+  @Test
+  public void testCurrentTimeNotNull() {
+    String currentTime = instanceToTest.getTimeOfSale();
+    assertEquals(false, currentTime.isEmpty());
   }
 }
