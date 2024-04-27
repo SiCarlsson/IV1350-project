@@ -12,7 +12,7 @@ public class Main {
     Printer printer = new Printer();
     ExternalSystemCreator exSysCreator = new ExternalSystemCreator();
     Controller contr = new Controller(printer, exSysCreator);
-    //View view = new View(contr);
+    View view = new View(contr);
 
     contr.startSale();
   }

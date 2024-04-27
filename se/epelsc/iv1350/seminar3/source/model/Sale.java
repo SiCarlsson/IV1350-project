@@ -1,8 +1,6 @@
 package se.epelsc.iv1350.seminar3.source.model;
 
 import java.time.LocalDateTime;
-// Importing LocalDateTime class from java.time package 
-import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
 public class Sale {
