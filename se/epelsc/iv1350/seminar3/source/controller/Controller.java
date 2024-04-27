@@ -12,7 +12,6 @@ public class Controller {
   // Variables
   private Sale sale;
   private Printer printer;
-  private ExternalSystemCreator exSysCreator;
   private ExternalAccountingSystem exAccountingSys;
   private ExternalDiscountDatabase exDiscountDb;
   private ExternalInventorySystem exInventorySys;
@@ -20,7 +19,6 @@ public class Controller {
   // Constructor
   public Controller(Printer printer, ExternalSystemCreator exSysCreator) {
     this.printer = printer;
-    this.exSysCreator = exSysCreator;
     this.exAccountingSys = exSysCreator.getAccountingSystem();
     this.exDiscountDb = exSysCreator.getDiscountDatabase();
     this.exInventorySys = exSysCreator.getInventorySystem();
