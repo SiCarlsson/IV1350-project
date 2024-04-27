@@ -11,6 +11,7 @@ import se.epelsc.iv1350.seminar3.source.model.Sale;
 public class Controller {
   // Variables
   private Sale sale;
+  private Printer printer;
   private ExternalSystemCreator exSysCreator;
   private ExternalAccountingSystem exAccountingSys;
   private ExternalDiscountDatabase exDiscountDb;
@@ -18,6 +19,7 @@ public class Controller {
 
   // Constructor
   public Controller(Printer printer, ExternalSystemCreator exSysCreator) {
+    this.printer = printer;
     this.exSysCreator = exSysCreator;
     this.exAccountingSys = exSysCreator.getAccountingSystem();
     this.exDiscountDb = exSysCreator.getDiscountDatabase();
@@ -47,6 +49,13 @@ public class Controller {
    */
   public void addItemToSale(int itemIdentifier) {
     sale.addItem(new Item(this.exInventorySys.getItemDTOFromDatabase(itemIdentifier)));
+  }
+
+  /*
+   * Function prints the reciept as an output
+   */
+  public void printReceipt() {
+    printer.print(this.sale.getReceipt());
   }
 
   /*

@@ -80,4 +80,8 @@ public class Item {
   public void incrementAmount() {
     this.amount++;
   }
+
+  public double getTotalItemPrice() {
+    return this.amount * this.price;
+  }
 }

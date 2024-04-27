@@ -15,6 +15,5 @@ public class Main {
     View view = new View(contr);
 
     contr.startSale();
-
   }
 }

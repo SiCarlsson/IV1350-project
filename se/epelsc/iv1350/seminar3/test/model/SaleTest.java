@@ -19,7 +19,7 @@ public class SaleTest {
     this.instanceToTest = new Sale();
     this.decoyItem = new Item(new ItemDTO(12345, 0, 0, null, null));
   }
-
+  
   @AfterEach
   public void tearDown() {
     this.instanceToTest = null;

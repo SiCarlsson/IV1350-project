@@ -8,22 +8,22 @@ public class Sale {
   // Variables
   private String currentTime;
   private Receipt receipt;
-  private Item[] items = new Item[0];
+  private Item[] items;
 
   /*
    * Constructor
    */
   public Sale() {
-    this.receipt = new Receipt();
+    this.items = new Item[0];
   }
 
   /*
-   * A function to get the current recipt of a sale
+   * A function that returns a receipt based on the current state of the sale
    * 
-   * @return the receipt for the current sale
+   * @return the instance of the receipt for the current sale
    */
   public Receipt getReceipt() {
-    // TODO: Receipt needs to convert items to an actual receipt
+    this.receipt = new Receipt(this);
     return this.receipt;
   }
 
@@ -32,6 +32,7 @@ public class Sale {
    * 
    * @return the current time in java.time.LocalTime format
    */
+  //TODO: ADD TESTS
   public String getTimeOfSale() {
     currentTimeFormatter(setTime());
     return this.currentTime;
