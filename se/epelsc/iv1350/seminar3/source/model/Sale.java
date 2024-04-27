@@ -50,13 +50,6 @@ public class Sale {
   }
 
   /*
-   * Prepares to make a payment, no further inserts of products
-   */
-  public void makePayment() {
-    // insert code here
-  }
-
-  /*
    * Adds an item to a current sale, also handles if item already exists
    * 
    * @param item An instance of item containing the item that should be addded

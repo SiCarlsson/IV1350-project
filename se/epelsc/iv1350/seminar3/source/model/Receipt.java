@@ -58,11 +58,11 @@ public class Receipt {
 
     System.out.println();
 
-    //TODO: ADD PAYMENT INFO HERE
+    // TODO: ADD PAYMENT INFO HERE
 
     System.out.println(this.endString);
     System.out.println();
-    //TODO: INSERT CHANGE AMOUNT HERE AS WELL
+    // TODO: INSERT CHANGE AMOUNT HERE AS WELL
     System.out.println("Change to give the customer: ");
   }
 
@@ -80,7 +80,7 @@ public class Receipt {
    * 
    * @return The total cost of a sale as a String
    */
-  private String outputTotalCostOfSale() {
+  public String outputTotalCostOfSale() {
     double totalCost = 0;
 
     for (int i = 0; i < receiptRows.length; i++) {
@@ -99,7 +99,7 @@ public class Receipt {
       totalCostOfProduct = Double.parseDouble(this.receiptRows[i][3]);
       VAT = Double.parseDouble(this.receiptRows[i][4]);
 
-      totalVAT +=  totalCostOfProduct * VAT;
+      totalVAT += totalCostOfProduct * VAT;
     }
 
     return String.valueOf(totalVAT);

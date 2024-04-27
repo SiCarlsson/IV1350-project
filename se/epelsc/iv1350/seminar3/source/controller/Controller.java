@@ -6,12 +6,17 @@ import se.epelsc.iv1350.seminar3.source.integration.ExternalInventorySystem;
 import se.epelsc.iv1350.seminar3.source.integration.ExternalSystemCreator;
 import se.epelsc.iv1350.seminar3.source.integration.Printer;
 import se.epelsc.iv1350.seminar3.source.model.Item;
+import se.epelsc.iv1350.seminar3.source.model.Payment;
+import se.epelsc.iv1350.seminar3.source.model.Receipt;
+import se.epelsc.iv1350.seminar3.source.model.Register;
 import se.epelsc.iv1350.seminar3.source.model.Sale;
 
 public class Controller {
   // Variables
   private Sale sale;
   private Printer printer;
+  private Register register;
+  private Payment payment;
   private ExternalAccountingSystem exAccountingSys;
   private ExternalDiscountDatabase exDiscountDb;
   private ExternalInventorySystem exInventorySys;
@@ -22,6 +27,8 @@ public class Controller {
     this.exAccountingSys = exSysCreator.getAccountingSystem();
     this.exDiscountDb = exSysCreator.getDiscountDatabase();
     this.exInventorySys = exSysCreator.getInventorySystem();
+    this.register = new Register();
+    this.payment = new Payment(register);
   }
 
   /*
@@ -40,6 +47,13 @@ public class Controller {
   }
 
   /*
+   * Function to get register
+   */
+  public Register getRegister() {
+    return this.register;
+  }
+
+  /*
    * Function that adds an item specified by the cashier to the current sale
    * 
    * @params itemIdentifier An integer containing the item identifier that should
@@ -54,6 +68,14 @@ public class Controller {
    */
   public void printReceipt() {
     printer.print(this.sale.getReceipt());
+  }
+
+  /*
+   * Function handles logic to make a payment
+   */
+  public void handlePayment(double cashRecievedFromCustomer) {
+    double totalCost = Double.parseDouble(this.sale.getReceipt().outputTotalCostOfSale());
+    this.payment.makePayment(cashRecievedFromCustomer, totalCost);
   }
 
   /*

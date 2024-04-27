@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import se.epelsc.iv1350.seminar3.source.controller.Controller;
 import se.epelsc.iv1350.seminar3.source.integration.ExternalSystemCreator;
 import se.epelsc.iv1350.seminar3.source.integration.Printer;
+import se.epelsc.iv1350.seminar3.source.model.Sale;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -65,5 +66,19 @@ public class ControllerTest {
     assertNotEquals(null, this.instanceToTest.getExternalAccountingSytem());
     assertNotEquals(null, this.instanceToTest.getExternalDiscountDatabase());
     assertNotEquals(null, this.instanceToTest.getExternalInventorySystem());
+  }
+
+  @Test
+  public void testHandlePaymentCorrectIncrementInRegister() {
+    this.instanceToTest.startSale();
+
+    double testedInput = 110.99;
+    double expectedOutput = this.instanceToTest.getRegister().getMoneyInRegister() + testedInput;
+
+    this.instanceToTest.handlePayment(testedInput);
+
+    double givenOutput = this.instanceToTest.getRegister().getMoneyInRegister();
+
+    assertEquals(expectedOutput, givenOutput);
   }
 }
