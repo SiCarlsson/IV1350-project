@@ -11,6 +11,11 @@ public class Item {
   private String description;
   private int amount;
 
+  /*
+   * Constructor function
+   * 
+   * @param itemDTO An instance of ItemDTO
+   */
   public Item(ItemDTO itemDTO) {
     this.identifier = itemDTO.getItentifier();
     this.price = itemDTO.getPrice();

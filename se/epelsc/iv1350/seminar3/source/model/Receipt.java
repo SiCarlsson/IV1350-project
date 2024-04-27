@@ -5,6 +5,7 @@ public class Receipt {
   private String endString;
   private String[][] receiptRows;
   private Sale sale;
+  private double cashPaid;
 
   // Constructor
   public Receipt(Sale sale) {
@@ -55,15 +56,16 @@ public class Receipt {
 
     System.out.println("Total: " + outputTotalCostOfSale());
     System.out.println("VAT: " + outputTotalVatOfSale());
-
     System.out.println();
+    System.out.println("Cash: " + this.cashPaid);
 
-    // TODO: ADD PAYMENT INFO HERE
+    String change = String.valueOf(this.cashPaid - Double.parseDouble(outputTotalCostOfSale()));
 
+    System.out.println("Change: " + change);
     System.out.println(this.endString);
+
     System.out.println();
-    // TODO: INSERT CHANGE AMOUNT HERE AS WELL
-    System.out.println("Change to give the customer: ");
+    System.out.println("Change to give the customer: " + change);
   }
 
   /*
@@ -117,5 +119,14 @@ public class Receipt {
    */
   public String[][] getReceiptRows() {
     return this.receiptRows;
+  }
+
+  /*
+   * Function to set the value of cashPaid
+   * 
+   * @param cashRecieved The amount of cash recieved from the customer
+   */
+  public void setCashPaid(double cashRecieved) {
+    this.cashPaid = cashRecieved;
   }
 }

@@ -7,7 +7,6 @@ import se.epelsc.iv1350.seminar3.source.integration.ExternalSystemCreator;
 import se.epelsc.iv1350.seminar3.source.integration.Printer;
 import se.epelsc.iv1350.seminar3.source.model.Item;
 import se.epelsc.iv1350.seminar3.source.model.Payment;
-import se.epelsc.iv1350.seminar3.source.model.Receipt;
 import se.epelsc.iv1350.seminar3.source.model.Register;
 import se.epelsc.iv1350.seminar3.source.model.Sale;
 
@@ -62,22 +61,25 @@ public class Controller {
   public void addItemToSale(int itemIdentifier) {
     sale.addItem(new Item(this.exInventorySys.getItemDTOFromDatabase(itemIdentifier)));
   }
-
+  
   /*
-   * Function prints the reciept as an output
-   */
-  public void printReceipt() {
-    printer.print(this.sale.getReceipt());
-  }
-
-  /*
-   * Function handles logic to make a payment
-   */
+  * Function handles logic to make a payment
+  */
   public void handlePayment(double cashRecievedFromCustomer) {
     double totalCost = Double.parseDouble(this.sale.getReceipt().outputTotalCostOfSale());
     this.payment.makePayment(cashRecievedFromCustomer, totalCost);
+    
+    this.sale.getReceipt().setCashPaid(cashRecievedFromCustomer);
+    printReceipt();
   }
-
+  
+  /*
+   * Function prints the reciept as an output
+   */
+  private void printReceipt() {
+    printer.print(this.sale.getReceipt());
+  }
+  
   /*
    * Function returns the instance of external accounting system
    */
