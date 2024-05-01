@@ -67,7 +67,7 @@ public class Controller {
   */
   public void handlePayment(double cashRecievedFromCustomer) {
     double totalCost = Double.parseDouble(this.sale.getReceipt().outputTotalCostOfSale());
-    this.payment.makePayment(cashRecievedFromCustomer, totalCost);
+    this.payment.updateRegisterAmount(cashRecievedFromCustomer, totalCost);
     
     this.sale.getReceipt().setCashPaid(cashRecievedFromCustomer);
     printReceipt();

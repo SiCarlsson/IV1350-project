@@ -7,7 +7,6 @@ import org.junit.jupiter.api.Test;
 import se.epelsc.iv1350.seminar3.source.controller.Controller;
 import se.epelsc.iv1350.seminar3.source.integration.ExternalSystemCreator;
 import se.epelsc.iv1350.seminar3.source.integration.Printer;
-import se.epelsc.iv1350.seminar3.source.model.Sale;
 
 import static org.junit.jupiter.api.Assertions.*;
 

@@ -7,6 +7,7 @@ public class Sale {
   // Variables
   private String currentTime;
   private Receipt receipt;
+  private Payment payment;
   private Item[] items;
 
   /*

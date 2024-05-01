@@ -17,7 +17,9 @@ public class Main {
 
     contr.startSale();
     contr.addItemToSale(123456);
+    contr.addItemToSale(123456);
     contr.addItemToSale(567890);
+    
     contr.getSale().getReceipt().createReceipt();
   }
 }

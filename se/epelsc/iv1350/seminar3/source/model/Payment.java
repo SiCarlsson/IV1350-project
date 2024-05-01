@@ -10,7 +10,7 @@ public class Payment {
   /*
    * Function makes a payment and puts left over cash in register
    */
-  public void makePayment(double cashRecievedFromCustomer, double totalCost) {
+  public void updateRegisterAmount(double cashRecievedFromCustomer, double totalCost) {
     double newCashInRegister = cashRecievedFromCustomer - totalCost;
     this.register.updateRegister(newCashInRegister);
   }
