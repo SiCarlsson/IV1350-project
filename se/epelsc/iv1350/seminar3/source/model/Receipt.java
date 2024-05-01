@@ -13,7 +13,7 @@ public class Receipt {
   // Constructor
   public Receipt(Sale sale) {
     this.starterString = "------------------ BEGIN RECEIPT ------------------";
-    this.endString = "------------------ END RECEIPT ------------------";
+    this.endString = "------------------- END RECEIPT -------------------";
     this.sale = sale;
     this.currency = "SEK";
   }
@@ -52,19 +52,19 @@ public class Receipt {
     for (int i = 0; i < receiptRows.length; i++) {
       String[] row = receiptRows[i];
       if (row[0] != null) {
-        System.out.printf("%-30s %-10s %-10s %-5s %-10s%n", row[0], row[1], row[2], row[3], this.currency);
+        System.out.printf("%-25s %-1s %-11s %-5s %-10s%n", row[0], row[1] + " x", row[2], row[3], this.currency);
       }
     }
 
     System.out.println();
-    System.out.printf("%-52s %-5s %-10s %n", "Total:", outputTotalCostOfSale(), this.currency);
+    System.out.printf("%-41s %-5s %-10s %n", "Total:", outputTotalCostOfSale(), this.currency);
     System.out.println("VAT: " + roundTwoDecimalPoints(Double.parseDouble(outputTotalVatOfSale())));
     System.out.println();
-    System.out.printf("%-52s %-5s %-10s %n" ,"Cash:", this.cashPaid, this.currency);
+    System.out.printf("%-41s %-5s %-10s %n" ,"Cash:", this.cashPaid, this.currency);
 
     String change = String.valueOf(this.cashPaid - Double.parseDouble(outputTotalCostOfSale()));
 
-    System.out.printf("%-52s %-5s %-10s %n" ,"Change:", roundTwoDecimalPoints(Double.parseDouble(change)), this.currency);
+    System.out.printf("%-41s %-5s %-10s %n" ,"Change:", roundTwoDecimalPoints(Double.parseDouble(change)), this.currency);
 
     System.out.println(this.endString);
 
