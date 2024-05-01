@@ -16,13 +16,4 @@ public class Printer {
   public void print(Receipt receipt) {
     receipt.createReceipt();
   }
-
-  /*
-   * Function to handle log outputs
-   * 
-   * @param saleLogs A string array containg one line of logs on each index position of the array
-   */
-  public void print(String[] saleLogs) {
-    
-  }
 }

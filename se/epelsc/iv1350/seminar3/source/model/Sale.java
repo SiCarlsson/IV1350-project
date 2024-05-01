@@ -129,4 +129,33 @@ public class Sale {
 
     return items[indexPosition];
   }
+
+  /*
+   * Function handles the loging of a sale
+   */
+  public void outputSaleLog(int itemIdentifier) {
+    Item lastItem = getItemByItemID(itemIdentifier);
+
+    System.out.println("Add 1 item with id " + lastItem.getItentifier() + ":");
+    System.out.println("Item ID: " + lastItem.getItentifier());
+    System.out.println("Item name: " + lastItem.getName());
+    System.out.println("Item cost: " + lastItem.getPrice() + " " + this.receipt.getCurrency());
+    System.out.println("VAT: " + (lastItem.getVAT() * 100) + "%");
+    System.out.println("Item description: " + lastItem.getDescription());
+    System.out.println();
+    System.out.println("Total cost (incl VAT): " + lastItem.getTotalItemPrice() + " " + this.receipt.getCurrency());
+    System.out.println("Total VAT:             " + this.receipt.roundTwoDecimalPoints(lastItem.getVAT() * lastItem.getTotalItemPrice()) + " " + this.receipt.getCurrency());
+    System.out.println();
+  }
+
+  /*
+   * Returns the item of a sale based on the itemIdentifier
+   */
+  private Item getItemByItemID(int itemIdentifier) {
+    int i = 0;
+    while (!(this.items[i].getItentifier() == itemIdentifier)) {
+      i++;
+    }
+    return items[i];
+  }
 }

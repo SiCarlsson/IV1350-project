@@ -135,8 +135,15 @@ public class Receipt {
     this.cashPaid = cashRecieved;
   }
 
-  private String roundTwoDecimalPoints(double valueToRound) {
+  /*
+   * Function rounds a double value to two decimal points
+   */
+  public String roundTwoDecimalPoints(double valueToRound) {
     DecimalFormat df = new DecimalFormat("#.##");
     return df.format(valueToRound);
+  }
+
+  public String getCurrency() {
+    return this.currency;
   }
 }
