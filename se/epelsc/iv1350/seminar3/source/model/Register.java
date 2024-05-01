@@ -3,7 +3,9 @@ package se.epelsc.iv1350.seminar3.source.model;
 public class Register {
   private double moneyInRegister;
 
-  // Constructor
+  /*
+   * Constructor
+   */
   public Register() {
     this.moneyInRegister = 100;
   }
@@ -11,7 +13,8 @@ public class Register {
   /*
    * Updates the total amount of money in the register
    * 
-   * @param netRecievedCash The amount of cash given by the customer when purchasing subtracted by the change amount
+   * @param netRecievedCash The amount of cash given by the customer when
+   * purchasing subtracted by the change amount
    */
   public void updateRegister(double netRecievedCash) {
     this.moneyInRegister += netRecievedCash;

@@ -5,7 +5,9 @@ public class ExternalSystemCreator {
   private ExternalDiscountDatabase externalDiscountDatabase;
   private ExternalInventorySystem externalInventorySystem;
 
-  // Constructor
+  /*
+   * Constructor
+   */
   public ExternalSystemCreator() {
     externalAccountingSystem = new ExternalAccountingSystem();
     externalDiscountDatabase = new ExternalDiscountDatabase();

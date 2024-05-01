@@ -4,10 +4,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class Sale {
-  // Variables
-  private String currentTime;
   private Receipt receipt;
-  private Payment payment;
   private Item[] items;
 
   /*
@@ -15,7 +12,6 @@ public class Sale {
    */
   public Sale() {
     this.items = new Item[0];
-    this.currentTime = getTimeOfSale();
     this.receipt = new Receipt(this);
   }
 
@@ -55,6 +51,8 @@ public class Sale {
 
   /*
    * Function to expand the current array holding all products in a sale
+   * 
+   * @return An expanded array holding all the items in the current sale
    */
   private Item[] expandArray() {
     int oldLenghtOfArray = this.items.length;
@@ -80,6 +78,12 @@ public class Sale {
 
   /*
    * Function to see if an item already exists in the sale
+   * 
+   * 
+   * @param item An item that should be looked at if it already exists in the sale
+   * 
+   * @return A true or false value depending on if item exists or not in the
+   * current sale
    */
   private boolean checkItemAlreadyExists(Item item) {
     int itemIdentifier = item.getItentifier();
@@ -93,6 +97,12 @@ public class Sale {
     return false;
   }
 
+  /*
+   * Function increments the amount of an item
+   * 
+   * @param itemIdentifier Holds the identifier of an item that should be
+   * incremented in amount
+   */
   private void addToExistingItem(int itemIdentifier) {
     for (int i = 0; i < this.items.length; i++) {
       if (itemIdentifier == this.items[i].getItentifier()) {
@@ -120,6 +130,9 @@ public class Sale {
    * @param indexPosition The index position of a product
    * 
    * @return The specified item in the sale
+   * 
+   * @throws IndexOutOfBoundsException if the index position is negative or
+   * exceeds the range of available items
    */
   public Item getItem(int indexPosition) throws IndexOutOfBoundsException {
     int totalNumberOfProducts = this.items.length - 1;
@@ -141,6 +154,8 @@ public class Sale {
 
   /*
    * Function handles the loging of a sale
+   * 
+   * @param itemIdentifier Holds an identifier for an item
    */
   public void outputSaleLog(int itemIdentifier) {
     Item lastItem = getItemByItemID(itemIdentifier);
@@ -160,7 +175,11 @@ public class Sale {
   }
 
   /*
-   * Returns the item of a sale based on the itemIdentifier
+   * Function gets the item of a sale based on the itemIdentifier
+   * 
+   * @param itemIdentifier Holds an identifier for an item
+   * 
+   * @return The item specified in a sale
    */
   private Item getItemByItemID(int itemIdentifier) {
     int i = 0;
@@ -181,6 +200,8 @@ public class Sale {
 
   /*
    * Function handles all logging regarding the end of a current sale
+   * 
+   * @param cashRecievedFromCustomer The amount of money handed by the customer
    */
   private void outputLogsEndSale(double cashRecievedFromCustomer) {
     System.out.println("Customer pays " + cashRecievedFromCustomer + " " + this.receipt.getCurrency() + ":");
@@ -190,7 +211,8 @@ public class Sale {
       int itemIdentifier = this.items[i].getItentifier();
       int itemAmount = this.items[i].getAmount();
 
-      System.out.println("Told external inventory system to decrease inventory quantity of item " + itemIdentifier + " by " + itemAmount + " units.");
+      System.out.println("Told external inventory system to decrease inventory quantity of item " + itemIdentifier
+          + " by " + itemAmount + " units.");
     }
     System.out.println();
   }

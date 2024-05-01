@@ -3,7 +3,6 @@ package se.epelsc.iv1350.seminar3.source.model;
 import se.epelsc.iv1350.seminar3.source.integration.ItemDTO;
 
 public class Item {
-  // Variables
   private int identifier;
   private double price;
   private double VAT;

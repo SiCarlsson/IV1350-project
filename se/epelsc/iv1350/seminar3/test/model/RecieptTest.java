@@ -20,17 +20,20 @@ public class RecieptTest {
   @Before
   public void preSetUp() {
     this.sale = new Sale();
+    this.instanceToTest = new Receipt(sale);
   }
 
   @BeforeEach
   public void setUp() {
     this.sale = new Sale();
+    this.instanceToTest = new Receipt(sale);
     this.decoyItem = new Item(new ItemDTO(12345, 0, 0, null, null));
   }
 
   @AfterEach
   public void tearDown() {
     this.sale = null;
+    this.instanceToTest = null;
     this.decoyItem = null;
   }
 
@@ -55,10 +58,47 @@ public class RecieptTest {
     String expectedVAT = String.valueOf(VAT);
     String expectedTotalPrice = String.valueOf(totalPrice);
 
-    assertEquals(expectedName, this.instanceToTest.getReceiptRows()[0][0]);
-    assertEquals(expectedAmount, this.instanceToTest.getReceiptRows()[0][1]);
-    assertEquals(expectedPrice, this.instanceToTest.getReceiptRows()[0][2]);
-    assertEquals(expectedTotalPrice, this.instanceToTest.getReceiptRows()[0][3]);
-    assertEquals(expectedVAT, this.instanceToTest.getReceiptRows()[0][4]);
+    assertEquals(expectedName, this.instanceToTest.getReceiptRows()[0][0], "Name did not output correctly");
+    assertEquals(expectedAmount, this.instanceToTest.getReceiptRows()[0][1], "Amount did not output correctly");
+    assertEquals(expectedPrice, this.instanceToTest.getReceiptRows()[0][2], "Price did not output correctly");
+    assertEquals(expectedTotalPrice, this.instanceToTest.getReceiptRows()[0][3],
+        "Total price did not output correctly");
+    assertEquals(expectedVAT, this.instanceToTest.getReceiptRows()[0][4], "VAT did not output correctly");
+  }
+
+  @Test
+  public void testOutputTotalCostOfSale() {
+    double priceOfFirstProduct = 35;
+    double priceOfSecondProduct = 75.43;
+    double priceOfThirdProduct = 12.19;
+
+    this.sale.addItem(new Item(new ItemDTO(1, priceOfFirstProduct, 0, null, null)));
+    this.sale.addItem(new Item(new ItemDTO(2, priceOfSecondProduct, 0, null, null)));
+    this.sale.addItem(new Item(new ItemDTO(3, priceOfThirdProduct, 0, null, null)));
+
+    this.instanceToTest = this.sale.getReceipt();
+    this.instanceToTest.createReceipt();
+
+    double sumOfProducts = priceOfFirstProduct + priceOfSecondProduct + priceOfThirdProduct;
+    String expectedOutput = String.valueOf(sumOfProducts);
+
+    String givenOutput = this.instanceToTest.outputTotalCostOfSale();
+
+    assertEquals(expectedOutput, givenOutput, "Output total cost of sale gets it wrong");
+  }
+
+  @Test
+  public void testRoundTwoDecimalPoints() {
+    String firstExpectedOutut = "5,87";
+    String secondExpectedOutut = "13,37";
+    String thirdExpectedOutut = "9,13";
+    double firstValueToBeRounded = 5.874664;
+    double secondValueToBeRounded = 13.3712357;
+    double thirdValueToBeRounded = 9.129765;
+    
+
+    assertEquals(firstExpectedOutut, this.instanceToTest.roundTwoDecimalPoints(firstValueToBeRounded), "Rounding did not work as intended");
+    assertEquals(secondExpectedOutut, this.instanceToTest.roundTwoDecimalPoints(secondValueToBeRounded), "Rounding did not work as intended");
+    assertEquals(thirdExpectedOutut, this.instanceToTest.roundTwoDecimalPoints(thirdValueToBeRounded), "Rounding did not work as intended");
   }
 }

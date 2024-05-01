@@ -6,21 +6,24 @@ import se.epelsc.iv1350.seminar3.source.integration.Printer;
 import se.epelsc.iv1350.seminar3.source.view.View;
 
 public class Main {
-  // Main function, will run on initialization
-
+  /*
+   * Main method, runs on execution of the program
+   * 
+   * @param args Arguments for the program that is enterd on execution
+   */
   public static void main(String[] args) {
-    
+
     Printer printer = new Printer();
     ExternalSystemCreator exSysCreator = new ExternalSystemCreator();
     Controller contr = new Controller(printer, exSysCreator);
     View view = new View(contr);
 
-    contr.startSale();
-    
-    contr.addItemToSale(123456);
-    contr.addItemToSale(123456);
-    contr.addItemToSale(567890);
+    view.cashierStartsSale();
 
-    contr.endSale(100);
+    view.cashierAddsItem(123456);
+    view.cashierAddsItem(123456);
+    view.cashierAddsItem(567890);
+
+    view.cashierEndSale(100);
   }
 }

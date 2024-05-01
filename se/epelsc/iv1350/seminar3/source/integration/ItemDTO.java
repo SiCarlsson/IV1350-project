@@ -1,7 +1,6 @@
 package se.epelsc.iv1350.seminar3.source.integration;
 
 public class ItemDTO {
-  // Variables
   private int identifier;
   private double price;
   private double VAT;

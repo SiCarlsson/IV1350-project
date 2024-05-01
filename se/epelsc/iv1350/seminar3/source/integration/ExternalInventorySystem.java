@@ -1,11 +1,6 @@
 package se.epelsc.iv1350.seminar3.source.integration;
 
 public class ExternalInventorySystem {
-  // Constructor
-  public ExternalInventorySystem() {
-
-  }
-
   /*
    * A function that updates the inventory system based on a sale
    * 

@@ -1,11 +1,6 @@
 package se.epelsc.iv1350.seminar3.source.integration;
 
 public class ExternalDiscountDatabase {
-  // Constructor
-  public ExternalDiscountDatabase() {
-    // insert code here
-  }
-
   /*
    * A function that collects a discount code from the discount database
    * 

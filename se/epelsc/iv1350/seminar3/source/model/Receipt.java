@@ -10,7 +10,11 @@ public class Receipt {
   private double cashPaid;
   private String currency;
 
-  // Constructor
+  /*
+   * Constructor
+   * 
+   * @param sale An instance of sale
+   */
   public Receipt(Sale sale) {
     this.starterString = "------------------ BEGIN RECEIPT ------------------";
     this.endString = "------------------- END RECEIPT -------------------";
@@ -58,18 +62,20 @@ public class Receipt {
 
     System.out.println();
     System.out.printf("%-41s %-5s %-10s %n", "Total:", outputTotalCostOfSale(), this.currency);
-    System.out.printf("%-41s %-5s %n","VAT:", roundTwoDecimalPoints(Double.parseDouble(outputTotalVatOfSale())));
+    System.out.printf("%-41s %-5s %n", "VAT:", roundTwoDecimalPoints(Double.parseDouble(outputTotalVatOfSale())));
     System.out.println();
-    System.out.printf("%-41s %-5s %-10s %n" ,"Cash:", this.cashPaid, this.currency);
+    System.out.printf("%-41s %-5s %-10s %n", "Cash:", this.cashPaid, this.currency);
 
     String change = String.valueOf(this.cashPaid - Double.parseDouble(outputTotalCostOfSale()));
 
-    System.out.printf("%-41s %-5s %-10s %n" ,"Change:", roundTwoDecimalPoints(Double.parseDouble(change)), this.currency);
+    System.out.printf("%-41s %-5s %-10s %n", "Change:", roundTwoDecimalPoints(Double.parseDouble(change)),
+        this.currency);
 
     System.out.println(this.endString);
 
     System.out.println();
-    System.out.println("Change to give the customer: " + roundTwoDecimalPoints(Double.parseDouble(change)) + " " + this.currency);
+    System.out.println(
+        "Change to give the customer: " + roundTwoDecimalPoints(Double.parseDouble(change)) + " " + this.currency);
     System.out.println();
   }
 

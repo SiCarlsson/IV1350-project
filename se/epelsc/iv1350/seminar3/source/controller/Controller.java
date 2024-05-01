@@ -11,7 +11,6 @@ import se.epelsc.iv1350.seminar3.source.model.Register;
 import se.epelsc.iv1350.seminar3.source.model.Sale;
 
 public class Controller {
-  // Variables
   private Sale sale;
   private Printer printer;
   private Register register;
@@ -20,7 +19,14 @@ public class Controller {
   private ExternalDiscountDatabase exDiscountDb;
   private ExternalInventorySystem exInventorySys;
 
-  // Constructor
+  /*
+   * Constructor
+   * 
+   * @param printer An instance of printer that should be used
+   * 
+   * @param exSysCreator An instance of externalSystemCreator, will in turn
+   * establish connection with other external systems
+   */
   public Controller(Printer printer, ExternalSystemCreator exSysCreator) {
     this.printer = printer;
     this.exAccountingSys = exSysCreator.getAccountingSystem();
@@ -40,6 +46,8 @@ public class Controller {
 
   /*
    * Function to get the current sale
+   * 
+   * @return The instance of sale
    */
   public Sale getSale() {
     return this.sale;
@@ -47,6 +55,8 @@ public class Controller {
 
   /*
    * Function to get register
+   * 
+   * @return The instance of register
    */
   public Register getRegister() {
     return this.register;
@@ -55,29 +65,32 @@ public class Controller {
   /*
    * Function that adds an item specified by the cashier to the current sale
    * 
-   * @params itemIdentifier An integer containing the item identifier that should
+   * @param itemIdentifier An integer containing the item identifier that should
    * be added to the sale
    */
   public void addItemToSale(int itemIdentifier) {
     this.sale.addItem(new Item(this.exInventorySys.getItemDTOFromDatabase(itemIdentifier)));
     this.sale.outputSaleLog(itemIdentifier);
   }
-  
+
   /*
-  * Function handles logic to make a payment
-  */
+   * Function handles logic to make a payment
+   * 
+   * @param cashReciefvedFromCustomer The amount of money recieved by the customer
+   * to pay for the sale
+   */
   private void handlePayment(double cashRecievedFromCustomer) {
     double totalCost = 0;
 
     for (int i = 0; i < this.sale.getTotalItems(); i++) {
       totalCost += this.sale.getItem(i).getTotalItemPrice();
     }
-    
+
     this.payment.updateRegisterAmount(cashRecievedFromCustomer, totalCost);
-    
+
     this.sale.getReceipt().setCashPaid(cashRecievedFromCustomer);
   }
-  
+
   /*
    * Function prints the reciept as an output
    */
@@ -85,6 +98,12 @@ public class Controller {
     printer.print(this.sale.getReceipt());
   }
 
+  /*
+   * Function holds the logic when ending a sale
+   * 
+   * @param cashReciefvedFromCustomer The amount of money recieved by the customer
+   * to pay for the sale
+   */
   public void endSale(double cashRecievedFromCustomer) {
     handlePayment(cashRecievedFromCustomer);
     updateExternalSystems(cashRecievedFromCustomer, this.sale.getAllItemsFromCurrentSale());
@@ -95,6 +114,9 @@ public class Controller {
 
   /*
    * Function handles the logic of updating the external systems
+   * 
+   * @param cashReciefvedFromCustomer The amount of money recieved by the customer
+   * to pay for the sale
    */
   private void updateExternalSystems(double cashRecievedFromCustomer, Item[] itemsInCurrentSale) {
     this.exAccountingSys.updateAccounting(cashRecievedFromCustomer);
@@ -103,9 +125,11 @@ public class Controller {
       this.exInventorySys.updateInventory(itemsInCurrentSale[i].getItentifier(), itemsInCurrentSale[i].getAmount());
     }
   }
-  
+
   /*
    * Function returns the instance of external accounting system
+   * 
+   * @return An instance of ExternalAccountingSystem
    */
   public ExternalAccountingSystem getExternalAccountingSytem() {
     return this.exAccountingSys;
@@ -113,6 +137,8 @@ public class Controller {
 
   /*
    * Function returns the instance of external accounting system
+   * 
+   * @return An instance of ExternalDiscountSystem
    */
   public ExternalDiscountDatabase getExternalDiscountDatabase() {
     return this.exDiscountDb;
@@ -120,6 +146,8 @@ public class Controller {
 
   /*
    * Function returns the instance of external accounting system
+   * 
+   * @return An instance of ExternalInventorySystem
    */
   public ExternalInventorySystem getExternalInventorySystem() {
     return this.exInventorySys;
