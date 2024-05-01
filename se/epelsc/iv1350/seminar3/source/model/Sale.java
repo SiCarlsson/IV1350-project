@@ -16,6 +16,7 @@ public class Sale {
   public Sale() {
     this.items = new Item[0];
     this.currentTime = getTimeOfSale();
+    this.receipt = new Receipt(this);
   }
 
   /*
@@ -24,7 +25,6 @@ public class Sale {
    * @return the instance of the receipt for the current sale
    */
   public Receipt getReceipt() {
-    this.receipt = new Receipt(this);
     return this.receipt;
   }
 
@@ -37,15 +37,6 @@ public class Sale {
     LocalDateTime currentTime = LocalDateTime.now();
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
     return currentTime.format(formatter);
-  }
-
-  /*
-   * Send a request to the printer to print a receipt
-   * 
-   * @params All information that should be on the receipt
-   */
-  public void printReceipt(Receipt receipt) {
-
   }
 
   /*

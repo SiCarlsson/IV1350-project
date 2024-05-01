@@ -14,7 +14,7 @@ public class Printer {
    * @param receipt An instance of the reciept that should be printed
    */
   public void print(Receipt receipt) {
-    
+    receipt.createReceipt();
   }
 
   /*

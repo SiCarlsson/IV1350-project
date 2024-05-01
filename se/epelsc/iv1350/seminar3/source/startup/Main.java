@@ -20,6 +20,6 @@ public class Main {
     contr.addItemToSale(123456);
     contr.addItemToSale(567890);
     
-    contr.getSale().getReceipt().createReceipt();
+    contr.handlePayment(100);
   }
 }

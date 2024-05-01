@@ -1,18 +1,21 @@
 package se.epelsc.iv1350.seminar3.source.model;
 
+import java.text.DecimalFormat;
+
 public class Receipt {
   private String starterString;
   private String endString;
   private String[][] receiptRows;
   private Sale sale;
   private double cashPaid;
+  private String currency;
 
   // Constructor
   public Receipt(Sale sale) {
     this.starterString = "------------------ BEGIN RECEIPT ------------------";
     this.endString = "------------------ END RECEIPT ------------------";
-    this.receiptRows = new String[sale.getTotalItems()][5];
     this.sale = sale;
+    this.currency = "SEK";
   }
 
   /*
@@ -27,6 +30,8 @@ public class Receipt {
    * Function that adds all items from sale to the receipt in the correct format
    */
   private void addItemsToReceipt() {
+    this.receiptRows = new String[sale.getTotalItems()][5];
+
     for (int i = 0; i < receiptRows.length; i++) {
       receiptRows[i][0] = this.sale.getItem(i).getName();
       receiptRows[i][1] = Integer.toString(this.sale.getItem(i).getAmount());
@@ -41,31 +46,31 @@ public class Receipt {
    */
   private void sendReceiptToOutput() {
     System.out.println(this.starterString);
-
     System.out.println("Time of Sale: " + outputCurrentTime());
-
-    System.out.println();
     System.out.println();
 
     for (int i = 0; i < receiptRows.length; i++) {
       String[] row = receiptRows[i];
       if (row[0] != null) {
-        System.out.printf("%-12s %-10s %-8s %-10s%n", row[0], row[1], row[2], row[3]);
+        System.out.printf("%-30s %-10s %-10s %-5s %-10s%n", row[0], row[1], row[2], row[3], this.currency);
       }
     }
 
-    System.out.println("Total: " + outputTotalCostOfSale());
-    System.out.println("VAT: " + outputTotalVatOfSale());
     System.out.println();
-    System.out.println("Cash: " + this.cashPaid);
+    System.out.printf("%-52s %-5s %-10s %n", "Total:", outputTotalCostOfSale(), this.currency);
+    System.out.println("VAT: " + roundTwoDecimalPoints(Double.parseDouble(outputTotalVatOfSale())));
+    System.out.println();
+    System.out.printf("%-52s %-5s %-10s %n" ,"Cash:", this.cashPaid, this.currency);
 
     String change = String.valueOf(this.cashPaid - Double.parseDouble(outputTotalCostOfSale()));
 
-    System.out.println("Change: " + change);
+    System.out.printf("%-52s %-5s %-10s %n" ,"Change:", roundTwoDecimalPoints(Double.parseDouble(change)), this.currency);
+
     System.out.println(this.endString);
 
     System.out.println();
-    System.out.println("Change to give the customer: " + change);
+    System.out.println("Change to give the customer: " + roundTwoDecimalPoints(Double.parseDouble(change)) + " " + this.currency);
+    System.out.println();
   }
 
   /*
@@ -86,7 +91,7 @@ public class Receipt {
     double totalCost = 0;
 
     for (int i = 0; i < receiptRows.length; i++) {
-      totalCost += Double.parseDouble(receiptRows[i][3]);
+      totalCost += this.sale.getItem(i).getTotalItemPrice();
     }
 
     return String.valueOf(totalCost);
@@ -98,10 +103,10 @@ public class Receipt {
     double VAT;
 
     for (int i = 0; i < receiptRows.length; i++) {
-      totalCostOfProduct = Double.parseDouble(this.receiptRows[i][3]);
+      totalCostOfProduct = this.sale.getItem(i).getTotalItemPrice();
       VAT = Double.parseDouble(this.receiptRows[i][4]);
 
-      totalVAT += totalCostOfProduct * VAT;
+      totalVAT += (totalCostOfProduct * VAT);
     }
 
     return String.valueOf(totalVAT);
@@ -128,5 +133,10 @@ public class Receipt {
    */
   public void setCashPaid(double cashRecieved) {
     this.cashPaid = cashRecieved;
+  }
+
+  private String roundTwoDecimalPoints(double valueToRound) {
+    DecimalFormat df = new DecimalFormat("#.##");
+    return df.format(valueToRound);
   }
 }
