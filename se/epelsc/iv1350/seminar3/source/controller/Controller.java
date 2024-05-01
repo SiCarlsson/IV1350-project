@@ -66,7 +66,7 @@ public class Controller {
   /*
   * Function handles logic to make a payment
   */
-  public void handlePayment(double cashRecievedFromCustomer) {
+  private void handlePayment(double cashRecievedFromCustomer) {
     double totalCost = 0;
 
     for (int i = 0; i < this.sale.getTotalItems(); i++) {
@@ -76,7 +76,6 @@ public class Controller {
     this.payment.updateRegisterAmount(cashRecievedFromCustomer, totalCost);
     
     this.sale.getReceipt().setCashPaid(cashRecievedFromCustomer);
-    printReceipt();
   }
   
   /*
@@ -84,6 +83,25 @@ public class Controller {
    */
   private void printReceipt() {
     printer.print(this.sale.getReceipt());
+  }
+
+  public void endSale(double cashRecievedFromCustomer) {
+    handlePayment(cashRecievedFromCustomer);
+    updateExternalSystems(cashRecievedFromCustomer, this.sale.getAllItemsFromCurrentSale());
+
+    this.sale.endCurrentSale(cashRecievedFromCustomer);
+    printReceipt();
+  }
+
+  /*
+   * Function handles the logic of updating the external systems
+   */
+  private void updateExternalSystems(double cashRecievedFromCustomer, Item[] itemsInCurrentSale) {
+    this.exAccountingSys.updateAccounting(cashRecievedFromCustomer);
+
+    for (int i = 0; i < itemsInCurrentSale.length; i++) {
+      this.exInventorySys.updateInventory(itemsInCurrentSale[i].getItentifier(), itemsInCurrentSale[i].getAmount());
+    }
   }
   
   /*

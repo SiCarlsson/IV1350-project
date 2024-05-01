@@ -11,7 +11,7 @@ public class ExternalAccountingSystem {
    * 
    * @params Payment amount
    */
-  public void updateAccounting(int paymentAmount) {
-    // insert code here
+  public void updateAccounting(double paymentAmount) {
+    
   }
 }

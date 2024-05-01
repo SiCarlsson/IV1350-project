@@ -16,10 +16,11 @@ public class Main {
     View view = new View(contr);
 
     contr.startSale();
+    
     contr.addItemToSale(123456);
     contr.addItemToSale(123456);
     contr.addItemToSale(567890);
-    
-    contr.handlePayment(100);
+
+    contr.endSale(100);
   }
 }

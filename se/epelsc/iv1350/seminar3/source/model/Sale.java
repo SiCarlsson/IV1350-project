@@ -131,6 +131,15 @@ public class Sale {
   }
 
   /*
+   * Function gets all items from the current sale
+   * 
+   * @return The basket of items of the current sale
+   */
+  public Item[] getAllItemsFromCurrentSale() {
+    return this.items;
+  }
+
+  /*
    * Function handles the loging of a sale
    */
   public void outputSaleLog(int itemIdentifier) {
@@ -144,7 +153,9 @@ public class Sale {
     System.out.println("Item description: " + lastItem.getDescription());
     System.out.println();
     System.out.println("Total cost (incl VAT): " + lastItem.getTotalItemPrice() + " " + this.receipt.getCurrency());
-    System.out.println("Total VAT:             " + this.receipt.roundTwoDecimalPoints(lastItem.getVAT() * lastItem.getTotalItemPrice()) + " " + this.receipt.getCurrency());
+    System.out.println(
+        "Total VAT:             " + this.receipt.roundTwoDecimalPoints(lastItem.getVAT() * lastItem.getTotalItemPrice())
+            + " " + this.receipt.getCurrency());
     System.out.println();
   }
 
@@ -157,5 +168,30 @@ public class Sale {
       i++;
     }
     return items[i];
+  }
+
+  /*
+   * Function handles logging regarding the end of a sale
+   * 
+   * @param cashRevievedFromCustomer The amount of money handed by the customer
+   */
+  public void endCurrentSale(double cashRecievedFromCustomer) {
+    outputLogsEndSale(cashRecievedFromCustomer);
+  }
+
+  /*
+   * Function handles all logging regarding the end of a current sale
+   */
+  private void outputLogsEndSale(double cashRecievedFromCustomer) {
+    System.out.println("Customer pays " + cashRecievedFromCustomer + " " + this.receipt.getCurrency() + ":");
+    System.out.println("Sent sale info to external accounting system.");
+
+    for (int i = 0; i < this.items.length; i++) {
+      int itemIdentifier = this.items[i].getItentifier();
+      int itemAmount = this.items[i].getAmount();
+
+      System.out.println("Told external inventory system to decrease inventory quantity of item " + itemIdentifier + " by " + itemAmount + " units.");
+    }
+    System.out.println();
   }
 }

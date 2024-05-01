@@ -1,8 +1,6 @@
 package se.epelsc.iv1350.seminar3.source.integration;
 
 public class ExternalInventorySystem {
-  // Variables
-
   // Constructor
   public ExternalInventorySystem() {
 
@@ -14,7 +12,7 @@ public class ExternalInventorySystem {
    * @params product ID, amount of that product
    */
   public void updateInventory(int productId, int amount) {
-    // insert code here
+    
   }
 
   /*

@@ -58,7 +58,7 @@ public class Receipt {
 
     System.out.println();
     System.out.printf("%-41s %-5s %-10s %n", "Total:", outputTotalCostOfSale(), this.currency);
-    System.out.println("VAT: " + roundTwoDecimalPoints(Double.parseDouble(outputTotalVatOfSale())));
+    System.out.printf("%-41s %-5s %n","VAT:", roundTwoDecimalPoints(Double.parseDouble(outputTotalVatOfSale())));
     System.out.println();
     System.out.printf("%-41s %-5s %-10s %n" ,"Cash:", this.cashPaid, this.currency);
 
@@ -97,6 +97,11 @@ public class Receipt {
     return String.valueOf(totalCost);
   }
 
+  /*
+   * Function calculates the total VAT of a sale
+   * 
+   * @return The total VAT of a sale as a String
+   */
   private String outputTotalVatOfSale() {
     double totalVAT = 0;
     double totalCostOfProduct;
@@ -113,14 +118,18 @@ public class Receipt {
   }
 
   /*
-   * Function returns the current sale
+   * Function gets the current sale
+   * 
+   * @return The sale instance
    */
   public Sale getCurrentSale() {
     return this.sale;
   }
 
   /*
-   * function returns the receipt rows
+   * Function returns the receipt rows
+   * 
+   * @return The 2D String array containg all reciept information
    */
   public String[][] getReceiptRows() {
     return this.receiptRows;
@@ -137,12 +146,21 @@ public class Receipt {
 
   /*
    * Function rounds a double value to two decimal points
+   * 
+   * @param valueToRound The value that should be rounded to two decimal points
+   * 
+   * @return The rounded value in String format
    */
   public String roundTwoDecimalPoints(double valueToRound) {
     DecimalFormat df = new DecimalFormat("#.##");
     return df.format(valueToRound);
   }
 
+  /*
+   * Getter function to retrieve the currency used on the receipt
+   * 
+   * @return The currency in String format
+   */
   public String getCurrency() {
     return this.currency;
   }
