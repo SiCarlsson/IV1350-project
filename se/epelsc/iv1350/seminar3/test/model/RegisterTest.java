@@ -30,7 +30,7 @@ public class RegisterTest {
 
     double givenOutput = this.instanceToTest.getMoneyInRegister();
 
-    assertEquals(expectedOutput, givenOutput);
+    assertEquals(expectedOutput, givenOutput, "updateRegister does not update with the right amount");
   }
 
 }

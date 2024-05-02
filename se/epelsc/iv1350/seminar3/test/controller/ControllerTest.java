@@ -27,7 +27,7 @@ public class ControllerTest {
   public void testStartSale() {
     this.instanceToTest.startSale();
 
-    assertNotEquals(null, this.instanceToTest.getSale(), "Basic functionallity of startSale works!");
+    assertNotEquals(null, this.instanceToTest.getSale(), "Basic functionallity of startSale does not work as expected");
   }
 
   @Test
@@ -37,7 +37,7 @@ public class ControllerTest {
     this.instanceToTest.addItemToSale(expectedOutput);
     int givenOutput = this.instanceToTest.getSale().getItem(0).getItentifier();
 
-    assertEquals(expectedOutput, givenOutput, "Controller can add an item to the current sale!");
+    assertEquals(expectedOutput, givenOutput, "The specific item is not added to sale as expected");
   }
 
   @Test
@@ -56,15 +56,15 @@ public class ControllerTest {
     int givenOutputFirstProduct = this.instanceToTest.getSale().getItem(0).getItentifier();
     int givenOutputSecondProduct = this.instanceToTest.getSale().getItem(1).getItentifier();
 
-    assertEquals(expectedOutputFirstProduct, givenOutputFirstProduct, "");
-    assertEquals(expectedOutputSecondProduct, givenOutputSecondProduct, "Controller can add multiple items to the current sale!");
+    assertEquals(expectedOutputFirstProduct, givenOutputFirstProduct, "First product is not added as expected");
+    assertEquals(expectedOutputSecondProduct, givenOutputSecondProduct, "Second product is not added as expected");
   }
 
   @Test
   public void testCreatingInstancesOfExternalSystemsAndDbInConstructor() {
-    assertNotEquals(null, this.instanceToTest.getExternalAccountingSytem());
-    assertNotEquals(null, this.instanceToTest.getExternalDiscountDatabase());
-    assertNotEquals(null, this.instanceToTest.getExternalInventorySystem());
+    assertNotEquals(null, this.instanceToTest.getExternalAccountingSytem(), "Accounting system was not created");
+    assertNotEquals(null, this.instanceToTest.getExternalDiscountDatabase(), "Discount database was not created");
+    assertNotEquals(null, this.instanceToTest.getExternalInventorySystem(), "Inventory system was not created");
   }
 
   @Test
@@ -78,6 +78,6 @@ public class ControllerTest {
 
     double givenOutput = this.instanceToTest.getRegister().getMoneyInRegister();
 
-    assertEquals(expectedOutput, givenOutput);
+    assertEquals(expectedOutput, givenOutput, "Cash in register did not increment as intended after payment");
   }
 }

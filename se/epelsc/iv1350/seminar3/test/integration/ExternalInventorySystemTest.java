@@ -30,6 +30,6 @@ public class ExternalInventorySystemTest {
     String expectedOutput = "BigWheel Oatmeal";
     String givenOutput = testerItem.getName();
 
-    assertEquals(expectedOutput, givenOutput);
+    assertEquals(expectedOutput, givenOutput, "item is not fetched correctly");
   }
 }

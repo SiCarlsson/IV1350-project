@@ -51,6 +51,6 @@ public class ItemTest {
 
       double actualTotalPrice = this.instanceToTest.getTotalItemPrice();
 
-      assertEquals(expectedTotalPrice, actualTotalPrice, "Increment amount does not work properly");
+      assertEquals(expectedTotalPrice, actualTotalPrice, "Increment amount does not increment as expected");
   }
 }

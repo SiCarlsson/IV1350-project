@@ -38,6 +38,6 @@ public class PaymentTest {
     this.instanceToTest.updateRegisterAmount(cashRecievedFromCustomer, totalCost);
     double givenOutput = this.instanceToTest.getRegister().getMoneyInRegister();
 
-    assertEquals(expectedOutput, givenOutput, "Update register amount did not work as intended");
+    assertEquals(expectedOutput, givenOutput, "updateRegisterAmount does not update with the right amount");
   }
 }

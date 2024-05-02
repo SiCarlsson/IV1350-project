@@ -125,7 +125,7 @@ public class Sale {
   }
 
   /*
-   * Function gets the inted of a given item
+   * Function gets the index of a given item
    * 
    * @param indexPosition The index position of a product
    * 

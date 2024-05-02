@@ -36,10 +36,10 @@ public class SaleTest {
 
     int givenOutput = this.instanceToTest.getTotalItems();
 
-    assertEquals(expectedOutput, givenOutput, "addItem works as expected!");
+    assertEquals(expectedOutput, givenOutput, "addItem does not add the item as expected");
   }
 
-  // Skipped parameter (it is inside of function)
+  
   @Test
   public void testAddItemNotCreatingDuplicatesInSaleItems() {
     int expectedOutput = 1;
@@ -50,7 +50,7 @@ public class SaleTest {
 
     int givenOutput = this.instanceToTest.getTotalItems();
 
-    assertEquals(expectedOutput, givenOutput, "checkItemExists works as expected");
+    assertEquals(expectedOutput, givenOutput, "addItem creates duplicates of same item");
   }
 
   @Test
@@ -63,10 +63,10 @@ public class SaleTest {
 
     int givenOutput = this.instanceToTest.getItem(0).getAmount();
 
-    assertEquals(expectedOutput, givenOutput, "checkItemExists works as expected");
+    assertEquals(expectedOutput, givenOutput, "incrementation is not done as expected");
   }
 
-  // Skipped parameter (it is inside of function)
+  
   @Test
   public void testGetItem() {
     Item expectedOutput = this.decoyItem;
@@ -77,7 +77,7 @@ public class SaleTest {
 
     Item givenOutput = instanceToTest.getItem(indexPosition);
 
-    assertEquals(expectedOutput, givenOutput, "getItem basic functionallity works as expected!");
+    assertEquals(expectedOutput, givenOutput, "getItem does not return the item with correct index position");
   }
 
   @Test
@@ -86,7 +86,7 @@ public class SaleTest {
 
     int indexPosition = 4;
 
-    assertThrows(IndexOutOfBoundsException.class, () -> this.instanceToTest.getItem(indexPosition));
+    assertThrows(IndexOutOfBoundsException.class, () -> this.instanceToTest.getItem(indexPosition), "Index is out of upper bounds");
   }
 
   @Test
@@ -95,19 +95,19 @@ public class SaleTest {
 
     int indexPosition = -2;
 
-    assertThrows(IndexOutOfBoundsException.class, () -> this.instanceToTest.getItem(indexPosition));
+    assertThrows(IndexOutOfBoundsException.class, () -> this.instanceToTest.getItem(indexPosition), "Index is out ouf lower bounds");
   }
 
   @Test
   public void testCurrentTimeFormat() {
     String expectedFormat = "\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}";
     String currentTime = instanceToTest.getTimeOfSale();
-    assertEquals(true, currentTime.matches(expectedFormat));
+    assertEquals(true, currentTime.matches(expectedFormat), "Current time was not formated as expected");
   }
 
   @Test
   public void testCurrentTimeNotNull() {
     String currentTime = instanceToTest.getTimeOfSale();
-    assertEquals(false, currentTime.isEmpty());
+    assertEquals(false, currentTime.isEmpty(), "Current time is null");
   }
 }
