@@ -7,7 +7,7 @@ public class Sale {
   private Receipt receipt;
   private Item[] items;
 
-  /*
+  /**
    * Constructor
    */
   public Sale() {
@@ -15,7 +15,7 @@ public class Sale {
     this.receipt = new Receipt(this);
   }
 
-  /*
+  /**
    * A function that returns a receipt based on the current state of the sale
    * 
    * @return the instance of the receipt for the current sale
@@ -24,7 +24,7 @@ public class Sale {
     return this.receipt;
   }
 
-  /*
+  /**
    * A function to get the current time of a sale
    * 
    * @return the current time in java.time.LocalTime format
@@ -35,7 +35,7 @@ public class Sale {
     return currentTime.format(formatter);
   }
 
-  /*
+  /**
    * Adds an item to a current sale, also handles if item already exists
    * 
    * @param item An instance of item containing the item that should be addded
@@ -49,7 +49,7 @@ public class Sale {
     }
   }
 
-  /*
+  /**
    * Function to expand the current array holding all products in a sale
    * 
    * @return An expanded array holding all the items in the current sale
@@ -66,7 +66,7 @@ public class Sale {
     return newArrayWithItems;
   }
 
-  /*
+  /**
    * Function handles logic to add an item to a current sale
    * 
    * @param item The item that should be added to a sale
@@ -76,7 +76,7 @@ public class Sale {
     this.items[lastIndexPositionOfArray] = item;
   }
 
-  /*
+  /**
    * Function to see if an item already exists in the sale
    * 
    * 
@@ -97,7 +97,7 @@ public class Sale {
     return false;
   }
 
-  /*
+  /**
    * Function increments the amount of an item
    * 
    * @param itemIdentifier Holds the identifier of an item that should be
@@ -111,7 +111,7 @@ public class Sale {
     }
   }
 
-  /*
+  /**
    * Function gets the total amount of products in a sale
    * 
    * @return The amount of items in the current sale
@@ -124,7 +124,7 @@ public class Sale {
     return counter;
   }
 
-  /*
+  /**
    * Function gets the index of a given item
    * 
    * @param indexPosition The index position of a product
@@ -143,7 +143,7 @@ public class Sale {
     return items[indexPosition];
   }
 
-  /*
+  /**
    * Function gets all items from the current sale
    * 
    * @return The basket of items of the current sale
@@ -152,7 +152,7 @@ public class Sale {
     return this.items;
   }
 
-  /*
+  /**
    * Function handles the loging of a sale
    * 
    * @param itemIdentifier Holds an identifier for an item
@@ -174,7 +174,7 @@ public class Sale {
     System.out.println();
   }
 
-  /*
+  /**
    * Function to increment total price of sale as items are added
    * 
    * @return the total price after all current items are added
@@ -188,7 +188,7 @@ public class Sale {
     return totalPriceOfSale;
   }
 
-   /*
+   /**
    * Function to increment total VAT of sale as items are added
    * 
    * @return the total VAT after all current items are added
@@ -202,7 +202,7 @@ public class Sale {
     return totalVATOfSale;
   }
 
-  /*
+  /**
    * Function gets the item of a sale based on the itemIdentifier
    * 
    * @param itemIdentifier Holds an identifier for an item
@@ -217,7 +217,7 @@ public class Sale {
     return items[i];
   }
 
-  /*
+  /**
    * Function handles logging regarding the end of a sale
    * 
    * @param cashRevievedFromCustomer The amount of money handed by the customer
@@ -226,7 +226,7 @@ public class Sale {
     outputLogsEndSale(cashRecievedFromCustomer);
   }
 
-  /*
+  /**
    * Function handles all logging regarding the end of a current sale
    * 
    * @param cashRecievedFromCustomer The amount of money handed by the customer

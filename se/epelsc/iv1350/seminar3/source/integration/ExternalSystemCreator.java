@@ -5,7 +5,7 @@ public class ExternalSystemCreator {
   private ExternalDiscountDatabase externalDiscountDatabase;
   private ExternalInventorySystem externalInventorySystem;
 
-  /*
+  /**
    * Constructor
    */
   public ExternalSystemCreator() {
@@ -14,7 +14,7 @@ public class ExternalSystemCreator {
     externalInventorySystem = new ExternalInventorySystem();
   }
 
-  /*
+  /**
    * A function that gets an instancce of ExternalAccountingSystem.java
    * 
    * @return An instance of the class ExternalAccountingSystem
@@ -23,7 +23,7 @@ public class ExternalSystemCreator {
     return externalAccountingSystem;
   }
 
-  /*
+  /**
    * A function that gets an instancce of ExternalDiscountDatabase.java
    * 
    * @return An instance of the class ExternalAccountingSystem
@@ -32,7 +32,7 @@ public class ExternalSystemCreator {
     return externalDiscountDatabase;
   }
 
-  /*
+  /**
    * A function that gets an instancce of ExternalInventorySystem.java
    * 
    * @return An instance of the class ExternalInventorySystem

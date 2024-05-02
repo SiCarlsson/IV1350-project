@@ -6,7 +6,7 @@ import se.epelsc.iv1350.seminar3.source.integration.Printer;
 import se.epelsc.iv1350.seminar3.source.view.View;
 
 public class Main {
-  /*
+  /**
    * Main method, runs on execution of the program
    * 
    * @param args Arguments for the program that is enterd on execution

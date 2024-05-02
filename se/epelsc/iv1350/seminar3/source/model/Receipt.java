@@ -10,7 +10,7 @@ public class Receipt {
   private double cashPaid;
   private String currency;
 
-  /*
+  /**
    * Constructor
    * 
    * @param sale An instance of sale
@@ -22,7 +22,7 @@ public class Receipt {
     this.currency = "SEK";
   }
 
-  /*
+  /**
    * Function that builds the receipt
    */
   public void createReceipt() {
@@ -30,7 +30,7 @@ public class Receipt {
     sendReceiptToOutput();
   }
 
-  /*
+  /**
    * Function that adds all items from sale to the receipt in the correct format
    */
   private void addItemsToReceipt() {
@@ -45,7 +45,7 @@ public class Receipt {
     }
   }
 
-  /*
+  /**
    * Function to send the receipt to output
    */
   private void sendReceiptToOutput() {
@@ -79,7 +79,7 @@ public class Receipt {
     System.out.println();
   }
 
-  /*
+  /**
    * Function returns the current time
    * 
    * @return The current time as a String
@@ -88,7 +88,7 @@ public class Receipt {
     return this.sale.getTimeOfSale();
   }
 
-  /*
+  /**
    * Function calculates the total cost of a sale and returns the value
    * 
    * @return The total cost of a sale as a String
@@ -103,7 +103,7 @@ public class Receipt {
     return String.valueOf(totalCost);
   }
 
-  /*
+  /**
    * Function calculates the total VAT of a sale
    * 
    * @return The total VAT of a sale as a String
@@ -123,7 +123,7 @@ public class Receipt {
     return String.valueOf(totalVAT);
   }
 
-  /*
+  /**
    * Function gets the current sale
    * 
    * @return The sale instance
@@ -132,7 +132,7 @@ public class Receipt {
     return this.sale;
   }
 
-  /*
+  /**
    * Function returns the receipt rows
    * 
    * @return The 2D String array containg all reciept information
@@ -141,7 +141,7 @@ public class Receipt {
     return this.receiptRows;
   }
 
-  /*
+  /**
    * Function to set the value of cashPaid
    * 
    * @param cashRecieved The amount of cash recieved from the customer
@@ -150,7 +150,7 @@ public class Receipt {
     this.cashPaid = cashRecieved;
   }
 
-  /*
+  /**
    * Function rounds a double value to two decimal points
    * 
    * @param valueToRound The value that should be rounded to two decimal points
@@ -162,7 +162,7 @@ public class Receipt {
     return df.format(valueToRound);
   }
 
-  /*
+  /**
    * Getter function to retrieve the currency used on the receipt
    * 
    * @return The currency in String format

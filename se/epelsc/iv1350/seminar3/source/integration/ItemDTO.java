@@ -8,7 +8,7 @@ public class ItemDTO {
   private String description;
   private int amount;
 
-  /*
+  /**
    * Constructor function
    * 
    * @param identifier The item ID retrieved from the database
@@ -32,7 +32,7 @@ public class ItemDTO {
     this.amount = numberOfProcuctsInTheBeginning;
   }
 
-  /*
+  /**
    * Getter function to retrieve ItemDTO itendifier
    * 
    * @return The item identifier
@@ -41,7 +41,7 @@ public class ItemDTO {
     return this.identifier;
   }
 
-  /*
+  /**
    * Getter function to retrieve ItemDTO price
    * 
    * @return The item price
@@ -50,7 +50,7 @@ public class ItemDTO {
     return this.price;
   }
 
-  /*
+  /**
    * Getter function to retrieve ItemDTO VAT
    * 
    * @return The item VAT
@@ -59,7 +59,7 @@ public class ItemDTO {
     return this.VAT;
   }
 
-  /*
+  /**
    * Getter function to retrieve ItemDTO name
    * 
    * @return The item name
@@ -68,7 +68,7 @@ public class ItemDTO {
     return this.name;
   }
 
-  /*
+  /**
    * Getter function to retrieve ItemDTO description
    * 
    * @return The item description
@@ -77,7 +77,7 @@ public class ItemDTO {
     return this.description;
   }
 
-  /*
+  /**
    * Getter function to retrieve ItemDTO amount
    * 
    * @return The item amount

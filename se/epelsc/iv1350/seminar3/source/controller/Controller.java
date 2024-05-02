@@ -19,7 +19,7 @@ public class Controller {
   private ExternalDiscountDatabase exDiscountDb;
   private ExternalInventorySystem exInventorySys;
 
-  /*
+  /**
    * Constructor
    * 
    * @param printer An instance of printer that should be used
@@ -36,7 +36,7 @@ public class Controller {
     this.payment = new Payment(register);
   }
 
-  /*
+  /**
    * Resets variables to be ready to handle a new sale
    */
   public void startSale() {
@@ -44,7 +44,7 @@ public class Controller {
     // this.payment = new Payment();
   }
 
-  /*
+  /**
    * Function to get the current sale
    * 
    * @return The instance of sale
@@ -53,7 +53,7 @@ public class Controller {
     return this.sale;
   }
 
-  /*
+  /**
    * Function to get register
    * 
    * @return The instance of register
@@ -62,7 +62,7 @@ public class Controller {
     return this.register;
   }
 
-  /*
+  /**
    * Function that adds an item specified by the cashier to the current sale
    * 
    * @param itemIdentifier An integer containing the item identifier that should
@@ -73,7 +73,7 @@ public class Controller {
     this.sale.outputSaleLog(itemIdentifier);
   }
 
-  /*
+  /**
    * Function handles logic to make a payment
    * 
    * @param cashReciefvedFromCustomer The amount of money recieved by the customer
@@ -91,14 +91,14 @@ public class Controller {
     this.sale.getReceipt().setCashPaid(cashRecievedFromCustomer);
   }
 
-  /*
+  /**
    * Function prints the reciept as an output
    */
   private void printReceipt() {
     printer.print(this.sale.getReceipt());
   }
 
-  /*
+  /**
    * Function holds the logic when ending a sale
    * 
    * @param cashReciefvedFromCustomer The amount of money recieved by the customer
@@ -112,7 +112,7 @@ public class Controller {
     printReceipt();
   }
 
-  /*
+  /**
    * Function handles the logic of updating the external systems
    * 
    * @param cashReciefvedFromCustomer The amount of money recieved by the customer
@@ -126,7 +126,7 @@ public class Controller {
     }
   }
 
-  /*
+  /**
    * Function returns the instance of external accounting system
    * 
    * @return An instance of ExternalAccountingSystem
@@ -135,7 +135,7 @@ public class Controller {
     return this.exAccountingSys;
   }
 
-  /*
+  /**
    * Function returns the instance of external accounting system
    * 
    * @return An instance of ExternalDiscountSystem
@@ -144,7 +144,7 @@ public class Controller {
     return this.exDiscountDb;
   }
 
-  /*
+  /**
    * Function returns the instance of external accounting system
    * 
    * @return An instance of ExternalInventorySystem

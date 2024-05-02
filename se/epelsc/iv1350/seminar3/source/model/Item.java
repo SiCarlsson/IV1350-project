@@ -10,7 +10,7 @@ public class Item {
   private String description;
   private int amount;
 
-  /*
+  /**
    * Constructor function
    * 
    * @param itemDTO An instance of ItemDTO
@@ -24,7 +24,7 @@ public class Item {
     this.amount = itemDTO.getAmount();
   }
 
-  /*
+  /**
    * Getter function to retrieve ItemDTO itendifier
    * 
    * @return The item identifier
@@ -33,7 +33,7 @@ public class Item {
     return this.identifier;
   }
 
-  /*
+  /**
    * Getter function to retrieve ItemDTO price
    * 
    * @return The item price
@@ -42,7 +42,7 @@ public class Item {
     return this.price;
   }
 
-  /*
+  /**
    * Getter function to retrieve ItemDTO VAT
    * 
    * @return The item VAT
@@ -51,7 +51,7 @@ public class Item {
     return this.VAT;
   }
 
-  /*
+  /**
    * Getter function to retrieve ItemDTO name
    * 
    * @return The item name
@@ -60,7 +60,7 @@ public class Item {
     return this.name;
   }
 
-  /*
+  /**
    * Getter function to retrieve ItemDTO description
    * 
    * @return The item description
@@ -69,7 +69,7 @@ public class Item {
     return this.description;
   }
 
-  /*
+  /**
    * Getter function to retrieve ItemDTO amount
    * 
    * @return The item description
@@ -78,7 +78,7 @@ public class Item {
     return this.amount;
   }
 
-  /*
+  /**
    * Function to increment the amount of an item by 1
    */
   public void incrementAmount() {
