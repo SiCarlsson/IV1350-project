@@ -167,11 +167,39 @@ public class Sale {
     System.out.println("VAT: " + (lastItem.getVAT() * 100) + "%");
     System.out.println("Item description: " + lastItem.getDescription());
     System.out.println();
-    System.out.println("Total cost (incl VAT): " + lastItem.getTotalItemPrice() + " " + this.receipt.getCurrency());
+    System.out.println("Total cost (incl VAT): " + getTotalSalePrice() + " " + this.receipt.getCurrency());
     System.out.println(
-        "Total VAT:             " + this.receipt.roundTwoDecimalPoints(lastItem.getVAT() * lastItem.getTotalItemPrice())
+        "Total VAT:             " + this.receipt.roundTwoDecimalPoints(getTotalVATOfSale())
             + " " + this.receipt.getCurrency());
     System.out.println();
+  }
+
+  /*
+   * Function to increment total price of sale as items are added
+   * 
+   * @return the total price after all current items are added
+   */
+  private double getTotalSalePrice(){
+    double totalPriceOfSale = 0;
+
+    for(int i = 0; i < this.items.length; i++){
+      totalPriceOfSale += this.items[i].getPrice() * this.items[i].getAmount();
+    }
+    return totalPriceOfSale;
+  }
+
+   /*
+   * Function to increment total VAT of sale as items are added
+   * 
+   * @return the total VAT after all current items are added
+   */
+  private double getTotalVATOfSale(){
+    double totalVATOfSale = 0;
+
+    for(int i = 0; i < this.items.length; i++){
+      totalVATOfSale += this.items[i].getVAT() * this.items[i].getAmount() * this.items[i].getPrice();
+    }
+    return totalVATOfSale;
   }
 
   /*
@@ -204,6 +232,10 @@ public class Sale {
    * @param cashRecievedFromCustomer The amount of money handed by the customer
    */
   private void outputLogsEndSale(double cashRecievedFromCustomer) {
+    System.out.println("End sale:");
+    System.out.println("Total cost (incl VAT): " + getTotalSalePrice() + " " + this.receipt.getCurrency());
+    System.out.println();
+    
     System.out.println("Customer pays " + cashRecievedFromCustomer + " " + this.receipt.getCurrency() + ":");
     System.out.println("Sent sale info to external accounting system.");
 
