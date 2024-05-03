@@ -22,10 +22,10 @@ public class Controller {
   /**
    * Constructor
    * 
-   * @param printer An instance of printer that should be used
+   * @param printer      An instance of printer that should be used
    * 
    * @param exSysCreator An instance of externalSystemCreator, will in turn
-   * establish connection with other external systems
+   *                     establish connection with other external systems
    */
   public Controller(Printer printer, ExternalSystemCreator exSysCreator) {
     this.printer = printer;
@@ -66,7 +66,7 @@ public class Controller {
    * Function that adds an item specified by the cashier to the current sale
    * 
    * @param itemIdentifier An integer containing the item identifier that should
-   * be added to the sale
+   *                       be added to the sale
    */
   public void addItemToSale(int itemIdentifier) {
     this.sale.addItem(new Item(this.exInventorySys.getItemDTOFromDatabase(itemIdentifier)));
@@ -77,7 +77,7 @@ public class Controller {
    * Function handles logic to make a payment
    * 
    * @param cashReciefvedFromCustomer The amount of money recieved by the customer
-   * to pay for the sale
+   *                                  to pay for the sale
    */
   private void handlePayment(double cashRecievedFromCustomer) {
     double totalCost = 0;
@@ -102,7 +102,7 @@ public class Controller {
    * Function holds the logic when ending a sale
    * 
    * @param cashReciefvedFromCustomer The amount of money recieved by the customer
-   * to pay for the sale
+   *                                  to pay for the sale
    */
   public void endSale(double cashRecievedFromCustomer) {
     handlePayment(cashRecievedFromCustomer);
@@ -116,7 +116,9 @@ public class Controller {
    * Function handles the logic of updating the external systems
    * 
    * @param cashReciefvedFromCustomer The amount of money recieved by the customer
-   * to pay for the sale
+   *                                  to pay for the sale
+   * @param itemsInCurrentSale        Holds an Item list of all items in a current
+   *                                  sale
    */
   private void updateExternalSystems(double cashRecievedFromCustomer, Item[] itemsInCurrentSale) {
     this.exAccountingSys.updateAccounting(cashRecievedFromCustomer);
