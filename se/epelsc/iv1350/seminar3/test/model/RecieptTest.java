@@ -6,7 +6,6 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 
 import se.epelsc.iv1350.seminar3.source.integration.ItemDTO;
-import se.epelsc.iv1350.seminar3.source.model.Item;
 import se.epelsc.iv1350.seminar3.source.model.Receipt;
 import se.epelsc.iv1350.seminar3.source.model.Sale;
 
@@ -95,10 +94,12 @@ public class RecieptTest {
     double firstValueToBeRounded = 5.874664;
     double secondValueToBeRounded = 13.3712357;
     double thirdValueToBeRounded = 9.129765;
-    
 
-    assertEquals(firstExpectedOutut, this.instanceToTest.roundTwoDecimalPoints(firstValueToBeRounded), "Rounding did not work as intended");
-    assertEquals(secondExpectedOutut, this.instanceToTest.roundTwoDecimalPoints(secondValueToBeRounded), "Rounding did not work as intended");
-    assertEquals(thirdExpectedOutut, this.instanceToTest.roundTwoDecimalPoints(thirdValueToBeRounded), "Rounding did not work as intended");
+    assertEquals(firstExpectedOutut, this.instanceToTest.roundTwoDecimalPoints(firstValueToBeRounded),
+        "Rounding did not work as intended");
+    assertEquals(secondExpectedOutut, this.instanceToTest.roundTwoDecimalPoints(secondValueToBeRounded),
+        "Rounding did not work as intended");
+    assertEquals(thirdExpectedOutut, this.instanceToTest.roundTwoDecimalPoints(thirdValueToBeRounded),
+        "Rounding did not work as intended");
   }
 }

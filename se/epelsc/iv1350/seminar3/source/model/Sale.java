@@ -86,7 +86,7 @@ public class Sale {
    * @param item An item that should be looked at if it already exists in the sale
    * 
    * @return A true or false value depending on if item exists or not in the
-   * current sale
+   *         current sale
    */
   private boolean checkItemAlreadyExists(Item item) {
     int itemIdentifier = item.getItentifier();
@@ -104,7 +104,7 @@ public class Sale {
    * Function increments the amount of an item
    * 
    * @param itemIdentifier Holds the identifier of an item that should be
-   * incremented in amount
+   *                       incremented in amount
    */
   private void addToExistingItem(int itemIdentifier) {
     for (int i = 0; i < this.items.length; i++) {
@@ -135,7 +135,7 @@ public class Sale {
    * @return The specified item in the sale
    * 
    * @throws IndexOutOfBoundsException if the index position is negative or
-   * exceeds the range of available items
+   *                                   exceeds the range of available items
    */
   public Item getItem(int indexPosition) throws IndexOutOfBoundsException {
     int totalNumberOfProducts = this.items.length - 1;
@@ -146,13 +146,23 @@ public class Sale {
     return items[indexPosition];
   }
 
+  //TODO: PACKAGE PRIVATE
   /**
    * Function gets all items from the current sale
    * 
    * @return The basket of items of the current sale
    */
-  public Item[] getAllItemsFromCurrentSale() {
+  Item[] getItemList() {
     return this.items;
+  }
+
+  /**
+   * Get function to recieve a SaleDTO of the current sale
+   * 
+   * @return SaleDTO based on the current sale
+   */
+  public SaleDTO getSaleInfo() {
+    return new SaleDTO(this);
   }
 
   /**
@@ -177,29 +187,31 @@ public class Sale {
     System.out.println();
   }
 
+  //TODO: PACKAGE PRIVATE
   /**
    * Function to increment total price of sale as items are added
    * 
    * @return the total price after all current items are added
    */
-  private double getTotalSalePrice(){
+  double getTotalSalePrice() {
     double totalPriceOfSale = 0;
 
-    for(int i = 0; i < this.items.length; i++){
+    for (int i = 0; i < this.items.length; i++) {
       totalPriceOfSale += this.items[i].getPrice() * this.items[i].getAmount();
     }
     return totalPriceOfSale;
   }
 
-   /**
+  //TODO: PACKAGE PRIVATE
+  /**
    * Function to increment total VAT of sale as items are added
    * 
    * @return the total VAT after all current items are added
    */
-  private double getTotalVATOfSale(){
+  double getTotalVATOfSale() {
     double totalVATOfSale = 0;
 
-    for(int i = 0; i < this.items.length; i++){
+    for (int i = 0; i < this.items.length; i++) {
       totalVATOfSale += this.items[i].getVAT() * this.items[i].getAmount() * this.items[i].getPrice();
     }
     return totalVATOfSale;
@@ -238,7 +250,7 @@ public class Sale {
     System.out.println("End sale:");
     System.out.println("Total cost (incl VAT): " + getTotalSalePrice() + " " + this.receipt.getCurrency());
     System.out.println();
-    
+
     System.out.println("Customer pays " + cashRecievedFromCustomer + " " + this.receipt.getCurrency() + ":");
     System.out.println("Sent sale info to external accounting system.");
 

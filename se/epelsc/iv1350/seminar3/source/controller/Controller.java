@@ -9,9 +9,11 @@ import se.epelsc.iv1350.seminar3.source.model.Item;
 import se.epelsc.iv1350.seminar3.source.model.Payment;
 import se.epelsc.iv1350.seminar3.source.model.Register;
 import se.epelsc.iv1350.seminar3.source.model.Sale;
+import se.epelsc.iv1350.seminar3.source.model.SaleDTO;
 
 public class Controller {
   private Sale sale;
+  private SaleDTO saleDTO;
   private Printer printer;
   private Register register;
   private Payment payment;
@@ -70,7 +72,6 @@ public class Controller {
    */
   public void addItemToSale(int itemIdentifier) {
     this.sale.addItem(this.exInventorySys.getItemDTOFromDatabase(itemIdentifier));
-    this.sale.outputSaleLog(itemIdentifier);
   }
 
   /**
@@ -106,7 +107,7 @@ public class Controller {
    */
   public void endSale(double cashRecievedFromCustomer) {
     handlePayment(cashRecievedFromCustomer);
-    updateExternalSystems(cashRecievedFromCustomer, this.sale.getAllItemsFromCurrentSale());
+    updateExternalSystems(cashRecievedFromCustomer, this.saleDTO.getItems());
 
     this.sale.endCurrentSale(cashRecievedFromCustomer);
     printReceipt();
