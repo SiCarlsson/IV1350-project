@@ -146,7 +146,7 @@ public class Sale {
     return items[indexPosition];
   }
 
-  //TODO: PACKAGE PRIVATE
+  // TODO: PACKAGE PRIVATE
   /**
    * Function gets all items from the current sale
    * 
@@ -165,29 +165,7 @@ public class Sale {
     return new SaleDTO(this);
   }
 
-  /**
-   * Function handles the loging of a sale
-   * 
-   * @param itemIdentifier Holds an identifier for an item
-   */
-  public void outputSaleLog(int itemIdentifier) {
-    Item lastItem = getItemByItemID(itemIdentifier);
-
-    System.out.println("Add 1 item with id " + lastItem.getItentifier() + ":");
-    System.out.println("Item ID: " + lastItem.getItentifier());
-    System.out.println("Item name: " + lastItem.getName());
-    System.out.println("Item cost: " + lastItem.getPrice() + " " + this.receipt.getCurrency());
-    System.out.println("VAT: " + (lastItem.getVAT() * 100) + "%");
-    System.out.println("Item description: " + lastItem.getDescription());
-    System.out.println();
-    System.out.println("Total cost (incl VAT): " + getTotalSalePrice() + " " + this.receipt.getCurrency());
-    System.out.println(
-        "Total VAT:             " + this.receipt.roundTwoDecimalPoints(getTotalVATOfSale())
-            + " " + this.receipt.getCurrency());
-    System.out.println();
-  }
-
-  //TODO: PACKAGE PRIVATE
+  // TODO: PACKAGE PRIVATE
   /**
    * Function to increment total price of sale as items are added
    * 
@@ -202,7 +180,7 @@ public class Sale {
     return totalPriceOfSale;
   }
 
-  //TODO: PACKAGE PRIVATE
+  // TODO: PACKAGE PRIVATE
   /**
    * Function to increment total VAT of sale as items are added
    * 
@@ -215,52 +193,5 @@ public class Sale {
       totalVATOfSale += this.items[i].getVAT() * this.items[i].getAmount() * this.items[i].getPrice();
     }
     return totalVATOfSale;
-  }
-
-  /**
-   * Function gets the item of a sale based on the itemIdentifier
-   * 
-   * @param itemIdentifier Holds an identifier for an item
-   * 
-   * @return The item specified in a sale
-   */
-  private Item getItemByItemID(int itemIdentifier) {
-    int i = 0;
-    while (!(this.items[i].getItentifier() == itemIdentifier)) {
-      i++;
-    }
-    return items[i];
-  }
-
-  /**
-   * Function handles logging regarding the end of a sale
-   * 
-   * @param cashRevievedFromCustomer The amount of money handed by the customer
-   */
-  public void endCurrentSale(double cashRecievedFromCustomer) {
-    outputLogsEndSale(cashRecievedFromCustomer);
-  }
-
-  /**
-   * Function handles all logging regarding the end of a current sale
-   * 
-   * @param cashRecievedFromCustomer The amount of money handed by the customer
-   */
-  private void outputLogsEndSale(double cashRecievedFromCustomer) {
-    System.out.println("End sale:");
-    System.out.println("Total cost (incl VAT): " + getTotalSalePrice() + " " + this.receipt.getCurrency());
-    System.out.println();
-
-    System.out.println("Customer pays " + cashRecievedFromCustomer + " " + this.receipt.getCurrency() + ":");
-    System.out.println("Sent sale info to external accounting system.");
-
-    for (int i = 0; i < this.items.length; i++) {
-      int itemIdentifier = this.items[i].getItentifier();
-      int itemAmount = this.items[i].getAmount();
-
-      System.out.println("Told external inventory system to decrease inventory quantity of item " + itemIdentifier
-          + " by " + itemAmount + " units.");
-    }
-    System.out.println();
   }
 }

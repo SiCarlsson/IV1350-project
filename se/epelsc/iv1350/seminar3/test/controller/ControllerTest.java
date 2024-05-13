@@ -72,8 +72,11 @@ public class ControllerTest {
     this.instanceToTest.startSale();
 
     double testedInput = 110.99;
-    double expectedOutput = this.instanceToTest.getRegister().getMoneyInRegister() + testedInput;
+    int defaultProductPrice = 10;
 
+    double expectedOutput = this.instanceToTest.getRegister().getMoneyInRegister() + testedInput - defaultProductPrice;
+
+    this.instanceToTest.addItemToSale(000000);
     this.instanceToTest.endSale(testedInput);
 
     double givenOutput = this.instanceToTest.getRegister().getMoneyInRegister();

@@ -72,6 +72,7 @@ public class Controller {
    */
   public void addItemToSale(int itemIdentifier) {
     this.sale.addItem(this.exInventorySys.getItemDTOFromDatabase(itemIdentifier));
+    collectSaleDTO();
   }
 
   /**
@@ -107,10 +108,7 @@ public class Controller {
    */
   public void endSale(double cashRecievedFromCustomer) {
     handlePayment(cashRecievedFromCustomer);
-    collectSaleDTO();
     updateExternalSystems(cashRecievedFromCustomer, this.saleDTO.getItems());
-
-    this.sale.endCurrentSale(cashRecievedFromCustomer);
     printReceipt();
   }
 
@@ -135,6 +133,15 @@ public class Controller {
    */
   private void collectSaleDTO() {
     this.saleDTO = this.sale.getSaleInfo();
+  }
+
+  /**
+   * Getter function to saleDTO
+   * 
+   * @return current saleDTO
+   */
+  public SaleDTO getSaleDTO() {
+    return this.saleDTO;
   }
 
   /**

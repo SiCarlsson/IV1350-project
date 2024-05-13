@@ -1,6 +1,6 @@
 package se.epelsc.iv1350.seminar3.source.model;
 
-import java.text.DecimalFormat;
+import se.epelsc.iv1350.seminar3.source.util.Calculations;
 
 public class Receipt {
   private String starterString;
@@ -62,20 +62,20 @@ public class Receipt {
 
     System.out.println();
     System.out.printf("%-41s %-5s %-10s %n", "Total:", outputTotalCostOfSale(), this.currency);
-    System.out.printf("%-41s %-5s %n", "VAT:", roundTwoDecimalPoints(Double.parseDouble(outputTotalVatOfSale())));
+    System.out.printf("%-41s %-5s %n", "VAT:", Calculations.roundTwoDecimalPoints(Double.parseDouble(outputTotalVatOfSale())));
     System.out.println();
     System.out.printf("%-41s %-5s %-10s %n", "Cash:", this.cashPaid, this.currency);
 
     String change = String.valueOf(this.cashPaid - Double.parseDouble(outputTotalCostOfSale()));
 
-    System.out.printf("%-41s %-5s %-10s %n", "Change:", roundTwoDecimalPoints(Double.parseDouble(change)),
+    System.out.printf("%-41s %-5s %-10s %n", "Change:", Calculations.roundTwoDecimalPoints(Double.parseDouble(change)),
         this.currency);
 
     System.out.println(this.endString);
 
     System.out.println();
     System.out.println(
-        "Change to give the customer: " + roundTwoDecimalPoints(Double.parseDouble(change)) + " " + this.currency);
+        "Change to give the customer: " + Calculations.roundTwoDecimalPoints(Double.parseDouble(change)) + " " + this.currency);
     System.out.println();
   }
 
@@ -148,18 +148,6 @@ public class Receipt {
    */
   public void setCashPaid(double cashRecieved) {
     this.cashPaid = cashRecieved;
-  }
-
-  /**
-   * Function rounds a double value to two decimal points
-   * 
-   * @param valueToRound The value that should be rounded to two decimal points
-   * 
-   * @return The rounded value in String format
-   */
-  public String roundTwoDecimalPoints(double valueToRound) {
-    DecimalFormat df = new DecimalFormat("#.##");
-    return df.format(valueToRound);
   }
 
   /**
