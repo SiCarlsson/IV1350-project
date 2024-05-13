@@ -107,6 +107,7 @@ public class Controller {
    */
   public void endSale(double cashRecievedFromCustomer) {
     handlePayment(cashRecievedFromCustomer);
+    collectSaleDTO();
     updateExternalSystems(cashRecievedFromCustomer, this.saleDTO.getItems());
 
     this.sale.endCurrentSale(cashRecievedFromCustomer);
@@ -127,6 +128,13 @@ public class Controller {
     for (int i = 0; i < itemsInCurrentSale.length; i++) {
       this.exInventorySys.updateInventory(itemsInCurrentSale[i].getItentifier(), itemsInCurrentSale[i].getAmount());
     }
+  }
+
+  /**
+   * A function to collect a saleDTO of the current Sale
+   */
+  private void collectSaleDTO() {
+    this.saleDTO = this.sale.getSaleInfo();
   }
 
   /**
