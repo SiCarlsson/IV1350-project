@@ -69,7 +69,7 @@ public class Controller {
    *                       be added to the sale
    */
   public void addItemToSale(int itemIdentifier) {
-    this.sale.addItem(new Item(this.exInventorySys.getItemDTOFromDatabase(itemIdentifier)));
+    this.sale.addItem(this.exInventorySys.getItemDTOFromDatabase(itemIdentifier));
     this.sale.outputSaleLog(itemIdentifier);
   }
 

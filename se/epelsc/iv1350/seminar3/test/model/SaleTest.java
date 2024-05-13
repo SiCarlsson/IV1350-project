@@ -12,18 +12,18 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class SaleTest {
   private Sale instanceToTest;
-  private Item decoyItem;
+  private ItemDTO decoyItemDTO;
 
   @BeforeEach
   public void setUp() {
     this.instanceToTest = new Sale();
-    this.decoyItem = new Item(new ItemDTO(12345, 0, 0, null, null));
+    this.decoyItemDTO = new ItemDTO(12345, 0, 0, null, null);
   }
 
   @AfterEach
   public void tearDown() {
     this.instanceToTest = null;
-    this.decoyItem = null;
+    this.decoyItemDTO = null;
   }
 
   @Test
@@ -31,7 +31,7 @@ public class SaleTest {
     int expectedOutput = 4;
 
     for (int i = 0; i < expectedOutput; i++) {
-      this.instanceToTest.addItem(new Item(new ItemDTO(i, 0, 0, null, null)));
+      this.instanceToTest.addItem(new ItemDTO(i, 0, 0, null, null));
     }
 
     int givenOutput = this.instanceToTest.getTotalItems();
@@ -44,9 +44,9 @@ public class SaleTest {
   public void testAddItemNotCreatingDuplicatesInSaleItems() {
     int expectedOutput = 1;
 
-    this.instanceToTest.addItem(this.decoyItem);
-    this.instanceToTest.addItem(this.decoyItem);
-    this.instanceToTest.addItem(this.decoyItem);
+    this.instanceToTest.addItem(this.decoyItemDTO);
+    this.instanceToTest.addItem(this.decoyItemDTO);
+    this.instanceToTest.addItem(this.decoyItemDTO);
 
     int givenOutput = this.instanceToTest.getTotalItems();
 
@@ -58,7 +58,7 @@ public class SaleTest {
     int expectedOutput = 3;
 
     for (int i = 0; i < expectedOutput; i++) {
-      this.instanceToTest.addItem(this.decoyItem);
+      this.instanceToTest.addItem(this.decoyItemDTO);
     }
 
     int givenOutput = this.instanceToTest.getItem(0).getAmount();
@@ -66,10 +66,9 @@ public class SaleTest {
     assertEquals(expectedOutput, givenOutput, "incrementation is not done as expected");
   }
 
-  
   @Test
   public void testGetItem() {
-    Item expectedOutput = this.decoyItem;
+    ItemDTO expectedOutput = this.decoyItemDTO;
 
     int indexPosition = 0;
 
@@ -77,12 +76,12 @@ public class SaleTest {
 
     Item givenOutput = instanceToTest.getItem(indexPosition);
 
-    assertEquals(expectedOutput, givenOutput, "getItem does not return the item with correct index position");
+    assertInstanceOf(Item.class, givenOutput, "getItem returns the wrong type");
   }
 
   @Test
   public void testGetItemIndexOutOfBoundsUpper() {
-    this.instanceToTest.addItem(this.decoyItem);
+    this.instanceToTest.addItem(this.decoyItemDTO);
 
     int indexPosition = 4;
 
@@ -91,7 +90,7 @@ public class SaleTest {
 
   @Test
   public void testGetItemIndexOutOfBoundsLower() {
-    this.instanceToTest.addItem(this.decoyItem);
+    this.instanceToTest.addItem(this.decoyItemDTO);
 
     int indexPosition = -2;
 

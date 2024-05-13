@@ -3,6 +3,8 @@ package se.epelsc.iv1350.seminar3.source.model;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+import se.epelsc.iv1350.seminar3.source.integration.ItemDTO;
+
 public class Sale {
   private Receipt receipt;
   private Item[] items;
@@ -40,12 +42,13 @@ public class Sale {
    * 
    * @param item An instance of item containing the item that should be addded
    */
-  public void addItem(Item item) {
-    if (checkItemAlreadyExists(item)) {
-      addToExistingItem(item.getItentifier());
+  public void addItem(ItemDTO itemDTO) {
+    Item newItem = new Item(itemDTO);
+    if (checkItemAlreadyExists(newItem)) {
+      addToExistingItem(newItem.getItentifier());
     } else {
       this.items = expandArray();
-      insertItem(item);
+      insertItem(newItem);
     }
   }
 

@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class RecieptTest {
   private Sale sale;
   private Receipt instanceToTest;
-  private Item decoyItem;
+  private ItemDTO decoyItemDTO;
 
   @Before
   public void preSetUp() {
@@ -27,14 +27,14 @@ public class RecieptTest {
   public void setUp() {
     this.sale = new Sale();
     this.instanceToTest = new Receipt(sale);
-    this.decoyItem = new Item(new ItemDTO(12345, 0, 0, null, null));
+    this.decoyItemDTO = new ItemDTO(12345, 0, 0, null, null);
   }
 
   @AfterEach
   public void tearDown() {
     this.sale = null;
     this.instanceToTest = null;
-    this.decoyItem = null;
+    this.decoyItemDTO = null;
   }
 
   @Test
@@ -45,10 +45,10 @@ public class RecieptTest {
     double VAT = 0.25;
     double totalPrice = amount * price;
 
-    this.decoyItem = new Item(new ItemDTO(12345, price, VAT, expectedName, null));
+    this.decoyItemDTO = new ItemDTO(12345, price, VAT, expectedName, null);
 
-    this.sale.addItem(decoyItem);
-    this.sale.addItem(decoyItem);
+    this.sale.addItem(this.decoyItemDTO);
+    this.sale.addItem(this.decoyItemDTO);
 
     this.instanceToTest = this.sale.getReceipt();
     this.instanceToTest.createReceipt();
@@ -72,9 +72,9 @@ public class RecieptTest {
     double priceOfSecondProduct = 75.43;
     double priceOfThirdProduct = 12.19;
 
-    this.sale.addItem(new Item(new ItemDTO(1, priceOfFirstProduct, 0, null, null)));
-    this.sale.addItem(new Item(new ItemDTO(2, priceOfSecondProduct, 0, null, null)));
-    this.sale.addItem(new Item(new ItemDTO(3, priceOfThirdProduct, 0, null, null)));
+    this.sale.addItem(new ItemDTO(1, priceOfFirstProduct, 0, null, null));
+    this.sale.addItem(new ItemDTO(2, priceOfSecondProduct, 0, null, null));
+    this.sale.addItem(new ItemDTO(3, priceOfThirdProduct, 0, null, null));
 
     this.instanceToTest = this.sale.getReceipt();
     this.instanceToTest.createReceipt();
