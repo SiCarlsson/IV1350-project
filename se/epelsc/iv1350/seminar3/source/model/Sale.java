@@ -8,6 +8,7 @@ import se.epelsc.iv1350.seminar3.source.integration.ItemDTO;
 public class Sale {
   private Receipt receipt;
   private Item[] items;
+  private SaleDTO saleDTO;
 
   /**
    * Constructor
@@ -15,6 +16,7 @@ public class Sale {
   public Sale() {
     this.items = new Item[0];
     this.receipt = new Receipt(this);
+    this.saleDTO = new SaleDTO(this);
   }
 
   /**
@@ -50,6 +52,7 @@ public class Sale {
       this.items = expandArray();
       insertItem(newItem);
     }
+    setSaleDTO(this);
   }
 
   /**
@@ -162,7 +165,16 @@ public class Sale {
    * @return SaleDTO based on the current sale
    */
   public SaleDTO getSaleInfo() {
-    return new SaleDTO(this);
+    return this.saleDTO;
+  }
+
+  /**
+   * Function updates the SaleDTO variable with new information
+   * 
+   * @param sale The current sale
+   */
+  private void setSaleDTO(Sale sale) {
+    this.saleDTO = new SaleDTO(sale);
   }
 
   // TODO: PACKAGE PRIVATE
