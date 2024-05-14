@@ -5,7 +5,6 @@ import se.epelsc.iv1350.seminar3.source.integration.ExternalDiscountDatabase;
 import se.epelsc.iv1350.seminar3.source.integration.ExternalInventorySystem;
 import se.epelsc.iv1350.seminar3.source.integration.ExternalSystemCreator;
 import se.epelsc.iv1350.seminar3.source.integration.Printer;
-import se.epelsc.iv1350.seminar3.source.model.Item;
 import se.epelsc.iv1350.seminar3.source.model.Payment;
 import se.epelsc.iv1350.seminar3.source.model.Register;
 import se.epelsc.iv1350.seminar3.source.model.Sale;
@@ -82,14 +81,7 @@ public class Controller {
    *                                  to pay for the sale
    */
   private void handlePayment(double cashRecievedFromCustomer) {
-    double totalCost = 0;
-
-    for (int i = 0; i < this.sale.getTotalItems(); i++) {
-      totalCost += this.sale.getItem(i).getTotalItemPrice();
-    }
-
-    this.payment.updateRegisterAmount(cashRecievedFromCustomer, totalCost);
-
+    this.payment.updateRegisterAmount(cashRecievedFromCustomer, this.saleDTO.getTotalCostOfSale());
     this.sale.getReceipt().setCashPaid(cashRecievedFromCustomer);
   }
 
@@ -108,7 +100,7 @@ public class Controller {
    */
   public void endSale(double cashRecievedFromCustomer) {
     handlePayment(cashRecievedFromCustomer);
-    updateExternalSystems(cashRecievedFromCustomer, this.saleDTO.getItems());
+    updateExternalSystems(cashRecievedFromCustomer);
     printReceipt();
   }
 
@@ -117,15 +109,10 @@ public class Controller {
    * 
    * @param cashReciefvedFromCustomer The amount of money recieved by the customer
    *                                  to pay for the sale
-   * @param itemsInCurrentSale        Holds an Item list of all items in a current
-   *                                  sale
    */
-  private void updateExternalSystems(double cashRecievedFromCustomer, Item[] itemsInCurrentSale) {
+  private void updateExternalSystems(double cashRecievedFromCustomer) {
     this.exAccountingSys.updateAccounting(cashRecievedFromCustomer);
-
-    for (int i = 0; i < itemsInCurrentSale.length; i++) {
-      this.exInventorySys.updateInventory(itemsInCurrentSale[i].getItentifier(), itemsInCurrentSale[i].getAmount());
-    }
+    this.exInventorySys.updateInventorySystem(this.saleDTO);
   }
 
   /**

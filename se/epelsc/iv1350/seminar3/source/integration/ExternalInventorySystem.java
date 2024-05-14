@@ -1,20 +1,33 @@
 package se.epelsc.iv1350.seminar3.source.integration;
 
+import se.epelsc.iv1350.seminar3.source.model.SaleDTO;
+
 public class ExternalInventorySystem {
   /**
-   * A function that updates the inventory system based on a sale
+   * A function that goes through all items in the saleDTO and then updates the external inventory system
    * 
-   * @params product ID, amount of that product
    */
-  public void updateInventory(int productId, int amount) {
-    
+  public void updateInventorySystem(SaleDTO saleDTO) {
+    for (int i = 0; i < saleDTO.getItems().length; i++) {
+      sendItemInformationToDatabase(saleDTO.getItems()[i].getItentifier(), saleDTO.getItems()[i].getAmount());
+    }
+  }
+
+  /**
+   * Function to send sale information to database
+   * 
+   * @param itemIdentifier
+   * @param itemAmount
+   */
+  private void sendItemInformationToDatabase(int itemIdentifier, int itemAmount) {
+
   }
 
   /**
    * Function collects ItemDTO from database here (not applicable during seminar3)
    * 
-   * @params itemIdentifier The identifier of the product that should be fetched
-   * from the database
+   * @param itemIdentifier The identifier of the product that should be fetched
+   *                       from the database
    */
   public ItemDTO getItemDTOFromDatabase(int itemIdentifier) {
     if (Integer.toString(itemIdentifier).equals("123456")) {
