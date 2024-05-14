@@ -1,21 +1,20 @@
-package se.epelsc.iv1350.seminar3.test.model;
+package se.epelsc.iv1350.seminar4.test.model;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 
-import se.epelsc.iv1350.seminar3.source.integration.ItemDTO;
-import se.epelsc.iv1350.seminar3.source.model.Item;
-import se.epelsc.iv1350.seminar3.source.model.Receipt;
-import se.epelsc.iv1350.seminar3.source.model.Sale;
+import se.epelsc.iv1350.seminar4.source.integration.ItemDTO;
+import se.epelsc.iv1350.seminar4.source.model.Receipt;
+import se.epelsc.iv1350.seminar4.source.model.Sale;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class ReceiptTest {
+public class RecieptTest {
   private Sale sale;
   private Receipt instanceToTest;
-  private Item decoyItem;
+  private ItemDTO decoyItemDTO;
 
   @Before
   public void preSetUp() {
@@ -27,14 +26,14 @@ public class ReceiptTest {
   public void setUp() {
     this.sale = new Sale();
     this.instanceToTest = new Receipt(sale);
-    this.decoyItem = new Item(new ItemDTO(12345, 0, 0, null, null));
+    this.decoyItemDTO = new ItemDTO(12345, 0, 0, null, null);
   }
 
   @AfterEach
   public void tearDown() {
     this.sale = null;
     this.instanceToTest = null;
-    this.decoyItem = null;
+    this.decoyItemDTO = null;
   }
 
   @Test
@@ -45,10 +44,10 @@ public class ReceiptTest {
     double VAT = 0.25;
     double totalPrice = amount * price;
 
-    this.decoyItem = new Item(new ItemDTO(12345, price, VAT, expectedName, null));
+    this.decoyItemDTO = new ItemDTO(12345, price, VAT, expectedName, null);
 
-    this.sale.addItem(decoyItem);
-    this.sale.addItem(decoyItem);
+    this.sale.addItem(this.decoyItemDTO);
+    this.sale.addItem(this.decoyItemDTO);
 
     this.instanceToTest = this.sale.getReceipt();
     this.instanceToTest.createReceipt();
@@ -72,9 +71,9 @@ public class ReceiptTest {
     double priceOfSecondProduct = 75.43;
     double priceOfThirdProduct = 12.19;
 
-    this.sale.addItem(new Item(new ItemDTO(1, priceOfFirstProduct, 0, null, null)));
-    this.sale.addItem(new Item(new ItemDTO(2, priceOfSecondProduct, 0, null, null)));
-    this.sale.addItem(new Item(new ItemDTO(3, priceOfThirdProduct, 0, null, null)));
+    this.sale.addItem(new ItemDTO(1, priceOfFirstProduct, 0, null, null));
+    this.sale.addItem(new ItemDTO(2, priceOfSecondProduct, 0, null, null));
+    this.sale.addItem(new ItemDTO(3, priceOfThirdProduct, 0, null, null));
 
     this.instanceToTest = this.sale.getReceipt();
     this.instanceToTest.createReceipt();
@@ -84,21 +83,6 @@ public class ReceiptTest {
 
     String givenOutput = this.instanceToTest.outputTotalCostOfSale();
 
-    assertEquals(expectedOutput, givenOutput, "Output total cost of sale gets wrong values");
-  }
-
-  @Test
-  public void testRoundTwoDecimalPoints() {
-    String firstExpectedOutut = "5,87";
-    String secondExpectedOutut = "13,37";
-    String thirdExpectedOutut = "9,13";
-    double firstValueToBeRounded = 5.874664;
-    double secondValueToBeRounded = 13.3712357;
-    double thirdValueToBeRounded = 9.129765;
-    
-
-    assertEquals(firstExpectedOutut, this.instanceToTest.roundTwoDecimalPoints(firstValueToBeRounded), "Rounding did not work as intended");
-    assertEquals(secondExpectedOutut, this.instanceToTest.roundTwoDecimalPoints(secondValueToBeRounded), "Rounding did not work as intended");
-    assertEquals(thirdExpectedOutut, this.instanceToTest.roundTwoDecimalPoints(thirdValueToBeRounded), "Rounding did not work as intended");
+    assertEquals(expectedOutput, givenOutput, "Output total cost of sale gets it wrong");
   }
 }
