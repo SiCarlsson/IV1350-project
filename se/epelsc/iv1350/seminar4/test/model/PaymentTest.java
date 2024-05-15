@@ -30,12 +30,11 @@ public class PaymentTest {
 
   @Test
   public void testUpdateRegisterAmount() {
-    double cashRecievedFromCustomer = 1337;
     double totalCost = 1221;
 
-    double expectedOutput = (cashRecievedFromCustomer - totalCost) + this.instanceToTest.getRegister().getMoneyInRegister();
+    double expectedOutput = (totalCost) + this.instanceToTest.getRegister().getMoneyInRegister();
     
-    this.instanceToTest.updateRegisterAmount(cashRecievedFromCustomer, totalCost);
+    this.instanceToTest.updateRegisterAmount(totalCost);
     double givenOutput = this.instanceToTest.getRegister().getMoneyInRegister();
 
     assertEquals(expectedOutput, givenOutput, "updateRegisterAmount does not update with the right amount");

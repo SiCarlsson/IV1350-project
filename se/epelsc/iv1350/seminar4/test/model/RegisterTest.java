@@ -23,7 +23,7 @@ public class RegisterTest {
 
   @Test
   public void testUpdateRegisterCorrectIncrementation() {
-    double testedInput = 110;
+    double testedInput = 110.87;
     double expectedOutput = this.instanceToTest.getMoneyInRegister() + testedInput;
     
     this.instanceToTest.updateRegister(testedInput);

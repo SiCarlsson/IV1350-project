@@ -6,7 +6,9 @@ import org.junit.jupiter.api.Test;
 
 import se.epelsc.iv1350.seminar4.source.controller.Controller;
 import se.epelsc.iv1350.seminar4.source.integration.ExternalSystemCreator;
+import se.epelsc.iv1350.seminar4.source.integration.ItemDTO;
 import se.epelsc.iv1350.seminar4.source.integration.Printer;
+import se.epelsc.iv1350.seminar4.source.model.Item;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -72,9 +74,9 @@ public class ControllerTest {
     this.instanceToTest.startSale();
 
     double testedInput = 110.99;
-    int defaultProductPrice = 10;
+    Item testItem = new Item(new ItemDTO(000000, 10, 0.06, null, null));
 
-    double expectedOutput = this.instanceToTest.getRegister().getMoneyInRegister() + testedInput - defaultProductPrice;
+    double expectedOutput = this.instanceToTest.getRegister().getMoneyInRegister() + testItem.getPrice();
 
     this.instanceToTest.addItemToSale(000000);
     this.instanceToTest.endSale(testedInput);

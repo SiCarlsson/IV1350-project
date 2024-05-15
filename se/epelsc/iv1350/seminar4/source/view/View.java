@@ -1,5 +1,7 @@
 package se.epelsc.iv1350.seminar4.source.view;
 
+import java.io.IOException;
+
 import se.epelsc.iv1350.seminar4.source.controller.Controller;
 import se.epelsc.iv1350.seminar4.source.model.Item;
 import se.epelsc.iv1350.seminar4.source.model.SaleDTO;
@@ -12,9 +14,13 @@ public class View {
    * Constructor
    * 
    * @param An instance of controller
+   * @throws IOException 
    */
-  public View(Controller contr) {
+  public View(Controller contr) throws IOException {
     this.contr = contr;
+    this.contr.addTotalRevenueObserver(new TotalRevenueView());
+    this.contr.addTotalRevenueObserver(new TotalRevenueFileOutput());
+    this.contr.addTotalRevenueObersersToSale();
   }
 
   /**

@@ -1,5 +1,8 @@
 package se.epelsc.iv1350.seminar4.source.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import se.epelsc.iv1350.seminar4.source.integration.ExternalAccountingSystem;
 import se.epelsc.iv1350.seminar4.source.integration.ExternalDiscountDatabase;
 import se.epelsc.iv1350.seminar4.source.integration.ExternalInventorySystem;
@@ -9,6 +12,7 @@ import se.epelsc.iv1350.seminar4.source.model.Payment;
 import se.epelsc.iv1350.seminar4.source.model.Register;
 import se.epelsc.iv1350.seminar4.source.model.Sale;
 import se.epelsc.iv1350.seminar4.source.model.SaleDTO;
+import se.epelsc.iv1350.seminar4.source.model.RegisterObserver;
 
 public class Controller {
   private Sale sale;
@@ -19,6 +23,7 @@ public class Controller {
   private ExternalAccountingSystem exAccountingSys;
   private ExternalDiscountDatabase exDiscountDb;
   private ExternalInventorySystem exInventorySys;
+  private List<RegisterObserver> totalRevenueObservers = new ArrayList<>();
 
   /**
    * Constructor
@@ -35,6 +40,8 @@ public class Controller {
     this.exInventorySys = exSysCreator.getInventorySystem();
     this.register = new Register();
     this.payment = new Payment(register);
+
+    startSale();
   }
 
   /**
@@ -42,7 +49,6 @@ public class Controller {
    */
   public void startSale() {
     this.sale = new Sale();
-    // this.payment = new Payment();
   }
 
   /**
@@ -81,7 +87,7 @@ public class Controller {
    *                                  to pay for the sale
    */
   private void handlePayment(double cashRecievedFromCustomer) {
-    this.payment.updateRegisterAmount(cashRecievedFromCustomer, this.saleDTO.getTotalCostOfSale());
+    this.payment.updateRegisterAmount(this.saleDTO.getTotalCostOfSale());
     this.sale.getReceipt().setCashPaid(cashRecievedFromCustomer);
   }
 
@@ -102,6 +108,7 @@ public class Controller {
     handlePayment(cashRecievedFromCustomer);
     updateExternalSystems(cashRecievedFromCustomer);
     printReceipt();
+    this.register.notifyTotalRevenueObservers();
   }
 
   /**
@@ -156,5 +163,21 @@ public class Controller {
    */
   public ExternalInventorySystem getExternalInventorySystem() {
     return this.exInventorySys;
+  }
+
+  /**
+   * Function adds an observer to total revenue
+   * 
+   * @param observer an observer that should be added
+   */
+  public void addTotalRevenueObserver(RegisterObserver observer) {
+    this.totalRevenueObservers.add(observer);
+  }
+
+  /**
+   * Function sends all observers to sale
+   */
+  public void addTotalRevenueObersersToSale() {
+    this.register.addAllTotalRevenueOberservers(this.totalRevenueObservers);
   }
 }

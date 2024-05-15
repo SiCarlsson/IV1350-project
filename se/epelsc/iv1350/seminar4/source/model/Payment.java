@@ -17,9 +17,8 @@ public class Payment {
    * @param cashRecievedFromCustomer The amount of money handed by the customer to pay for the current sale
    * @param totalCost The total cost of the current sale
    */
-  public void updateRegisterAmount(double cashRecievedFromCustomer, double totalCost) {
-    double newCashInRegister = cashRecievedFromCustomer - totalCost;
-    this.register.updateRegister(newCashInRegister);
+  public void updateRegisterAmount(double totalCost) {
+    this.register.updateRegister(totalCost);
   }
 
   /**
