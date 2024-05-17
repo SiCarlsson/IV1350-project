@@ -1,3 +1,5 @@
 Test.java
 Test.class
 *.class
+error_logs.txt
+total_revenue.txt

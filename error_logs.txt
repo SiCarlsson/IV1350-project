@@ -1,3 +1,0 @@
-Exception java.sql.SQLException: Database is unavailable was thrown
-Exception java.util.InputMismatchException: No item found with 1234567 identifier in the inventory catalog was thrown.
-Exception java.util.InputMismatchException: No item found with 1234567 identifier in the inventory catalog.
