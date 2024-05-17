@@ -21,22 +21,33 @@ public class Main {
     Controller contr = new Controller(printer, exSysCreator);
     View view = new View(contr);
 
-    view.cashierStartsSale();
-    view.cashierAddsItem(123456);
-    view.cashierAddsItem(123456);
-    view.cashierAddsItem(567890);
-    view.cashierEndSale(100);
+    final int firstSampleProductIdentifier = 123456;
+    final int secondSampleProductIdentifier = 567890;
+    final int firstSampleDiscountIdentifier = 123456;
+    final int secondSampleDiscountIdentifier = 567890;
+    final int thirdSampleDiscountIdentifier = 135790;
+    final int cashRecievedFromCustomer = 100;
+
 
     view.cashierStartsSale();
-    view.cashierAddsItem(123456);
-    view.cashierAddsItem(123456);
-    view.cashierAddsItem(567890);
-    view.cashierEndSale(100);
+    view.cashierAddsItem(firstSampleProductIdentifier);
+    view.cashierAddsItem(firstSampleProductIdentifier);
+    view.cashierAddsItem(secondSampleProductIdentifier);
+    view.userApplicableForDiscount(firstSampleDiscountIdentifier);
+    view.cashierEndSale(cashRecievedFromCustomer);
 
     view.cashierStartsSale();
-    view.cashierAddsItem(123456);
-    view.cashierAddsItem(123456);
-    view.cashierAddsItem(567890);
-    view.cashierEndSale(100);
+    view.cashierAddsItem(firstSampleProductIdentifier);
+    view.cashierAddsItem(firstSampleProductIdentifier);
+    view.cashierAddsItem(secondSampleProductIdentifier);
+    view.userApplicableForDiscount(secondSampleDiscountIdentifier);
+    view.cashierEndSale(cashRecievedFromCustomer);
+
+    view.cashierStartsSale();
+    view.cashierAddsItem(firstSampleProductIdentifier);
+    view.cashierAddsItem(firstSampleProductIdentifier);
+    view.cashierAddsItem(secondSampleProductIdentifier);
+    view.userApplicableForDiscount(thirdSampleDiscountIdentifier);
+    view.cashierEndSale(cashRecievedFromCustomer);
   }
 }

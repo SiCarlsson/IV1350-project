@@ -105,4 +105,8 @@ public class View {
     }
     System.out.println();
   }
+
+  public void userApplicableForDiscount(int discoundIdentifier) {
+    this.contr.applyDiscountToSale(discoundIdentifier);
+  }
 }

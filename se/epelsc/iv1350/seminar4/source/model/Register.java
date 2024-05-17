@@ -7,7 +7,7 @@ public class Register {
   private double moneyInRegister;
   private List<RegisterObserver> totalRevenueObservers = new ArrayList<>();
 
-  private final double startingCashInRegister = 150;
+  private final double startingCashInRegister = 100;
 
   /**
    * Constructor

@@ -42,6 +42,11 @@ public class Item {
     return this.price;
   }
 
+
+  public void setPrice(double newPrice) {
+    this.price = newPrice;
+  }
+
   /**
    * Getter function to retrieve ItemDTO VAT
    * 

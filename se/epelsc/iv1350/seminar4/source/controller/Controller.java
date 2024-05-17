@@ -180,4 +180,11 @@ public class Controller {
   public void addTotalRevenueObersersToSale() {
     this.register.addAllTotalRevenueOberservers(this.totalRevenueObservers);
   }
+
+  /**
+   * Function applies discount to sale if applicable
+   */
+  public void applyDiscountToSale(int discountID) {
+    this.saleDTO.applyDiscountOnCurrentSale(this.exDiscountDb.fetchDiscount(discountID));
+  }
 }
