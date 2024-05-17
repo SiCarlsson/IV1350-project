@@ -17,7 +17,7 @@ public class Main {
   public static void main(String[] args) throws IOException {
 
     Printer printer = new Printer();
-    ExternalSystemCreator exSysCreator = new ExternalSystemCreator();
+    ExternalSystemCreator exSysCreator = ExternalSystemCreator.getInstanceOfExternalSystemCreator();
     Controller contr = new Controller(printer, exSysCreator);
     View view = new View(contr);
 

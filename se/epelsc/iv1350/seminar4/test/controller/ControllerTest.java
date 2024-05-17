@@ -17,7 +17,7 @@ public class ControllerTest {
 
   @BeforeEach
   public void setUp() {
-    this.instanceToTest = new Controller(new Printer(), new ExternalSystemCreator());
+    this.instanceToTest = new Controller(new Printer(), ExternalSystemCreator.getInstanceOfExternalSystemCreator());
   }
 
   @AfterEach

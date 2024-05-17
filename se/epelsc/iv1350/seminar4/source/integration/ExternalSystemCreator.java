@@ -1,6 +1,7 @@
 package se.epelsc.iv1350.seminar4.source.integration;
 
 public class ExternalSystemCreator {
+  private static ExternalSystemCreator instanceOfExternalSystemCreator;
   private ExternalAccountingSystem externalAccountingSystem;
   private ExternalDiscountDatabase externalDiscountDatabase;
   private ExternalInventorySystem externalInventorySystem;
@@ -8,10 +9,22 @@ public class ExternalSystemCreator {
   /**
    * Constructor
    */
-  public ExternalSystemCreator() {
+  private ExternalSystemCreator() {
     externalAccountingSystem = new ExternalAccountingSystem();
     externalDiscountDatabase = new ExternalDiscountDatabase();
     externalInventorySystem = new ExternalInventorySystem();
+  }
+
+  /**
+   * Method to get the instance of ExternalSystemCreator (Singleton pattern)
+   * 
+   * @return the instance of ExternalSystemCreator used in the program
+   */
+  public static ExternalSystemCreator getInstanceOfExternalSystemCreator() {
+    if (instanceOfExternalSystemCreator == null) {
+      instanceOfExternalSystemCreator = new ExternalSystemCreator();
+    }
+    return instanceOfExternalSystemCreator;
   }
 
   /**
