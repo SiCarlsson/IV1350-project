@@ -149,7 +149,6 @@ public class Sale {
     return items[indexPosition];
   }
 
-  // TODO: PACKAGE PRIVATE
   /**
    * Function gets all items from the current sale
    * 
@@ -177,7 +176,6 @@ public class Sale {
     this.saleDTO = new SaleDTO(sale);
   }
 
-  // TODO: PACKAGE PRIVATE
   /**
    * Function to increment total price of sale as items are added
    * 
@@ -192,7 +190,6 @@ public class Sale {
     return totalPriceOfSale;
   }
 
-  // TODO: PACKAGE PRIVATE
   /**
    * Function to increment total VAT of sale as items are added
    * 

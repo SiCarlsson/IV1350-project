@@ -1,6 +1,8 @@
 package se.epelsc.iv1350.seminar4.source.view;
 
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.InputMismatchException;
 
 import se.epelsc.iv1350.seminar4.source.controller.Controller;
 import se.epelsc.iv1350.seminar4.source.model.Item;
@@ -14,7 +16,7 @@ public class View {
    * Constructor
    * 
    * @param An instance of controller
-   * @throws IOException 
+   * @throws IOException
    */
   public View(Controller contr) throws IOException {
     this.contr = contr;
@@ -35,10 +37,42 @@ public class View {
    * 
    * @param itemIdentifier The identifier of the item that should be added to the
    *                       sale
+   * @throws SQLException           If the database cannot be reached, the
+   *                                exception is thrown
+   * @throws InputMismatchException If the item cannot be found in the inventory
+   *                                system, the exception is thrown
    */
-  public void cashierAddsItem(int itemIdentifier) {
+  public void cashierAddsItem(int itemIdentifier) throws InputMismatchException, SQLException {
     contr.addItemToSale(itemIdentifier);
     outputSaleLog(itemIdentifier);
+  }
+
+  public void sampleRunOfThreeSales() throws InputMismatchException, SQLException {
+    final int firstSampleProductIdentifier = 123456;
+    final int secondSampleProductIdentifier = 567890;
+    final int firstSampleDiscountIdentifier = 123456;
+    final int secondSampleDiscountIdentifier = 567890;
+    final int thirdSampleDiscountIdentifier = 135790;
+    final int cashRecievedFromCustomer = 100;
+
+    cashierStartsSale();
+    cashierAddsItem(firstSampleProductIdentifier);
+    cashierAddsItem(firstSampleProductIdentifier);
+    cashierAddsItem(secondSampleProductIdentifier);
+    userApplicableForDiscount(firstSampleDiscountIdentifier);
+    cashierEndSale(cashRecievedFromCustomer);
+    cashierStartsSale();
+    cashierAddsItem(firstSampleProductIdentifier);
+    cashierAddsItem(firstSampleProductIdentifier);
+    cashierAddsItem(secondSampleProductIdentifier);
+    userApplicableForDiscount(secondSampleDiscountIdentifier);
+    cashierEndSale(cashRecievedFromCustomer);
+    cashierStartsSale();
+    cashierAddsItem(firstSampleProductIdentifier);
+    cashierAddsItem(firstSampleProductIdentifier);
+    cashierAddsItem(secondSampleProductIdentifier);
+    userApplicableForDiscount(thirdSampleDiscountIdentifier);
+    cashierEndSale(cashRecievedFromCustomer);
   }
 
   /**

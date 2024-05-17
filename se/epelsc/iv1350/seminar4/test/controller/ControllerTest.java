@@ -12,6 +12,9 @@ import se.epelsc.iv1350.seminar4.source.model.Item;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.sql.SQLException;
+import java.util.InputMismatchException;
+
 public class ControllerTest {
   private Controller instanceToTest;
 
@@ -33,9 +36,9 @@ public class ControllerTest {
   }
 
   @Test
-  public void testAddItemToSaleWithOneSpecificProduct() {
+  public void testAddItemToSaleWithOneSpecificProduct() throws InputMismatchException, SQLException {
     this.instanceToTest.startSale();
-    int expectedOutput = 12345;
+    int expectedOutput = 123456;
     this.instanceToTest.addItemToSale(expectedOutput);
     int givenOutput = this.instanceToTest.getSale().getItem(0).getItentifier();
 
@@ -43,14 +46,14 @@ public class ControllerTest {
   }
 
   @Test
-  public void testAddItemToSaleWithMultipleProducts() {
+  public void testAddItemToSaleWithMultipleProducts() throws InputMismatchException, SQLException {
     this.instanceToTest.startSale();
     
     int productIdentifierForFirstProduct, expectedOutputFirstProduct;
-    productIdentifierForFirstProduct = expectedOutputFirstProduct = 12345;
+    productIdentifierForFirstProduct = expectedOutputFirstProduct = 123456;
 
     int productIdentifierForSecondProduct, expectedOutputSecondProduct;
-    productIdentifierForSecondProduct = expectedOutputSecondProduct = 67890;
+    productIdentifierForSecondProduct = expectedOutputSecondProduct = 567890;
     
     this.instanceToTest.addItemToSale(productIdentifierForFirstProduct);
     this.instanceToTest.addItemToSale(productIdentifierForSecondProduct);
@@ -70,15 +73,15 @@ public class ControllerTest {
   }
 
   @Test
-  public void testHandlePaymentCorrectIncrementInRegister() {
+  public void testHandlePaymentCorrectIncrementInRegister() throws InputMismatchException, SQLException {
     this.instanceToTest.startSale();
 
     double testedInput = 110.99;
-    Item testItem = new Item(new ItemDTO(000000, 10, 0.06, null, null));
+    Item testItem = new Item(new ItemDTO(000000, 29.9, 0.06, null, null));
 
     double expectedOutput = this.instanceToTest.getRegister().getMoneyInRegister() + testItem.getPrice();
 
-    this.instanceToTest.addItemToSale(000000);
+    this.instanceToTest.addItemToSale(123456);
     this.instanceToTest.endSale(testedInput);
 
     double givenOutput = this.instanceToTest.getRegister().getMoneyInRegister();

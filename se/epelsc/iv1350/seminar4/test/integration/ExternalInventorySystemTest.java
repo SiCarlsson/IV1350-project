@@ -9,6 +9,9 @@ import se.epelsc.iv1350.seminar4.source.model.Item;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.sql.SQLException;
+import java.util.InputMismatchException;
+
 public class ExternalInventorySystemTest {
   private ExternalInventorySystem instanceToTest;
 
@@ -23,7 +26,7 @@ public class ExternalInventorySystemTest {
   }
 
   @Test
-  public void testFetchItemFromDatabase() {
+  public void testFetchItemFromDatabase() throws InputMismatchException, SQLException {
     
     Item testerItem = new Item(this.instanceToTest.getItemDTOFromDatabase(123456));
     
@@ -31,5 +34,16 @@ public class ExternalInventorySystemTest {
     String givenOutput = testerItem.getName();
 
     assertEquals(expectedOutput, givenOutput, "item is not fetched correctly");
+  }
+
+  @Test
+  public void testFaultyItemIdentifier() throws InputMismatchException, SQLException {
+    assertThrows(InputMismatchException.class, () -> new Item(this.instanceToTest.getItemDTOFromDatabase(13579)));
+  }
+
+  @Test
+  public void testFaultyConnectionToDatabase() {
+    this.instanceToTest.setConnectionToDatabase(false);
+    assertThrows(SQLException.class, () -> new Item(this.instanceToTest.getItemDTOFromDatabase(123456)));
   }
 }

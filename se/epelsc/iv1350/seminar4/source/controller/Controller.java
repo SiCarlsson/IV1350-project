@@ -1,6 +1,8 @@
 package se.epelsc.iv1350.seminar4.source.controller;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
 
 import se.epelsc.iv1350.seminar4.source.integration.ExternalAccountingSystem;
@@ -74,8 +76,12 @@ public class Controller {
    * 
    * @param itemIdentifier An integer containing the item identifier that should
    *                       be added to the sale
+   * @throws SQLException           If the database cannot be reached, the
+   *                                exception is thrown
+   * @throws InputMismatchException If the specified item cannot be found in the
+   *                                inventory catalog, the exception is thrown
    */
-  public void addItemToSale(int itemIdentifier) {
+  public void addItemToSale(int itemIdentifier) throws InputMismatchException, SQLException {
     this.sale.addItem(this.exInventorySys.getItemDTOFromDatabase(itemIdentifier));
     collectSaleDTO();
   }
