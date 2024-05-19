@@ -113,6 +113,9 @@ public class SaleDTO {
     }
   }
 
+  /**
+   * Functiuon updates the total cost of the sale
+   */
   private void updateTotalCostOfSale() {
     double totalCostOfSale = 0;
 

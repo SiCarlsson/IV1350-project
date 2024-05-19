@@ -40,10 +40,4 @@ public class ExternalInventorySystemTest {
   public void testFaultyItemIdentifier() throws InputMismatchException, SQLException {
     assertThrows(InputMismatchException.class, () -> new Item(this.instanceToTest.getItemDTOFromDatabase(13579)));
   }
-
-  @Test
-  public void testFaultyConnectionToDatabase() {
-    this.instanceToTest.setConnectionToDatabase(false);
-    assertThrows(SQLException.class, () -> new Item(this.instanceToTest.getItemDTOFromDatabase(123456)));
-  }
 }

@@ -1,10 +1,11 @@
 package se.epelsc.iv1350.seminar4.source.view;
 
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.InputMismatchException;
 
 import se.epelsc.iv1350.seminar4.source.controller.Controller;
+import se.epelsc.iv1350.seminar4.source.integration.FaultyItemIdentifierException;
+import se.epelsc.iv1350.seminar4.source.integration.ItemCatalogUnavailableException;
 import se.epelsc.iv1350.seminar4.source.model.Item;
 import se.epelsc.iv1350.seminar4.source.model.SaleDTO;
 import se.epelsc.iv1350.seminar4.source.util.Calculations;
@@ -18,7 +19,7 @@ public class View {
    * @param An instance of controller
    * @throws IOException
    */
-  public View(Controller contr) throws IOException {
+  public View(Controller contr) {
     this.contr = contr;
     this.contr.addTotalRevenueObserver(new TotalRevenueView());
     this.contr.addTotalRevenueObserver(new TotalRevenueFileOutput());
@@ -37,17 +38,19 @@ public class View {
    * 
    * @param itemIdentifier The identifier of the item that should be added to the
    *                       sale
-   * @throws SQLException           If the database cannot be reached, the
-   *                                exception is thrown
-   * @throws InputMismatchException If the item cannot be found in the inventory
-   *                                system, the exception is thrown
+   * @throws FaultyItemIdentifierException 
+   * @throws ItemCatalogUnavailableException If the database cannot be reached, the
+   *                                      exception is thrown
+   * @throws InputMismatchException       If the item cannot be found in the
+   *                                      inventory
+   *                                      system, the exception is thrown
    */
-  public void cashierAddsItem(int itemIdentifier) throws InputMismatchException, SQLException {
+  public void cashierAddsItem(int itemIdentifier) throws FaultyItemIdentifierException, ItemCatalogUnavailableException {
     contr.addItemToSale(itemIdentifier);
     outputSaleLog(itemIdentifier);
   }
 
-  public void sampleRunOfThreeSales() throws InputMismatchException, SQLException {
+  public void sampleRunOfThreeSales() throws InputMismatchException, ItemCatalogUnavailableException {
     final int firstSampleProductIdentifier = 123456;
     final int secondSampleProductIdentifier = 567890;
     final int firstSampleDiscountIdentifier = 123456;
@@ -61,12 +64,14 @@ public class View {
     cashierAddsItem(secondSampleProductIdentifier);
     userApplicableForDiscount(firstSampleDiscountIdentifier);
     cashierEndSale(cashRecievedFromCustomer);
+
     cashierStartsSale();
     cashierAddsItem(firstSampleProductIdentifier);
     cashierAddsItem(firstSampleProductIdentifier);
     cashierAddsItem(secondSampleProductIdentifier);
     userApplicableForDiscount(secondSampleDiscountIdentifier);
     cashierEndSale(cashRecievedFromCustomer);
+
     cashierStartsSale();
     cashierAddsItem(firstSampleProductIdentifier);
     cashierAddsItem(firstSampleProductIdentifier);
@@ -140,7 +145,12 @@ public class View {
     System.out.println();
   }
 
-  public void userApplicableForDiscount(int discoundIdentifier) {
-    this.contr.applyDiscountToSale(discoundIdentifier);
+  /**
+   * Method calls the controller to add discount to the current sale
+   * 
+   * @param discountIdentifier identifier of discount
+   */
+  public void userApplicableForDiscount(int discountIdentifier) {
+    this.contr.applyDiscountToSale(discountIdentifier);
   }
 }

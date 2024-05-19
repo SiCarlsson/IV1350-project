@@ -1,6 +1,5 @@
 package se.epelsc.iv1350.seminar4.source.controller;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
@@ -9,6 +8,8 @@ import se.epelsc.iv1350.seminar4.source.integration.ExternalAccountingSystem;
 import se.epelsc.iv1350.seminar4.source.integration.ExternalDiscountDatabase;
 import se.epelsc.iv1350.seminar4.source.integration.ExternalInventorySystem;
 import se.epelsc.iv1350.seminar4.source.integration.ExternalSystemCreator;
+import se.epelsc.iv1350.seminar4.source.integration.FaultyItemIdentifierException;
+import se.epelsc.iv1350.seminar4.source.integration.ItemCatalogUnavailableException;
 import se.epelsc.iv1350.seminar4.source.integration.Printer;
 import se.epelsc.iv1350.seminar4.source.model.Payment;
 import se.epelsc.iv1350.seminar4.source.model.Register;
@@ -76,12 +77,14 @@ public class Controller {
    * 
    * @param itemIdentifier An integer containing the item identifier that should
    *                       be added to the sale
-   * @throws SQLException           If the database cannot be reached, the
-   *                                exception is thrown
-   * @throws InputMismatchException If the specified item cannot be found in the
-   *                                inventory catalog, the exception is thrown
+   * @throws FaultyItemIdentifierException
+   * @throws ItemCatalogUnavailableException If the database cannot be reached,
+   *                                         the exception is thrown
+   * @throws InputMismatchException          If the specified item cannot be found
+   *                                         in the inventory catalog, the 
+   *                                         exception is thrown
    */
-  public void addItemToSale(int itemIdentifier) throws InputMismatchException, SQLException {
+  public void addItemToSale(int itemIdentifier) throws FaultyItemIdentifierException, ItemCatalogUnavailableException {
     this.sale.addItem(this.exInventorySys.getItemDTOFromDatabase(itemIdentifier));
     collectSaleDTO();
   }

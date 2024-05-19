@@ -35,12 +35,20 @@ public class Register {
     return this.moneyInRegister;
   }
 
+  /**
+   * Method adds new observers to RevenueObservers
+   * 
+   * @param observers an ArrayList of observers to add
+   */
   public void addAllTotalRevenueOberservers(List<RegisterObserver> observers) {
     this.totalRevenueObservers.addAll(observers);
   }
 
+  /**
+   * Function notifies all revenue observers
+   */
   public void notifyTotalRevenueObservers() {
-    for (RegisterObserver observer : totalRevenueObservers) {
+    for (RegisterObserver observer : this.totalRevenueObservers) {
       observer.updateTotalRevenue(this.moneyInRegister - this.startingCashInRegister);
     }
   }

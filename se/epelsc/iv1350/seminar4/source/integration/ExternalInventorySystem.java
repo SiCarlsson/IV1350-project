@@ -6,10 +6,12 @@ import java.util.InputMismatchException;
 import se.epelsc.iv1350.seminar4.source.model.SaleDTO;
 
 public class ExternalInventorySystem {
-  boolean connectionToDatabase;
+  private boolean connectionToDatabase;
+  private String FILE_NAME_ERROR_LOGS;
 
   public ExternalInventorySystem() {
     this.connectionToDatabase = true;
+    this.FILE_NAME_ERROR_LOGS = "error_logs.txt";
   }
 
   /**
@@ -55,15 +57,22 @@ public class ExternalInventorySystem {
    * 
    * @param itemIdentifier The identifier of the product that should be fetched
    *                       from the database
+   * @throws ItemCatalogUnavailableException 
    * @throws SQLException           If the database cannot be reached, the
    *                                exception is thrown
    * @throws InputMismatchException If the specified item cannot be found in the
    *                                inventory catalog, the exception is thrown
    */
-  public ItemDTO getItemDTOFromDatabase(int itemIdentifier) throws InputMismatchException, SQLException {
+  public ItemDTO getItemDTOFromDatabase(int itemIdentifier) throws ItemCatalogUnavailableException, FaultyItemIdentifierException {
+    String content;
 
     if (!getConnectionToDatabase()) {
-      throw new SQLException("Database is unavailable");
+      try {
+        throw new SQLException();
+      } catch (SQLException e) {
+        content = "Exception " + e + "was thrown. Database is unavailable";
+        throw new ItemCatalogUnavailableException(this.FILE_NAME_ERROR_LOGS, content);        
+      }
     }
 
     if (Integer.toString(itemIdentifier).equals("123456")) {
@@ -74,7 +83,11 @@ public class ExternalInventorySystem {
           "YouGoGo Blueberry 240g, low sugar youghurt, blueberry flavour");
     }
 
-    throw new InputMismatchException("No item found with " + itemIdentifier + " identifier in the inventory catalog");
+    try {
+      throw new InputMismatchException();
+    } catch (InputMismatchException e) {
+      content = "No item found with " + itemIdentifier + " identifier in the inventory catalog.";
+      throw new FaultyItemIdentifierException(this.FILE_NAME_ERROR_LOGS, content);
+    }
   }
-
 }
