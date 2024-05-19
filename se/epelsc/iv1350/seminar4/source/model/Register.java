@@ -40,7 +40,7 @@ public class Register {
    * 
    * @return the total revenue
    */
-  public double getTotalRevenue() {
+  private double getTotalRevenue() {
     return getMoneyInRegister() - this.startingCashInRegister;
   }
 
