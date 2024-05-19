@@ -36,6 +36,15 @@ public class Register {
   }
 
   /**
+   * Method gets the total revenue of all sales
+   * 
+   * @return the total revenue
+   */
+  public double getTotalRevenue() {
+    return getMoneyInRegister() - this.startingCashInRegister;
+  }
+
+  /**
    * Method adds new observers to RevenueObservers
    * 
    * @param observers an ArrayList of observers to add
@@ -49,7 +58,7 @@ public class Register {
    */
   public void notifyTotalRevenueObservers() {
     for (RegisterObserver observer : this.totalRevenueObservers) {
-      observer.updateTotalRevenue(this.moneyInRegister - this.startingCashInRegister);
+      observer.updateTotalRevenue(getTotalRevenue());
     }
   }
 }
