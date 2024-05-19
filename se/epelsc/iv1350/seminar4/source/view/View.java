@@ -127,7 +127,7 @@ public class View {
     String currency = saleDTO.getReceipt().getCurrency();
 
     System.out.println("End sale:");
-    System.out.println("Total cost (incl VAT): " + saleDTO.getTotalCostOfSale() + " " +
+    System.out.println("Total cost (incl VAT): " + Calculations.roundTwoDecimalPoints(saleDTO.getTotalCostOfSale()) + " " +
         currency);
     System.out.println();
 
