@@ -1,11 +1,12 @@
 package se.epelsc.iv1350.higherGradeTasks.source.view;
 
-import se.epelsc.iv1350.seminar4.source.util.Calculations;
 import se.epelsc.iv1350.seminar4.source.util.Textfiles;
+
+import java.io.IOException;
+
 import se.epelsc.iv1350.seminar4.source.model.RegisterObserver;
 
-public class TotalRevenueFileOutput implements RegisterObserver {
-
+public class TotalRevenueFileOutput extends TotalRevenueTemplate implements RegisterObserver {
   private static final String FILE_NAME = "total_revenue.txt";
 
   /**
@@ -22,8 +23,41 @@ public class TotalRevenueFileOutput implements RegisterObserver {
    */
   @Override
   public void updateTotalRevenue(double totalRevenue) {
-    String content = "Total revenue: " + Calculations.roundTwoDecimalPoints(totalRevenue) + " SEK";
-    Textfiles.writeToTextFile(FILE_NAME, content);
+    showTotalRevenue(totalRevenue);
+  }
+  
+  /**
+   * Functions holds the logic regarding showing the total revenue
+   * 
+   * @param totalRevenue the total revenue of all sales so far
+   */
+  private void showTotalRevenue(double totalRevenue) {
+    try {
+      doShowTotalRevenue(totalRevenue);
+    } catch (Exception e) {
+      handleErrors(e);
+    }
+  }
+  
+  /**
+   * Method logs the total revenue to a file
+   * 
+   * @param totalRevenue the total revenue of all sales so far
+   */
+  @Override
+  protected void doShowTotalRevenue(double totalRevenue) throws Exception {
+    Textfiles.writeToTextFile(FILE_NAME, createStringWithTotalRevenue(totalRevenue));
+  }
+
+  /**
+   * Method handles errors while logging the total revenue
+   * 
+   * @param e the exception that needs to be handled
+   */
+  @Override
+  protected void handleErrors(Exception e) {
+    Textfiles.writeToTextFile(FILE_NAME_ERROR_LOGS,
+    "An error occured while logging total revenue to " + FILE_NAME_ERROR_LOGS + " " + e.getStackTrace() + "\n");
   }
 
 }
