@@ -37,14 +37,16 @@ public class View {
    * 
    * @param itemIdentifier The identifier of the item that should be added to the
    *                       sale
-   * @throws FaultyItemIdentifierException 
-   * @throws ItemCatalogUnavailableException If the database cannot be reached, the
-   *                                      exception is thrown
-   * @throws InputMismatchException       If the item cannot be found in the
-   *                                      inventory
-   *                                      system, the exception is thrown
+   * @throws FaultyItemIdentifierException
+   * @throws ItemCatalogUnavailableException If the database cannot be reached,
+   *                                         the
+   *                                         exception is thrown
+   * @throws InputMismatchException          If the item cannot be found in the
+   *                                         inventory
+   *                                         system, the exception is thrown
    */
-  public void cashierAddsItem(int itemIdentifier) throws FaultyItemIdentifierException, ItemCatalogUnavailableException {
+  public void cashierAddsItem(int itemIdentifier)
+      throws FaultyItemIdentifierException, ItemCatalogUnavailableException {
     contr.addItemToSale(itemIdentifier);
     outputSaleLog(itemIdentifier);
   }
@@ -52,31 +54,55 @@ public class View {
   public void sampleRunOfThreeSales() throws InputMismatchException, ItemCatalogUnavailableException {
     final int firstSampleProductIdentifier = 123456;
     final int secondSampleProductIdentifier = 567890;
+
     final int firstSampleDiscountIdentifier = 123456;
     final int secondSampleDiscountIdentifier = 567890;
     final int thirdSampleDiscountIdentifier = 135790;
+
     final int cashRecievedFromCustomer = 100;
 
+    final int[] sampleProducts = { firstSampleProductIdentifier, firstSampleProductIdentifier,
+        secondSampleProductIdentifier };
+
     cashierStartsSale();
-    cashierAddsItem(firstSampleProductIdentifier);
-    cashierAddsItem(firstSampleProductIdentifier);
-    cashierAddsItem(secondSampleProductIdentifier);
+    for (int i = 0; i < sampleProducts.length; i++) {
+      try {
+        cashierAddsItem(sampleProducts[i]);
+      } catch (FaultyItemIdentifierException eFaulty) {
+        System.err.println("The item does not exist in the item catalog...\n");
+      } catch (ItemCatalogUnavailableException eItem) {
+        System.err.println("The item catalog is not available at the moment...\n");
+      }
+    }
     userApplicableForDiscount(firstSampleDiscountIdentifier);
     cashierEndSale(cashRecievedFromCustomer);
 
     cashierStartsSale();
-    cashierAddsItem(firstSampleProductIdentifier);
-    cashierAddsItem(firstSampleProductIdentifier);
-    cashierAddsItem(secondSampleProductIdentifier);
+    for (int i = 0; i < sampleProducts.length; i++) {
+      try {
+        cashierAddsItem(sampleProducts[i]);
+      } catch (FaultyItemIdentifierException eFaulty) {
+        System.err.println("The item does not exist in the item catalog...\n");
+      } catch (ItemCatalogUnavailableException eItem) {
+        System.err.println("The item catalog is not available at the moment...\n");
+      }
+    }
     userApplicableForDiscount(secondSampleDiscountIdentifier);
     cashierEndSale(cashRecievedFromCustomer);
 
     cashierStartsSale();
-    cashierAddsItem(firstSampleProductIdentifier);
-    cashierAddsItem(firstSampleProductIdentifier);
-    cashierAddsItem(secondSampleProductIdentifier);
+    for (int i = 0; i < sampleProducts.length; i++) {
+      try {
+        cashierAddsItem(sampleProducts[i]);
+      } catch (FaultyItemIdentifierException eFaulty) {
+        System.err.println("The item does not exist in the item catalog...\n");
+      } catch (ItemCatalogUnavailableException eItem) {
+        System.err.println("The item catalog is not available at the moment...\n");
+      }
+    }
     userApplicableForDiscount(thirdSampleDiscountIdentifier);
     cashierEndSale(cashRecievedFromCustomer);
+
   }
 
   /**
@@ -126,8 +152,9 @@ public class View {
     String currency = saleDTO.getReceipt().getCurrency();
 
     System.out.println("End sale:");
-    System.out.println("Total cost (incl VAT): " + Calculations.roundTwoDecimalPoints(saleDTO.getTotalCostOfSale()) + " " +
-        currency);
+    System.out
+        .println("Total cost (incl VAT): " + Calculations.roundTwoDecimalPoints(saleDTO.getTotalCostOfSale()) + " " +
+            currency);
     System.out.println();
 
     System.out.println("Customer pays " + cashRecievedFromCustomer + " " +
