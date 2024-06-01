@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.InputMismatchException;
 
 import se.epelsc.iv1350.seminar4.source.model.SaleDTO;
+import se.epelsc.iv1350.seminar4.source.util.Textfiles;
 
 public class ExternalInventorySystem {
   private boolean connectionToDatabase;
@@ -71,7 +72,8 @@ public class ExternalInventorySystem {
         throw new SQLException();
       } catch (SQLException e) {
         content = "Exception " + e + "was thrown. Database is unavailable";
-        throw new ItemCatalogUnavailableException(this.FILE_NAME_ERROR_LOGS, content);        
+        Textfiles.writeToTextFile(this.FILE_NAME_ERROR_LOGS, content);     
+        throw new ItemCatalogUnavailableException(content);   
       }
     }
 
@@ -87,7 +89,8 @@ public class ExternalInventorySystem {
       throw new InputMismatchException();
     } catch (InputMismatchException e) {
       content = "No item found with " + itemIdentifier + " identifier in the inventory catalog.";
-      throw new FaultyItemIdentifierException(this.FILE_NAME_ERROR_LOGS, content);
+      Textfiles.writeToTextFile(this.FILE_NAME_ERROR_LOGS, content);     
+      throw new FaultyItemIdentifierException(content);
     }
   }
 }
