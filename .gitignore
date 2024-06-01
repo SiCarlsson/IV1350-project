@@ -1,5 +1,4 @@
-Test.java
-Test.class
+classes/
 *.class
 error_logs.txt
 total_revenue.txt
