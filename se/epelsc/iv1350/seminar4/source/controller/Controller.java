@@ -114,7 +114,6 @@ public class Controller {
     handlePayment(cashRecievedFromCustomer);
     updateExternalSystems(cashRecievedFromCustomer);
     printReceipt();
-    this.register.notifyTotalRevenueObservers();
   }
 
   /**

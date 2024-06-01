@@ -24,6 +24,7 @@ public class Register {
    */
   public void updateRegister(double netRecievedCash) {
     this.moneyInRegister += netRecievedCash;
+    notifyTotalRevenueObservers();
   }
 
   /**
@@ -56,7 +57,7 @@ public class Register {
   /**
    * Function notifies all revenue observers
    */
-  public void notifyTotalRevenueObservers() {
+  private void notifyTotalRevenueObservers() {
     for (RegisterObserver observer : this.totalRevenueObservers) {
       observer.updateTotalRevenue(getTotalRevenue());
     }
