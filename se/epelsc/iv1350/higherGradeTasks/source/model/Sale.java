@@ -3,7 +3,7 @@ package se.epelsc.iv1350.higherGradeTasks.source.model;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-import se.epelsc.iv1350.seminar4.source.integration.ItemDTO;
+import se.epelsc.iv1350.higherGradeTasks.source.integration.ItemDTO;
 
 public class Sale {
   private Receipt receipt;

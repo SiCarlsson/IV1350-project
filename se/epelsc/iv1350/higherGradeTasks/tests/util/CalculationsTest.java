@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
-import se.epelsc.iv1350.seminar4.source.util.Calculations;
+import se.epelsc.iv1350.higherGradeTasks.source.util.Calculations;
 
 public class CalculationsTest {
   @Test

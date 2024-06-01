@@ -2,18 +2,18 @@ package se.epelsc.iv1350.higherGradeTasks.source.controller;
 
 import java.util.InputMismatchException;
 
-import se.epelsc.iv1350.seminar4.source.integration.ExternalAccountingSystem;
-import se.epelsc.iv1350.seminar4.source.integration.ExternalDiscountDatabase;
-import se.epelsc.iv1350.seminar4.source.integration.ExternalInventorySystem;
-import se.epelsc.iv1350.seminar4.source.integration.ExternalSystemCreator;
-import se.epelsc.iv1350.seminar4.source.integration.FaultyItemIdentifierException;
-import se.epelsc.iv1350.seminar4.source.integration.ItemCatalogUnavailableException;
-import se.epelsc.iv1350.seminar4.source.integration.Printer;
-import se.epelsc.iv1350.seminar4.source.model.Payment;
-import se.epelsc.iv1350.seminar4.source.model.Register;
-import se.epelsc.iv1350.seminar4.source.model.Sale;
-import se.epelsc.iv1350.seminar4.source.model.SaleDTO;
-import se.epelsc.iv1350.seminar4.source.model.RegisterObserver;
+import se.epelsc.iv1350.higherGradeTasks.source.integration.ExternalAccountingSystem;
+import se.epelsc.iv1350.higherGradeTasks.source.integration.ExternalDiscountDatabase;
+import se.epelsc.iv1350.higherGradeTasks.source.integration.ExternalInventorySystem;
+import se.epelsc.iv1350.higherGradeTasks.source.integration.ExternalSystemCreator;
+import se.epelsc.iv1350.higherGradeTasks.source.integration.FaultyItemIdentifierException;
+import se.epelsc.iv1350.higherGradeTasks.source.integration.ItemCatalogUnavailableException;
+import se.epelsc.iv1350.higherGradeTasks.source.integration.Printer;
+import se.epelsc.iv1350.higherGradeTasks.source.model.Payment;
+import se.epelsc.iv1350.higherGradeTasks.source.model.Register;
+import se.epelsc.iv1350.higherGradeTasks.source.model.Sale;
+import se.epelsc.iv1350.higherGradeTasks.source.model.SaleDTO;
+import se.epelsc.iv1350.higherGradeTasks.source.model.RegisterObserver;
 
 public class Controller {
   private Sale sale;

@@ -6,9 +6,10 @@ import org.junit.Test;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 
-import se.epelsc.iv1350.seminar4.source.integration.ItemDTO;
-import se.epelsc.iv1350.seminar4.source.model.Receipt;
-import se.epelsc.iv1350.seminar4.source.model.Sale;
+import se.epelsc.iv1350.higherGradeTasks.source.integration.ItemDTO;
+import se.epelsc.iv1350.higherGradeTasks.source.model.Item;
+import se.epelsc.iv1350.higherGradeTasks.source.model.Receipt;
+import se.epelsc.iv1350.higherGradeTasks.source.model.Sale;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -85,5 +86,25 @@ public class RecieptTest {
     String givenOutput = this.instanceToTest.outputTotalCostOfSale();
 
     assertEquals(expectedOutput, givenOutput, "Output total cost of sale gets it wrong");
+  }
+
+  @Test
+  public void testCorrectReceiptPrint() {
+    // int firstItemIdentifier = 123456;
+    // double firstItemPrice = 24.9;
+    // int secondItemIdentifier = 567890;
+    // double secondItemPrice = 24.9;
+    // this.sale.addItem(new ItemDTO(firstItemIdentifier, null, null, null, null));
+    // this.sale.addItem(new ItemDTO(firstItemIdentifier, null, null, null, null));
+    // this.sale.addItem(new ItemDTO(secondItemIdentifier, null, null, null, null));
+
+    // Item firstItem = this.contr.getSale().getItem(0);
+    // Item secondItem = this.contr.getSale().getItem(1);
+
+
+    // String expectedStarterString = "------------------ BEGIN RECEIPT ------------------";
+    
+    
+    // String expectedEndString = "------------------- END RECEIPT -------------------";
   }
 }

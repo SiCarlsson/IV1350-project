@@ -4,11 +4,11 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import se.epelsc.iv1350.seminar4.source.controller.Controller;
-import se.epelsc.iv1350.seminar4.source.integration.ExternalSystemCreator;
-import se.epelsc.iv1350.seminar4.source.integration.ItemDTO;
-import se.epelsc.iv1350.seminar4.source.integration.Printer;
-import se.epelsc.iv1350.seminar4.source.model.Item;
+import se.epelsc.iv1350.higherGradeTasks.source.controller.Controller;
+import se.epelsc.iv1350.higherGradeTasks.source.integration.ExternalSystemCreator;
+import se.epelsc.iv1350.higherGradeTasks.source.integration.ItemDTO;
+import se.epelsc.iv1350.higherGradeTasks.source.integration.Printer;
+import se.epelsc.iv1350.higherGradeTasks.source.model.Item;
 
 import static org.junit.jupiter.api.Assertions.*;
 

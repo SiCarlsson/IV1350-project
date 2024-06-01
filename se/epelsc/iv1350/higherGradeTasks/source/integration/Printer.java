@@ -1,6 +1,6 @@
 package se.epelsc.iv1350.higherGradeTasks.source.integration;
 
-import se.epelsc.iv1350.seminar4.source.model.Receipt;
+import se.epelsc.iv1350.higherGradeTasks.source.model.Receipt;
 
 public class Printer {
   /**

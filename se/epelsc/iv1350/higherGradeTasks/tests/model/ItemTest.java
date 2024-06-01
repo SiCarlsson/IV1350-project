@@ -3,8 +3,8 @@ package se.epelsc.iv1350.higherGradeTasks.tests.model;
 import org.junit.Test;
 import org.junit.jupiter.api.AfterEach;
 
-import se.epelsc.iv1350.seminar4.source.integration.ItemDTO;
-import se.epelsc.iv1350.seminar4.source.model.Item;
+import se.epelsc.iv1350.higherGradeTasks.source.integration.ItemDTO;
+import se.epelsc.iv1350.higherGradeTasks.source.model.Item;
 
 import static org.junit.jupiter.api.Assertions.*;
 

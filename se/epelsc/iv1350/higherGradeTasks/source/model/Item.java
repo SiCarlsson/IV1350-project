@@ -1,6 +1,6 @@
 package se.epelsc.iv1350.higherGradeTasks.source.model;
 
-import se.epelsc.iv1350.seminar4.source.integration.ItemDTO;
+import se.epelsc.iv1350.higherGradeTasks.source.integration.ItemDTO;
 
 public class Item {
   private int identifier;

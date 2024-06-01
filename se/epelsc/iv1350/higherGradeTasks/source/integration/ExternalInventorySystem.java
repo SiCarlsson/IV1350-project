@@ -3,8 +3,8 @@ package se.epelsc.iv1350.higherGradeTasks.source.integration;
 import java.sql.SQLException;
 import java.util.InputMismatchException;
 
-import se.epelsc.iv1350.seminar4.source.model.SaleDTO;
-import se.epelsc.iv1350.seminar4.source.util.Textfiles;
+import se.epelsc.iv1350.higherGradeTasks.source.model.SaleDTO;
+import se.epelsc.iv1350.higherGradeTasks.source.util.Textfiles;
 
 public class ExternalInventorySystem {
   private boolean connectionToDatabase;
@@ -54,7 +54,7 @@ public class ExternalInventorySystem {
   }
 
   /**
-   * Function collects ItemDTO from database here (not applicable during seminar4)
+   * Function collects ItemDTO from database here (not applicable during higherGradeTasks)
    * 
    * @param itemIdentifier The identifier of the product that should be fetched
    *                       from the database

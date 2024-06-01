@@ -6,8 +6,8 @@ import org.junit.Test;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 
-import se.epelsc.iv1350.seminar4.source.model.Payment;
-import se.epelsc.iv1350.seminar4.source.model.Register;
+import se.epelsc.iv1350.higherGradeTasks.source.model.Payment;
+import se.epelsc.iv1350.higherGradeTasks.source.model.Register;
 
 import static org.junit.jupiter.api.Assertions.*;
 

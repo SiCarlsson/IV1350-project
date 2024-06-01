@@ -1,7 +1,7 @@
 package se.epelsc.iv1350.higherGradeTasks.source.view;
 
 import se.epelsc.iv1350.higherGradeTasks.source.util.Textfiles;
-import se.epelsc.iv1350.seminar4.source.model.RegisterObserver;
+import se.epelsc.iv1350.higherGradeTasks.source.model.RegisterObserver;
 
 public class TotalRevenueView extends TotalRevenueTemplate implements RegisterObserver {
   @Override

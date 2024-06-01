@@ -1,10 +1,10 @@
 package se.epelsc.iv1350.higherGradeTasks.source.view;
 
-import se.epelsc.iv1350.seminar4.source.util.Textfiles;
+import se.epelsc.iv1350.higherGradeTasks.source.util.Textfiles;
 
 import java.io.IOException;
 
-import se.epelsc.iv1350.seminar4.source.model.RegisterObserver;
+import se.epelsc.iv1350.higherGradeTasks.source.model.RegisterObserver;
 
 public class TotalRevenueFileOutput extends TotalRevenueTemplate implements RegisterObserver {
   private static final String FILE_NAME = "total_revenue.txt";

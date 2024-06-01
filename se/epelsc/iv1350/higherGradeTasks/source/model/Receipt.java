@@ -1,6 +1,6 @@
 package se.epelsc.iv1350.higherGradeTasks.source.model;
 
-import se.epelsc.iv1350.seminar4.source.util.Calculations;
+import se.epelsc.iv1350.higherGradeTasks.source.util.Calculations;
 
 public class Receipt {
   private String starterString;

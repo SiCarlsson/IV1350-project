@@ -3,12 +3,12 @@ package se.epelsc.iv1350.higherGradeTasks.source.view;
 import java.io.IOException;
 import java.util.InputMismatchException;
 
-import se.epelsc.iv1350.seminar4.source.controller.Controller;
-import se.epelsc.iv1350.seminar4.source.integration.FaultyItemIdentifierException;
-import se.epelsc.iv1350.seminar4.source.integration.ItemCatalogUnavailableException;
-import se.epelsc.iv1350.seminar4.source.model.Item;
-import se.epelsc.iv1350.seminar4.source.model.SaleDTO;
-import se.epelsc.iv1350.seminar4.source.util.Calculations;
+import se.epelsc.iv1350.higherGradeTasks.source.controller.Controller;
+import se.epelsc.iv1350.higherGradeTasks.source.integration.FaultyItemIdentifierException;
+import se.epelsc.iv1350.higherGradeTasks.source.integration.ItemCatalogUnavailableException;
+import se.epelsc.iv1350.higherGradeTasks.source.model.Item;
+import se.epelsc.iv1350.higherGradeTasks.source.model.SaleDTO;
+import se.epelsc.iv1350.higherGradeTasks.source.util.Calculations;
 
 public class View {
   private Controller contr;

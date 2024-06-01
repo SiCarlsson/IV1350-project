@@ -4,10 +4,10 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.InputMismatchException;
 
-import se.epelsc.iv1350.seminar4.source.controller.Controller;
-import se.epelsc.iv1350.seminar4.source.integration.ExternalSystemCreator;
-import se.epelsc.iv1350.seminar4.source.integration.Printer;
-import se.epelsc.iv1350.seminar4.source.view.View;
+import se.epelsc.iv1350.higherGradeTasks.source.controller.Controller;
+import se.epelsc.iv1350.higherGradeTasks.source.integration.ExternalSystemCreator;
+import se.epelsc.iv1350.higherGradeTasks.source.integration.Printer;
+import se.epelsc.iv1350.higherGradeTasks.source.view.View;
 
 public class Main {
   /**
