@@ -25,7 +25,7 @@ public class TotalRevenueFileOutput extends TotalRevenueTemplate implements Regi
   public void updateTotalRevenue(double totalRevenue) {
     showTotalRevenue(totalRevenue);
   }
-  
+
   /**
    * Functions holds the logic regarding showing the total revenue
    * 
@@ -38,11 +38,13 @@ public class TotalRevenueFileOutput extends TotalRevenueTemplate implements Regi
       handleErrors(e);
     }
   }
-  
+
   /**
-   * Method logs the total revenue to a file
+   * Method stores the total revenue to file
    * 
-   * @param totalRevenue the total revenue of all sales so far
+   * @param the total revenue of all sales so far
+   * 
+   * @throws error while logging to the file
    */
   @Override
   protected void doShowTotalRevenue(double totalRevenue) throws Exception {
@@ -57,7 +59,7 @@ public class TotalRevenueFileOutput extends TotalRevenueTemplate implements Regi
   @Override
   protected void handleErrors(Exception e) {
     Textfiles.writeToTextFile(FILE_NAME_ERROR_LOGS,
-    "An error occured while logging total revenue to " + FILE_NAME_ERROR_LOGS + " " + e.getStackTrace() + "\n");
+        "An error occured while logging total revenue to " + FILE_NAME_ERROR_LOGS + " " + e.getStackTrace() + "\n");
   }
 
 }

@@ -9,6 +9,11 @@ public class TotalRevenueView extends TotalRevenueTemplate implements RegisterOb
     showTotalRevenue(totalRevenue);
   }
 
+  /**
+   * Functions holds the logic regarding showing the total revenue
+   * 
+   * @param totalRevenue the total revenue of all sales so far
+   */
   private void showTotalRevenue(double totalRevenue) {
     try {
       doShowTotalRevenue(totalRevenue);

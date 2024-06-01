@@ -9,6 +9,12 @@ public abstract class TotalRevenueTemplate {
 
   protected abstract void handleErrors(Exception e);
 
+  /**
+   * Method handles the creation of a string with the total revenue
+   * 
+   * @param totalRevenue the current total revenue
+   * @return a formatted string with the total revenue
+   */
   protected String createStringWithTotalRevenue(double totalRevenue) {
     return "Total revenue: " + Calculations.roundTwoDecimalPoints(totalRevenue) + " SEK";
   }
