@@ -49,8 +49,8 @@ public class Register {
    * 
    * @param observers an ArrayList of observers to add
    */
-  public void addAllTotalRevenueOberservers(List<RegisterObserver> observers) {
-    this.totalRevenueObservers.addAll(observers);
+  public void addTotalRevenueObserver(RegisterObserver observers) {
+    this.totalRevenueObservers.add(observers);
   }
 
   /**

@@ -23,7 +23,6 @@ public class View {
     this.contr = contr;
     this.contr.addTotalRevenueObserver(new TotalRevenueView());
     this.contr.addTotalRevenueObserver(new TotalRevenueFileOutput());
-    this.contr.addTotalRevenueObersersToSale();
   }
 
   /**

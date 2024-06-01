@@ -1,8 +1,6 @@
 package se.epelsc.iv1350.seminar4.source.controller;
 
-import java.util.ArrayList;
 import java.util.InputMismatchException;
-import java.util.List;
 
 import se.epelsc.iv1350.seminar4.source.integration.ExternalAccountingSystem;
 import se.epelsc.iv1350.seminar4.source.integration.ExternalDiscountDatabase;
@@ -26,7 +24,6 @@ public class Controller {
   private ExternalAccountingSystem exAccountingSys;
   private ExternalDiscountDatabase exDiscountDb;
   private ExternalInventorySystem exInventorySys;
-  private List<RegisterObserver> totalRevenueObservers = new ArrayList<>();
 
   /**
    * Constructor
@@ -175,19 +172,10 @@ public class Controller {
   }
 
   /**
-   * Function adds an observer to total revenue
-   * 
-   * @param observer an observer that should be added
-   */
-  public void addTotalRevenueObserver(RegisterObserver observer) {
-    this.totalRevenueObservers.add(observer);
-  }
-
-  /**
    * Function sends all observers to sale
    */
-  public void addTotalRevenueObersersToSale() {
-    this.register.addAllTotalRevenueOberservers(this.totalRevenueObservers);
+  public void addTotalRevenueObserver(RegisterObserver observer) {
+    this.register.addTotalRevenueObserver(observer);
   }
 
   /**
