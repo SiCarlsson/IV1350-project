@@ -203,4 +203,60 @@ public class Sale {
     }
     return totalVATOfSale;
   }
+
+  /**
+   * Function handles logic regarding applyong a discount
+   * 
+   * @param discountInformation The information recieved from the discount
+   *                            database
+   */
+  public void applyDiscountOnCurrentSale(double[] discountInformation) {
+    if (discountInformation[0] == 0) {
+      applyDiscountOnWholeSale(discountInformation[1]);
+    } else {
+      applyDiscountOnSpecificProduct(discountInformation[0], discountInformation[1]);
+    }
+    updateSaleDTOTotalPrice();
+  }
+
+  /**
+   * Function applies a percentage discount on all products
+   * 
+   * @param percentageDiscount the percentage all products should be reduced with
+   */
+  private void applyDiscountOnWholeSale(double percentageDiscount) {
+    double currentPrice;
+    double discountedPrice;
+    for (int i = 0; i < this.items.length; i++) {
+      currentPrice = this.items[i].getPrice();
+      discountedPrice = 1 - percentageDiscount;
+      this.items[i].setPrice(currentPrice * discountedPrice);
+    }
+  }
+
+  /**
+   * Function applies a percentage discount on a specific product
+   * 
+   * @param productIdentifier  the identifier of the product that should be
+   *                           discounted
+   * @param percentageDiscount the percentage the product should be reduced with
+   */
+  private void applyDiscountOnSpecificProduct(double productIdentifier, double percentageDiscount) {
+    double currentPrice;
+    double discountedPrice;
+    for (int i = 0; i < this.items.length; i++) {
+      if (this.items[i].getItentifier() == productIdentifier) {
+        currentPrice = this.items[i].getPrice();
+        discountedPrice = 1 - percentageDiscount;
+        this.items[i].setPrice(currentPrice * discountedPrice);
+      }
+    }
+  }
+
+  /**
+   * Method to update the totalCost in the SaleDTO
+   */
+  private void updateSaleDTOTotalPrice() {
+    this.saleDTO.setTotalCostOfSale(getTotalSalePrice());
+  }
 }

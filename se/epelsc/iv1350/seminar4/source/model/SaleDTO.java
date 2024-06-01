@@ -65,64 +65,11 @@ public class SaleDTO {
   }
 
   /**
-   * Function handles logic regarding applyong a discount
+   * Set method to update the total cost of the sale
    * 
-   * @param discountInformation The information recieved from the discount
-   *                            database
+   * @param totalCostOfSale the new value of the total cost
    */
-  public void applyDiscountOnCurrentSale(double[] discountInformation) {
-    if (discountInformation[0] == 0) {
-      applyDiscountOnWholeSale(discountInformation[1]);
-    } else {
-      applyDiscountOnSpecificProduct(discountInformation[0], discountInformation[1]);
-    }
-    updateTotalCostOfSale();
-  }
-
-  /**
-   * Function applies a percentage discount on all products
-   * 
-   * @param percentageDiscount the percentage all products should be reduced with
-   */
-  private void applyDiscountOnWholeSale(double percentageDiscount) {
-    double currentPrice;
-    double discountedPrice;
-    for (int i = 0; i < this.items.length; i++) {
-      currentPrice = this.items[i].getPrice();
-      discountedPrice = 1 - percentageDiscount;
-      this.items[i].setPrice(currentPrice * discountedPrice);
-    }
-  }
-
-  /**
-   * Function applies a percentage discount on a specific product
-   * 
-   * @param productIdentifier  the identifier of the product that should be
-   *                           discounted
-   * @param percentageDiscount the percentage the product should be reduced with
-   */
-  private void applyDiscountOnSpecificProduct(double productIdentifier, double percentageDiscount) {
-    double currentPrice;
-    double discountedPrice;
-    for (int i = 0; i < this.items.length; i++) {
-      if (this.items[i].getItentifier() == productIdentifier) {
-        currentPrice = this.items[i].getPrice();
-        discountedPrice = 1 - percentageDiscount;
-        this.items[i].setPrice(currentPrice * discountedPrice);
-      }
-    }
-  }
-
-  /**
-   * Functiuon updates the total cost of the sale
-   */
-  private void updateTotalCostOfSale() {
-    double totalCostOfSale = 0;
-
-    for (int i = 0; i < this.items.length; i++) {
-      totalCostOfSale += this.items[i].getTotalItemPrice();
-    }
-
+  public void setTotalCostOfSale(double totalCostOfSale) {
     this.totalCostOfSale = totalCostOfSale;
   }
 }

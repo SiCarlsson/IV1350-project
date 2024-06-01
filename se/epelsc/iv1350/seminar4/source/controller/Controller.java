@@ -181,6 +181,6 @@ public class Controller {
    * Function applies discount to sale if applicable
    */
   public void applyDiscountToSale(int discountID) {
-    this.saleDTO.applyDiscountOnCurrentSale(this.exDiscountDb.fetchDiscount(discountID));
+    this.sale.applyDiscountOnCurrentSale(this.exDiscountDb.fetchDiscount(discountID));
   }
 }
