@@ -108,7 +108,7 @@ public class Receipt {
    * 
    * @return The total VAT of a sale as a String
    */
-  private String outputTotalVatOfSale() {
+  public String outputTotalVatOfSale() {
     double totalVAT = 0;
     double totalCostOfProduct;
     double VAT;
