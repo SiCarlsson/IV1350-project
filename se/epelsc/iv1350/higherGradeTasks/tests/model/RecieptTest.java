@@ -205,7 +205,7 @@ public class RecieptTest {
 
     assertTrue(outContent.toString().contains(expectedStartString),
         "The start string does not match the receipt output");
-    assertTrue(outContent.toString().contains(expectedStartString), "The end string does not match the receipt output");
+    assertTrue(outContent.toString().contains(expectedEndString), "The end string does not match the receipt output");
     assertTrue(outContent.toString().contains(expectedTimeOfSale), "The time of sale is not correct");
 
     assertTrue(outContent.toString().contains(firstExpectedItemRow), "The first item row is not correct");
