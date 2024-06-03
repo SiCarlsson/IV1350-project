@@ -19,12 +19,12 @@ public class ExternalDiscountDatabase {
    * 
    * @return An ID for the fetched deiscount code
    */
-  public double[] fetchDiscount(int discountID) {
+  public DiscountDTO fetchDiscount(int discountID) {
     if (discountID == 123456) {
-      return this.discountSpecificProduct.sendDiscountInformationToSale();
+      return this.discountSpecificProduct.sendDiscountInformationToSale(discountID);
     } else if (discountID == 567890) {
-      return this.discountTotalPurchase.sendDiscountInformationToSale();
+      return this.discountTotalPurchase.sendDiscountInformationToSale(discountID);
     }
-    return new double[]{0, 0};
+    return new DiscountDTO(0, 0);
   }
 }

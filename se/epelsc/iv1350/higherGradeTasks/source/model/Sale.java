@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 import se.epelsc.iv1350.higherGradeTasks.source.integration.ItemDTO;
+import se.epelsc.iv1350.higherGradeTasks.source.integration.DiscountDTO;
 
 public class Sale {
   private Receipt receipt;
@@ -210,11 +211,11 @@ public class Sale {
    * @param discountInformation The information recieved from the discount
    *                            database
    */
-  public void applyDiscountOnCurrentSale(double[] discountInformation) {
-    if (discountInformation[0] == 0) {
-      applyDiscountOnWholeSale(discountInformation[1]);
+  public void applyDiscountOnCurrentSale(DiscountDTO discountDTO) {
+    if (discountDTO.getDiscountIdentifier() == 0) {
+      applyDiscountOnWholeSale(discountDTO.getDiscountPercentage());
     } else {
-      applyDiscountOnSpecificProduct(discountInformation[0], discountInformation[1]);
+      applyDiscountOnSpecificProduct(discountDTO.getDiscountIdentifier(), discountDTO.getDiscountPercentage());
     }
     updateSaleDTOTotalPrice();
   }

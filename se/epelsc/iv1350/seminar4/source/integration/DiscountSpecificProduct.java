@@ -8,7 +8,7 @@ public class DiscountSpecificProduct implements DiscountStrategy {
    * @return A double array consisting of the productID and the percentage discount on that product
    */
   @Override
-  public double[] sendDiscountInformationToSale() {
-    return new double[]{123456, 0.20};
+  public DiscountDTO sendDiscountInformationToSale(int discountIdentifier) {
+    return new DiscountDTO(discountIdentifier, 0.20);
   }
 }

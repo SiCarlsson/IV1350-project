@@ -9,7 +9,7 @@ public class DiscountTotalPurchase implements DiscountStrategy {
    *         discount on that product
    */
   @Override
-  public double[] sendDiscountInformationToSale() {
-    return new double[]{0, 0.20};
+  public DiscountDTO sendDiscountInformationToSale(int discountIdentifier) {
+    return new DiscountDTO(discountIdentifier, 0.20);
   }
 }
