@@ -42,7 +42,6 @@ public class Controller {
    */
   public void startSale() {
     this.sale = new Sale();
-    // this.payment = new Payment();
   }
 
   /**
