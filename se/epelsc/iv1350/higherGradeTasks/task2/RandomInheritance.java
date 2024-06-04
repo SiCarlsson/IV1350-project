@@ -15,7 +15,7 @@ public class RandomInheritance extends Random {
    *                   upperBound - 1)
    * @return the randomly generated number
    */
-  public int nextEvenInt(int lowerBound, int upperBound) {
+  public int randomEvenInt(int lowerBound, int upperBound) {
     int result;
     do {
       result = nextInt(upperBound - lowerBound) + lowerBound;

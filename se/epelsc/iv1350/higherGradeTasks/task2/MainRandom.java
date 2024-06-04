@@ -9,7 +9,7 @@ public class MainRandom {
     RandomInheritance randomInheritance = new RandomInheritance();
     System.out.println("Using EnhancedRandom (Inheritance):");
     for (int i = 0; i < 5; i++) {
-      System.out.println("Even Random Int: " + randomInheritance.nextEvenInt(0, 1000));
+      System.out.println("Even Random Int: " + randomInheritance.randomEvenInt(0, 1000));
     }
 
     /**
@@ -18,7 +18,7 @@ public class MainRandom {
     RandomComposition randomComposition = new RandomComposition();
     System.out.println("\nUsing RandomComposition:");
     for (int i = 0; i < 5; i++) {
-      System.out.println("Even Random Int: " + randomComposition.nextEvenInt(0, 1000));
+      System.out.println("Even Random Int: " + randomComposition.randomEvenInt(0, 1000));
     }
   }
 }

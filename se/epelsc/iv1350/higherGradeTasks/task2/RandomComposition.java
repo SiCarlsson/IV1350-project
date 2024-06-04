@@ -20,7 +20,7 @@ public class RandomComposition {
    *                   upperBound - 1)
    * @return the randomly generated number
    */
-  public int nextEvenInt(int lowerBound, int upperBound) {
+  public int randomEvenInt(int lowerBound, int upperBound) {
     int result;
     do {
       result = random.nextInt(upperBound - lowerBound) + lowerBound;
