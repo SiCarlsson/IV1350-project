@@ -69,7 +69,7 @@ public class View {
       try {
         cashierAddsItem(sampleProducts[i]);
       } catch (FaultyItemIdentifierException eFaulty) {
-        System.err.println("The item does not exist in the item catalog...\n");
+        System.err.println("The item with the identifier: " + sampleProducts[i] + " does not exist in the item catalog...\n");
       } catch (ItemCatalogUnavailableException eItem) {
         System.err.println("The item catalog is not available at the moment...\n");
       }
@@ -82,7 +82,7 @@ public class View {
       try {
         cashierAddsItem(sampleProducts[i]);
       } catch (FaultyItemIdentifierException eFaulty) {
-        System.err.println("The item does not exist in the item catalog...\n");
+        System.err.println("The item with the identifier: " + sampleProducts[i] + " does not exist in the item catalog...\n");
       } catch (ItemCatalogUnavailableException eItem) {
         System.err.println("The item catalog is not available at the moment...\n");
       }
@@ -95,7 +95,7 @@ public class View {
       try {
         cashierAddsItem(sampleProducts[i]);
       } catch (FaultyItemIdentifierException eFaulty) {
-        System.err.println("The item does not exist in the item catalog...\n");
+        System.err.println("The item with the identifier: " + sampleProducts[i] + " does not exist in the item catalog...\n");
       } catch (ItemCatalogUnavailableException eItem) {
         System.err.println("The item catalog is not available at the moment...\n");
       }
