@@ -17,7 +17,8 @@ public class ExternalInventorySystem {
 
   /**
    * Getter function to retrieve the variable connectionToDatabase
-   * @return
+   * 
+   * @return whether or not the connection is established or not to the databse
    */
   public boolean getConnectionToDatabase() {
     return this.connectionToDatabase;
@@ -25,6 +26,7 @@ public class ExternalInventorySystem {
 
   /**
    * Setter function to change the value of connectionToDatabase
+   * 
    * @param condition the new state of the connectionToDatabse
    */
   public void setConnectionToDatabase(boolean condition) {
@@ -33,9 +35,9 @@ public class ExternalInventorySystem {
 
   /**
    * A function that goes through all items in the saleDTO and then updates the
-   * 
    * external inventory system
    * 
+   * @params the saleDTO of the current sale
    */
   public void updateInventorySystem(SaleDTO saleDTO) {
     for (int i = 0; i < saleDTO.getItems().length; i++) {
@@ -46,25 +48,27 @@ public class ExternalInventorySystem {
   /**
    * Function to send sale information to database
    * 
-   * @param itemIdentifier
-   * @param itemAmount
+   * @param itemIdentifier the item identifier for the item that should be changed
+   *                       in the database
+   * @param itemAmount     how many items that have been sold of the item
    */
   private void sendItemInformationToDatabase(int itemIdentifier, int itemAmount) {
 
   }
 
   /**
-   * Function collects ItemDTO from database here (not applicable during higherGradeTasks)
    * 
    * @param itemIdentifier The identifier of the product that should be fetched
    *                       from the database
-   * @throws ItemCatalogUnavailableException 
-   * @throws SQLException           If the database cannot be reached, the
-   *                                exception is thrown
-   * @throws InputMismatchException If the specified item cannot be found in the
-   *                                inventory catalog, the exception is thrown
+   * @return The requested ItemDTO
+   * @throws ItemCatalogUnavailableException If the databse cannot be reached the
+   *                                         exception is thrown
+   * @throws FaultyItemIdentifierException   If the specified item cannot be found
+   *                                         in the inventory catalog, the
+   *                                         exception is thrown
    */
-  public ItemDTO getItemDTOFromDatabase(int itemIdentifier) throws ItemCatalogUnavailableException, FaultyItemIdentifierException {
+  public ItemDTO getItemDTOFromDatabase(int itemIdentifier)
+      throws ItemCatalogUnavailableException, FaultyItemIdentifierException {
     String content;
 
     if (!getConnectionToDatabase()) {
@@ -72,8 +76,8 @@ public class ExternalInventorySystem {
         throw new SQLException();
       } catch (SQLException e) {
         content = "Exception " + e + "was thrown. Database is unavailable";
-        Textfiles.writeToTextFile(this.FILE_NAME_ERROR_LOGS, content);     
-        throw new ItemCatalogUnavailableException(content);   
+        Textfiles.writeToTextFile(this.FILE_NAME_ERROR_LOGS, content);
+        throw new ItemCatalogUnavailableException(content);
       }
     }
 
@@ -89,7 +93,7 @@ public class ExternalInventorySystem {
       throw new InputMismatchException();
     } catch (InputMismatchException e) {
       content = "No item found with " + itemIdentifier + " identifier in the inventory catalog.";
-      Textfiles.writeToTextFile(this.FILE_NAME_ERROR_LOGS, content);     
+      Textfiles.writeToTextFile(this.FILE_NAME_ERROR_LOGS, content);
       throw new FaultyItemIdentifierException(content);
     }
   }

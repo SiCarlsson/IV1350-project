@@ -20,6 +20,8 @@ public class TotalRevenueFileOutput extends TotalRevenueTemplate implements Regi
 
   /**
    * Writes accumulated revenue to the textfile
+   * 
+   * @param totalRevenue the total revenue of all sales
    */
   @Override
   public void updateTotalRevenue(double totalRevenue) {
@@ -42,7 +44,7 @@ public class TotalRevenueFileOutput extends TotalRevenueTemplate implements Regi
   /**
    * Method stores the total revenue to file
    * 
-   * @param the total revenue of all sales so far
+   * @param totalRevenue the total revenue of all sales so far
    * 
    * @throws error while logging to the file
    */

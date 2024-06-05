@@ -42,7 +42,11 @@ public class Item {
     return this.price;
   }
 
-
+  /**
+   * Setter function to change the price of a product
+   * 
+   * @param newPrice the new price of the product
+   */
   public void setPrice(double newPrice) {
     this.price = newPrice;
   }
@@ -90,6 +94,11 @@ public class Item {
     this.amount++;
   }
 
+  /**
+   * Getter function to retrieve the total price of an item
+   * 
+   * @return the total cost of a product
+   */
   public double getTotalItemPrice() {
     return this.amount * this.price;
   }

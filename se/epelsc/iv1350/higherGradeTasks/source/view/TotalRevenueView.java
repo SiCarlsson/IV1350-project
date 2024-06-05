@@ -25,7 +25,10 @@ public class TotalRevenueView extends TotalRevenueTemplate implements RegisterOb
   /**
    * Function holds the logic of displaying the total revenue
    * 
-   * @throws Exception
+   * @param totalRevenue the total revenue of all sales
+   * 
+   * @throws Exception If anything regarding the logging goes wrong, the exception
+   *                   is thrown
    */
   @Override
   protected void doShowTotalRevenue(double totalRevenue) throws Exception {

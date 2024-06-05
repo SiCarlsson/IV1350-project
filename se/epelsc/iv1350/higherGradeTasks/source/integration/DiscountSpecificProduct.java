@@ -5,6 +5,8 @@ public class DiscountSpecificProduct implements DiscountStrategy {
   /**
    * Function handles a discount that targets a specific product
    * 
+   * @params the identifier of the discount
+   * 
    * @return A double array consisting of the productID and the percentage
    *         discount on that product
    */

@@ -11,10 +11,10 @@ public class CalculationsTest {
   public void testRoundTwoDecimalPoints() {
     String firstExpectedOutut = "5,87";
     double firstValueToBeRounded = 5.874664;
-    
+
     String secondExpectedOutut = "13,37";
     double secondValueToBeRounded = 13.3712357;
-    
+
     String thirdExpectedOutut = "9,13";
     double thirdValueToBeRounded = 9.129765;
 

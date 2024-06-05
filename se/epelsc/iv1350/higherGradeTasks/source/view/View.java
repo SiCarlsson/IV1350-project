@@ -1,6 +1,5 @@
 package se.epelsc.iv1350.higherGradeTasks.source.view;
 
-import java.io.IOException;
 import java.util.InputMismatchException;
 
 import se.epelsc.iv1350.higherGradeTasks.source.controller.Controller;
@@ -16,8 +15,7 @@ public class View {
   /**
    * Constructor
    * 
-   * @param An instance of controller
-   * @throws IOException
+   * @param contr instance of controller
    */
   public View(Controller contr) {
     this.contr = contr;
@@ -51,6 +49,13 @@ public class View {
     outputSaleLog(itemIdentifier);
   }
 
+  /**
+   * A sample run consisting of three consecutive sales
+   * 
+   * @throws InputMismatchException          If the item identifier given to the
+   *                                         program does not exist
+   * @throws ItemCatalogUnavailableException If the item database is not avaiable
+   */
   public void sampleRunOfThreeSales() throws InputMismatchException, ItemCatalogUnavailableException {
     final int firstSampleProductIdentifier = 123456;
     final int secondSampleProductIdentifier = 567890;

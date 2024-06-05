@@ -33,5 +33,4 @@ public class RegisterTest {
 
     assertEquals(expectedOutput, givenOutput, "updateRegister does not update with the right amount");
   }
-
 }
